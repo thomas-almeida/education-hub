@@ -37,7 +37,7 @@ export default function SignIn() {
     return (
         <>
             <div className="flex justify-center items-center h-screen">
-                <div className="w-[85%]">
+                <div className="w-[50%]">
                     <div className="text-center">
                         <h1>Sign In</h1>
                         <p>Entrar</p>
@@ -66,7 +66,7 @@ export default function SignIn() {
                                 value="Entrar"
                             />
                             <p className="text-center mt-4">
-                                Ainda não tem o site de voces?,
+                                Ainda sem login?
                                 <NavLink to={"/sign-up"}>
                                     <b className="font-semibold text-purple-600"> crie um agora!</b>
                                 </NavLink>

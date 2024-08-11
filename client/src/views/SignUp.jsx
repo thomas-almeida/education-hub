@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 
 
 export default function SignUp() {
@@ -94,6 +94,12 @@ export default function SignUp() {
                                 className="border w-[100%] my-2 p-2 py-3 rounded-sm bg-purple-600 text-white font-medium cursor-pointer"
                                 value="Registrar Aluno"
                             />
+                            <p className="text-center mt-4">
+                                Já tem conta?
+                                <NavLink to={"/"}>
+                                    <b className="font-semibold text-purple-600"> faça login aqui.</b>
+                                </NavLink>
+                            </p>
                         </form>
                     </div>
                 </div>
