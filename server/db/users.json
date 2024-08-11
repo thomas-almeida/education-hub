@@ -7,5 +7,14 @@
     "password": "W9J@sqsu",
     "frequency": 0,
     "role": "TEACHER"
+  },
+  {
+    "id": "gdviwl143",
+    "username": "rebeka.pageu",
+    "name": "Rebeka Oliveira Pageu",
+    "email": "rebeka.pageu@etec.sp.gov.br",
+    "password": "rstvuw",
+    "frequency": 0,
+    "role": "STUDENT"
   }
 ]
