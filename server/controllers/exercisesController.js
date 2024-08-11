@@ -1,6 +1,6 @@
 import generateId from '../utils/generateIds.js'
 
-import fs from 'fs'
+import fs, { fsync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import multer from 'multer'
@@ -80,4 +80,62 @@ async function uploadExercise(req, res) {
 
 }
 
-export default { uploadFile, uploadExercise }
+async function getExerciseById(req, res) {
+
+  let exercises = []
+
+  try {
+
+    const id = req.params.id
+
+    const data = fs.readFileSync(exercisesDb, 'utf-8')
+    exercises = data ? JSON.parse(data) : []
+
+    const exerciseExist = exercises.some(selectedExercise => selectedExercise.id === id)
+
+    if (!exerciseExist) {
+      res.status(401).json({ message: 'class not found' })
+    }
+
+    const foundedExercise = exercises.find(selectedExercise => selectedExercise.id === id)
+
+    return res.status(200).json({
+      message: 'success',
+      class: foundedExercise
+    })
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      message: 'internal server error'
+    })
+  }
+}
+
+async function getExercises(params) {
+
+  let exercises = []
+
+  try {
+
+    const data = fs.readFileSync(exercisesDb, 'utf-8')
+    exercises = data ? JSON.parse(data) : []
+
+    return res.status(200).json({
+      message: 'success',
+      exercises: exercises
+    })
+
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
+
+export default {
+  uploadFile,
+  uploadExercise,
+  getExerciseById,
+  getExercises
+}

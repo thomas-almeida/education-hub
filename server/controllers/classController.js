@@ -87,4 +87,61 @@ async function uploadClass(req, res) {
 
 }
 
-export default { uploadFile, uploadClass }
+async function getClassById(req, res) {
+
+  let classes = []
+
+  try {
+
+    const id = req.params.id
+
+    const data = fs.readFileSync(classesDb, 'utf-8')
+    classes = data ? JSON.parse(data) : []
+
+    const classExist = classes.some(selectedClass => selectedClass.id === id)
+
+    if (!classExist) {
+      res.status(401).json({ message: 'class not found' })
+    }
+
+    const foundedClass = classes.find(selectedClass => selectedClass.id === id)
+
+    return res.status(200).json({
+      message: 'success',
+      class: foundedClass
+    })
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      message: 'internal server error'
+    })
+  }
+}
+
+async function getClasses(params) {
+
+  let classes = []
+
+  try {
+
+    const data = fs.readFileSync(classesDb, 'utf-8')
+    classes = data ? JSON.parse(data) : []
+
+    return res.status(200).json({
+      message: 'success',
+      classes: classes
+    })
+
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
+export default {
+  uploadFile,
+  uploadClass,
+  getClassById,
+  getClasses
+}

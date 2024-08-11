@@ -12,8 +12,12 @@ api.get('/users/get-user-by-id/:id', userController.getUserById)
 
 //exercise
 api.post('/users/admin/create-exercise', exercisesController.uploadFile.single('file'), exercisesController.uploadExercise)
+api.get('/exercises/get-exercise-by-id/:id', exercisesController.getExerciseById)
+api.get('/exercises/get-exercises', exercisesController.getExercises)
 
-//class
+//classes
 api.post('/users/admin/create-class', classController.uploadFile.single('file'), classController.uploadClass)
-
+api.get('/classes/get-class-by-id/:id', classController.getClassById)
+api.get('/classes/get-classes', classController.getClasses)
+ 
 export default api
