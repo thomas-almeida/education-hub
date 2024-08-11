@@ -42,7 +42,7 @@ async function signUp(req, res) {
       email,
       password: encriptedPassword,
       frequency: 0,
-      role: 'student'
+      role: 'STUDENT'
     }
 
     users.push(newUser)
