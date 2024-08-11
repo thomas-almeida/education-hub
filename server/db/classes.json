@@ -1,0 +1,22 @@
+[
+  {
+    "id": "jyxukl857",
+    "name": "exercicio 1",
+    "description": "dasd dasdasj dsak jdsadasjkdas",
+    "createdAt": 1723393444224,
+    "schedule": "12/08/2024",
+    "videoUrl": "https://www.youtube.com/watch?v=--slRywdonM&t=9595s",
+    "attachment": {
+      "filename": "1723393444218-image-removebg-preview.png",
+      "path": "C:\\Repos\\education-hub\\server\\db\\slides\\1723393444218-image-removebg-preview.png",
+      "originalname": "image-removebg-preview.png",
+      "mimetype": "image/png",
+      "size": 37708
+    },
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  }
+]

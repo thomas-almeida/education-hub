@@ -1,0 +1,19 @@
+import { Router } from "express"
+import userController from '../controllers/userController.js'
+import exercisesController from "../controllers/exercisesController.js"
+import classController from "../controllers/classController.js"
+
+const api = Router()
+
+//User
+api.post('/users/sign-up', userController.signUp)
+api.post('/users/sign-in', userController.signIn)
+api.get('/users/get-user-by-id/:id', userController.getUserById)
+
+//exercise
+api.post('/users/admin/create-exercise', exercisesController.uploadFile.single('file'), exercisesController.uploadExercise)
+
+//class
+api.post('/users/admin/create-class', classController.uploadFile.single('file'), classController.uploadClass)
+
+export default api
