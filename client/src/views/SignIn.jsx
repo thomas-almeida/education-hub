@@ -14,7 +14,7 @@ export default function SignIn() {
         password: password
     }
 
-    const serverEndpoint = 'http://localhost:3000'
+    const serverEndpoint = 'http://localhost:3004'
     const [alertInfo, setAlertInfo] = useState('')
 
     async function signInUser(event) {

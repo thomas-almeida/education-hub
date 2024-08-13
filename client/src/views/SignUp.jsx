@@ -23,7 +23,7 @@ export default function SignUp() {
     }
 
     const [alertInfo, setAlertInfo] = useState('')
-    const serverEndpoint = 'http://localhost:3000'
+    const serverEndpoint = 'http://localhost:3004'
 
     // create User
     async function createUser(event) {

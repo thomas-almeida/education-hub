@@ -6,17 +6,28 @@ import axios from "axios"
 export default function Class(props) {
 
     const [classListData, setClassList] = useState([])
+    const [isModalVisible, setIsVisible] = useState(false)
+    const [currentClass, setCurrentClass] = useState({})
 
     useEffect(() => {
 
         async function getClasses() {
-            const response = await axios.get('http://localhost:3000/classes/get-classes')
+            const response = await axios.get('http://localhost:3004/classes/get-classes')
             setClassList(response.data?.classes)
         }
 
         getClasses()
 
     }, [])
+
+    function closeModal() {
+        setIsVisible(false)
+    }
+
+    function openModal(classItem) {
+        setIsVisible(true)
+        setCurrentClass(classItem)
+    }
 
     return (
         <>
@@ -28,6 +39,7 @@ export default function Class(props) {
                                 <li
                                     key={classItem?.id}
                                     className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03]"
+                                    onClick={() => openModal(classItem)}
                                 >
                                     <div className="flex items-center">
                                         <img
@@ -65,6 +77,26 @@ export default function Class(props) {
                                 </li>
                             ))
                         }
+                    </div>
+                </div>
+                <div className={isModalVisible ? `flex items-center justify-center absolute top-0 left-0 h-[100vh] w-[100%] bg-[#00000054] z-50` : `hidden`}>
+                    <div className="p-6 bg-white w-[80%]">
+                        <div className="flex items-center">
+                            <img
+                                src="/excel-2.png"
+                                className="w-[30px] mr-1"
+                            />
+                            <h2 className="font-semibold text-xl">
+                                {currentClass?.name}
+                            </h2>
+                        </div>
+                        <p className="w-[80%] pt-2 text-lg">{currentClass?.description}</p>
+                        <button
+                            className="p-6"
+                            onClick={() => closeModal()}
+                        >
+                            close
+                        </button>
                     </div>
                 </div>
             </div>

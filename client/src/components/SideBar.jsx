@@ -17,7 +17,7 @@ export default function SideBar(
                         </h2>
                     </div>
                     <div className="flex items-center font-normal">
-                        <b className="border-gray-500 rounded-sm font-medium text-sm italic">
+                        <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%]">
                             {userEmail}
                         </b>
                     </div>
