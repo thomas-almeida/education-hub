@@ -1,43 +1,44 @@
+/* eslint-disable react/prop-types */
 export default function SideBar(
     {
         setActiveScreen,
         activeScreen,
         userName,
-        userFrequency
+        userEmail
     }
 ) {
     return (
-        <div className="bg-[#1d1d1d] h-svh w-[350px]">
+        <div className="bg-white text-black h-svh w-[220px] border">
             <div className="flex items-center px-4 py-6">
                 <div className="">
                     <div className="flex items-center">
-                        <h2 className="whitespace-nowrap overflow-hidden text-ellipsis w-[110px] mr-1 font-bold text-xl">
+                        <h2 className="whitespace-nowrap overflow-hidden text-ellipsis w-[100%] mr-1 font-bold text-xl">
                             {userName}
                         </h2>
                     </div>
                     <div className="flex items-center font-normal">
-                        <b className="border border-gray-500 px-3 rounded-sm font-medium text-sm text-gray-300">
-                            {userFrequency.toFixed(2)}%
+                        <b className="border-gray-500 rounded-sm font-medium text-sm italic">
+                            {userEmail}
                         </b>
                     </div>
                 </div>
             </div>
-            <div className="px-4 mt-8 text-gray-400">
+            <div className="px-4 mt-8">
                 <ul>
                     <li
-                        className={`p-2 my-2 cursor-pointer font-normal text-lg hover:text-white ${activeScreen === 'menu' ? 'text-white font-bold' : ''}`}
+                        className={`p-2 my-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'menu' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('menu')}
                     >
                         <a href="#">Início</a>
                     </li>
                     <li
-                        className={`p-2 my-2 cursor-pointer font-normal text-lg hover:text-white ${activeScreen === 'team' ? 'text-white font-bold' : ''}`}
-                        onClick={() => setActiveScreen('classes')}
+                        className={`p-2 my-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'class' ? 'text-blue-500 font-bold' : ''}`}
+                        onClick={() => setActiveScreen('class')}
                     >
                         <a href="#">Minhas Aulas</a>
                     </li>
                     <li
-                        className={`p-2 my-2 cursor-pointer font-normal text-lg hover:text-white ${activeScreen === 'packs' ? 'text-white font-bold' : ''}`}
+                        className={`p-2 my-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('exercises')}
                     >
                         <a href="#">Exercícios</a>

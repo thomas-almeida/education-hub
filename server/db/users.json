@@ -16,5 +16,14 @@
     "password": "rstvuw",
     "frequency": 0,
     "role": "STUDENT"
+  },
+  {
+    "id": "vztjqh829",
+    "username": "new.student",
+    "name": "new student",
+    "email": "new@new",
+    "password": "rstrst",
+    "frequency": 0,
+    "role": "STUDENT"
   }
 ]

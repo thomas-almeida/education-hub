@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "id": "zechmc053",
+    "name": "Uso ágil da ferramenta",
+    "description": "Entender o conceito profissional da ferramenta, como ela cria e gerencia negócios, como a versatilidade dela facilita a resolução de problemas.",
+    "createdAt": 1723512241842,
+    "schedule": "12/08/2024",
+    "videoUrl": "https://www.youtube.com/embed/RUFGmbarAfo?si=rt6hdbOQbSh_Mjr-",
+    "attachments": [
+      {
+        "filename": "1723512241835-AULA #1.pdf",
+        "path": "C:/Repos/education-hub/server/db/slides/1723512241835-AULA #1.pdf",
+        "originalname": "AULA #1.pdf",
+        "mimetype": "application/pdf",
+        "size": 1442478
+      },
+      {
+        "filename": "1723512241840-exemplo-csv.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723512241840-exemplo-csv.csv",
+        "originalname": "exemplo-csv.csv",
+        "mimetype": "text/csv",
+        "size": 17261
+      },
+      {
+        "filename": "1723512241840-frequencia-escolar.xlsx",
+        "path": "C:/Repos/education-hub/server/db/slides/1723512241840-frequencia-escolar.xlsx",
+        "originalname": "frequencia-escolar.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 14811
+      }
+    ],
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "tdubjx807",
+    "name": "Uso ágil da ferramenta 2",
+    "description": "Entender o conceito profissional da ferramenta, como ela cria e gerencia negócios, como a versatilidade dela facilita a resolução de problemas.",
+    "createdAt": 1723513112820,
+    "schedule": "12/08/2024",
+    "videoUrl": "https://www.youtube.com/embed/RUFGmbarAfo?si=rt6hdbOQbSh_Mjr-",
+    "attachments": [
+      {
+        "filename": "1723513112813-AULA #1.pdf",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513112813-AULA #1.pdf",
+        "originalname": "AULA #1.pdf",
+        "mimetype": "application/pdf",
+        "size": 1442478
+      },
+      {
+        "filename": "1723513112819-exemplo-csv.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513112819-exemplo-csv.csv",
+        "originalname": "exemplo-csv.csv",
+        "mimetype": "text/csv",
+        "size": 17261
+      },
+      {
+        "filename": "1723513112819-frequencia-escolar.xlsx",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513112819-frequencia-escolar.xlsx",
+        "originalname": "frequencia-escolar.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 14811
+      }
+    ],
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "xerotb797",
+    "name": "Uso ágil da ferramenta 3",
+    "description": "Entender o conceito profissional da ferramenta, como ela cria e gerencia negócios, como a versatilidade dela facilita a resolução de problemas.",
+    "createdAt": 1723513142848,
+    "schedule": "12/08/2024",
+    "videoUrl": "https://www.youtube.com/embed/RUFGmbarAfo?si=rt6hdbOQbSh_Mjr-",
+    "attachments": [
+      {
+        "filename": "1723513142843-AULA #1.pdf",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513142843-AULA #1.pdf",
+        "originalname": "AULA #1.pdf",
+        "mimetype": "application/pdf",
+        "size": 1442478
+      },
+      {
+        "filename": "1723513142847-exemplo-csv.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513142847-exemplo-csv.csv",
+        "originalname": "exemplo-csv.csv",
+        "mimetype": "text/csv",
+        "size": 17261
+      },
+      {
+        "filename": "1723513142847-frequencia-escolar.xlsx",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513142847-frequencia-escolar.xlsx",
+        "originalname": "frequencia-escolar.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 14811
+      }
+    ],
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "kwqzwb832",
+    "name": "Uso ágil da ferramenta 4",
+    "description": "Entender o conceito profissional da ferramenta, como ela cria e gerencia negócios, como a versatilidade dela facilita a resolução de problemas.",
+    "createdAt": 1723513362475,
+    "schedule": "12/08/2024",
+    "videoUrl": "https://www.youtube.com/embed/RUFGmbarAfo?si=rt6hdbOQbSh_Mjr-",
+    "attachments": [
+      {
+        "filename": "1723513362469-AULA #1.pdf",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513362469-AULA #1.pdf",
+        "originalname": "AULA #1.pdf",
+        "mimetype": "application/pdf",
+        "size": 1442478
+      },
+      {
+        "filename": "1723513362473-exemplo-csv.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513362473-exemplo-csv.csv",
+        "originalname": "exemplo-csv.csv",
+        "mimetype": "text/csv",
+        "size": 17261
+      },
+      {
+        "filename": "1723513362474-frequencia-escolar.xlsx",
+        "path": "C:/Repos/education-hub/server/db/slides/1723513362474-frequencia-escolar.xlsx",
+        "originalname": "frequencia-escolar.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 14811
+      }
+    ],
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  }
+]

@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
   }
 })
 
-const uploadFile = multer({ storage: storage })
+const uploadFile = multer({ storage: storage }).array('files', 10)
 
 if (!fs.existsSync(slidesDir)) {
   fs.mkdirSync(slidesDir, { recursive: true })
@@ -33,9 +33,8 @@ async function uploadClass(req, res) {
   try {
     const { name, description, videoUrl, schedule } = req.body
 
-    if (!req.file) {
-      res.status(401).send('nenhum arquivo enviado..')
-      return
+    if (!req.files || req.files.length === 0) {
+      return res.status(401).send('nenhum arquivo enviado..')
     }
 
     if (fs.existsSync(classesDb)) {
@@ -43,7 +42,15 @@ async function uploadClass(req, res) {
       classes = data ? JSON.parse(data) : []
     }
 
-    const classPath = req.file.path.replace(/\\/g, '/')
+    const attachments = req.files.map(file => ({
+      filename: file.filename,
+      path: file.path.replace(/\\/g, '/'),
+      originalname: file.originalname,
+      mimetype: file.mimetype,
+      size: file.size,
+    }))
+
+    //const classPath = req.file.path.replace(/\\/g, '/')
     const classId = generateId.generateExtenseId(classes)
 
     const newClass = {
@@ -53,13 +60,7 @@ async function uploadClass(req, res) {
       createdAt: Date.now(),
       schedule,
       videoUrl,
-      attachment: {
-        filename: req.file.filename,
-        path: req.file.path,
-        originalname: req.file.originalname,
-        mimetype: req.file.mimetype,
-        size: req.file.size,
-      },
+      attachments,
       exercise: {},
       presenceList: {
         frequency: 0,
@@ -119,7 +120,7 @@ async function getClassById(req, res) {
   }
 }
 
-async function getClasses(params) {
+async function getClasses(req, res) {
 
   let classes = []
 
