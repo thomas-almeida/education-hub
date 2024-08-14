@@ -1,6 +1,6 @@
 import generateId from '../utils/generateIds.js'
 
-import fs from 'fs'
+import fs, { cpSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import multer from 'multer'
@@ -140,9 +140,26 @@ async function getClasses(req, res) {
 
 }
 
+async function downloadFile(req, res) {
+  
+  const { filename } = req.params
+  const filePath = path.join(__dirname, '..', 'db', 'slides', filename)
+
+  res.download(filePath, (err) => {
+    if (err) {
+      console.error(err)
+      res.status(404).json({
+        message: 'arquivo nao encontrado'
+      })
+    }
+  })
+
+}
+
 export default {
   uploadFile,
   uploadClass,
   getClassById,
-  getClasses
+  getClasses,
+  downloadFile
 }

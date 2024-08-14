@@ -29,6 +29,28 @@ export default function Class(props) {
         setCurrentClass(classItem)
     }
 
+    async function donwloadFile(fileName, originalName) {
+        try {
+            const response = await axios.get(`http://localhost:3004/files/download/${fileName}`, {
+                responseType: 'blob'
+            })
+
+            const url = window.URL.createObjectURL(new Blob([response.data]))
+            const link = document.createElement('a')
+            link.href = url
+            link.setAttribute('download', originalName)
+            document.body.appendChild(link)
+            link.click()
+            link.parentNode.removeChild(link)
+
+            alert('Material Baixado com sucesso!')
+
+        } catch (error) {
+            console.error("Erro ao baixar o arquivo:", error)
+            alert('Erro ao baixar material de apoio')
+        }
+    }
+
     return (
         <>
             <div className={props.visible ? `flex items-center w-[75%]` : `hidden`}>
@@ -51,36 +73,26 @@ export default function Class(props) {
                                         </h2>
                                     </div>
                                     <p
-                                        className="w-[85%] py-2"
+                                        className="w-[85%] py-2 mb-3"
                                     >
                                         {classItem?.description}
                                     </p>
-                                    <b className="font-semibold">
+                                    <b className="font-semibold border-2 p-1 px-2 rounded-md mr-4">
                                         📅 {classItem?.schedule}
                                     </b>
-                                    <div className="pt-2 border-2 p-2 mt-2 rounded-md">
-                                        <b className="font-semibold">Materiais de Apoio</b>
-                                        <div className="flex items-center mt-2">
-                                            {
-                                                classItem?.attachments.map(attachItem => (
-                                                    <div
-                                                        key={attachItem.filename}
-                                                        className="flex items-center justify-center cursor-pointer border w-auto px-4 py-1 rounded-md mr-2 hover:border-blue-400"
-                                                    >
-                                                        <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
-                                                        <h3>{attachItem.originalname}</h3>
-                                                    </div>
-                                                ))
-                                            }
-                                        </div>
-                                    </div>
+                                    <b className="font-semibold border-2 p-1 px-2 rounded-md mr-4">
+                                        🎥 Video
+                                    </b>
+                                    <b className="font-semibold border-2 p-1 px-2 rounded-md">
+                                        📁 Material de Apoio
+                                    </b>
                                 </li>
                             ))
                         }
                     </div>
                 </div>
                 <div className={isModalVisible ? `flex items-center justify-center absolute top-0 left-0 h-[100vh] w-[100%] bg-[#00000054] z-50` : `hidden`}>
-                    <div className="p-12 bg-white w-[75%] flex rounded-md shadow-2xl">
+                    <div className="p-12 bg-white w-[85%] h-[680px] flex rounded-md shadow-2xl">
                         <div className="w-[40%] py-10">
                             <div className="flex items-center mb-4">
                                 <img
@@ -103,6 +115,7 @@ export default function Class(props) {
                                             <div
                                                 key={attachItem.filename}
                                                 className="flex items-center cursor-pointer border w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
+                                                onClick={() => donwloadFile(attachItem?.filename, attachItem?.originalname)}
                                             >
                                                 <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
                                                 <h3>{attachItem.originalname}</h3>

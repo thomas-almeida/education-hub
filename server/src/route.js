@@ -19,5 +19,8 @@ api.get('/exercises/get-exercises', exercisesController.getExercises)
 api.post('/users/admin/create-class', classController.uploadFile, classController.uploadClass)
 api.get('/classes/get-class-by-id/:id', classController.getClassById)
 api.get('/classes/get-classes', classController.getClasses)
+
+//donwload 
+api.get('/files/download/:filename', classController.downloadFile)
  
 export default api
