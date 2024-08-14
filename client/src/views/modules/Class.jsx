@@ -65,7 +65,7 @@ export default function Class(props) {
                                                 classItem?.attachments.map(attachItem => (
                                                     <div
                                                         key={attachItem.filename}
-                                                        className="flex items-center justify-center cursor-pointer border w-auto px-4 py-1 rounded-md mr-2"
+                                                        className="flex items-center justify-center cursor-pointer border w-auto px-4 py-1 rounded-md mr-2 hover:border-blue-400"
                                                     >
                                                         <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
                                                         <h3>{attachItem.originalname}</h3>
@@ -80,23 +80,53 @@ export default function Class(props) {
                     </div>
                 </div>
                 <div className={isModalVisible ? `flex items-center justify-center absolute top-0 left-0 h-[100vh] w-[100%] bg-[#00000054] z-50` : `hidden`}>
-                    <div className="p-6 bg-white w-[80%]">
-                        <div className="flex items-center">
-                            <img
-                                src="/excel-2.png"
-                                className="w-[30px] mr-1"
-                            />
-                            <h2 className="font-semibold text-xl">
-                                {currentClass?.name}
-                            </h2>
+                    <div className="p-12 bg-white w-[75%] flex rounded-md shadow-2xl">
+                        <div className="w-[40%] py-10">
+                            <div className="flex items-center mb-4">
+                                <img
+                                    src="/excel-2.png"
+                                    className="w-[30px] mr-1"
+                                />
+                                <h2 className="font-semibold text-xl">
+                                    {currentClass?.name}
+                                </h2>
+                            </div>
+                            <p className="border-2 w-[125px] text-center p-1 rounded-md">
+                                📅 {currentClass?.schedule}
+                            </p>
+                            <p className="w-[80%] pt-2 text-md">{currentClass?.description}</p>
+                            <div className="pt-2 py-2 mt-2 rounded-md">
+                                <b className="font-semibold">Materiais de Apoio</b>
+                                <div className="mt-2">
+                                    {
+                                        currentClass?.attachments?.map(attachItem => (
+                                            <div
+                                                key={attachItem.filename}
+                                                className="flex items-center cursor-pointer border w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
+                                            >
+                                                <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
+                                                <h3>{attachItem.originalname}</h3>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                            <button
+                                className="p-2 border mt-2 w-[280px] bg-blue-500 text-white font-medium rounded-sm"
+                                onClick={() => closeModal()}
+                            >
+                                Fechar Detalhes
+                            </button>
                         </div>
-                        <p className="w-[80%] pt-2 text-lg">{currentClass?.description}</p>
-                        <button
-                            className="p-6"
-                            onClick={() => closeModal()}
-                        >
-                            close
-                        </button>
+                        <div className="w-[60%] flex justify-center items-center p-4">
+                            <iframe
+                                className="border rounded-md shadow-lg"
+                                src={currentClass?.videoUrl}
+                                width={'100%'}
+                                height={'450px'}
+                            >
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </div>
