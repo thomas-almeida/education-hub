@@ -49,13 +49,16 @@ export default function SignUp() {
         <>
             <div className="flex justify-center items-center h-screen">
                 <div className="w-[50%]">
-                    <div className="text-center">
-                        <h1>SignUp</h1>
-                        <p>Registre-se</p>
+                    <div className="flex items-center justify-center">
+                        <img
+                            src="/edu-hub-logo.png"
+                            className="w-[50px] relative top-1"
+                        />
+                        <h1 className="text-4xl font-semibold text-blue-500">edu.hub</h1>
                     </div>
                     <div className="mt-5">
                         <form className="" onSubmit={createUser}>
-                            <p>Dados de Login</p>
+                            <p className="text-blue-500 font-medium">Dados de Login</p>
                             <input
                                 type="text"
                                 className="border w-[100%] my-2 p-2 rounded-sm text-lg"
@@ -80,7 +83,7 @@ export default function SignUp() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
-                            <p>Senha</p>
+                            <p className="text-blue-500 font-medium">Senha</p>
                             <input
                                 type="password"
                                 className="border w-[100%] my-2 p-2 rounded-sm text-lg"
@@ -91,13 +94,13 @@ export default function SignUp() {
                             />
                             <input
                                 type="submit"
-                                className="border w-[100%] my-2 p-2 py-3 rounded-sm bg-purple-600 text-white font-medium cursor-pointer"
+                                className="border w-[100%] my-2 p-2 py-3 rounded-sm bg-blue-500 text-white font-medium cursor-pointer"
                                 value="Registrar Aluno"
                             />
                             <p className="text-center mt-4">
                                 Já tem conta?
                                 <NavLink to={"/"}>
-                                    <b className="font-semibold text-purple-600"> faça login aqui.</b>
+                                    <b className="font-semibold text-blue-500"> faça login aqui.</b>
                                 </NavLink>
                             </p>
                         </form>

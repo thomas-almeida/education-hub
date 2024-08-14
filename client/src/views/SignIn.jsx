@@ -38,9 +38,12 @@ export default function SignIn() {
         <>
             <div className="flex justify-center items-center h-screen">
                 <div className="w-[50%]">
-                    <div className="text-center">
-                        <h1>Sign In</h1>
-                        <p>Entrar</p>
+                    <div className="flex items-center justify-center">
+                        <img
+                            src="/edu-hub-logo.png"
+                            className="w-[50px] relative top-1"
+                        />
+                        <h1 className="text-4xl font-semibold text-blue-500">edu.hub</h1>
                     </div>
                     <div className="mt-5">
                         <form className="" onSubmit={signInUser}>
@@ -62,13 +65,13 @@ export default function SignIn() {
                             />
                             <input
                                 type="submit"
-                                className="border w-[100%] my-2 p-2 rounded-sm bg-purple-600 text-white font-medium"
+                                className="border w-[100%] my-2 p-2 rounded-sm bg-blue-500 text-white font-medium cursor-pointer"
                                 value="Entrar"
                             />
                             <p className="text-center mt-4">
                                 Ainda sem login?
                                 <NavLink to={"/sign-up"}>
-                                    <b className="font-semibold text-purple-600"> crie um agora!</b>
+                                    <b className="font-semibold text-blue-500"> crie um agora!</b>
                                 </NavLink>
                             </p>
                         </form>

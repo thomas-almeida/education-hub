@@ -12,12 +12,12 @@ export default function SideBar(
             <div className="flex items-center px-4 py-6">
                 <div className="">
                     <div className="flex items-center">
-                        <h2 className="whitespace-nowrap overflow-hidden text-ellipsis w-[100%] mr-1 font-bold text-xl">
+                        <h2 className="whitespace-nowrap overflow-hidden text-ellipsis w-[100%] mr-1 font-semibold text-xl">
                             {userName}
                         </h2>
                     </div>
                     <div className="flex items-center font-normal">
-                        <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%]">
+                        <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%] text-slate-500">
                             {userEmail}
                         </b>
                     </div>

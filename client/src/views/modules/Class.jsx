@@ -108,13 +108,13 @@ export default function Class(props) {
                             </p>
                             <p className="w-[80%] pt-2 text-md">{currentClass?.description}</p>
                             <div className="pt-2 py-2 mt-2 rounded-md">
-                                <b className="font-semibold">Materiais de Apoio</b>
+                                <b className="font-semibold">📁 Materiais de Apoio</b>
                                 <div className="mt-2">
                                     {
                                         currentClass?.attachments?.map(attachItem => (
                                             <div
                                                 key={attachItem.filename}
-                                                className="flex items-center cursor-pointer border w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
+                                                className="flex items-center cursor-pointer border-2 w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
                                                 onClick={() => donwloadFile(attachItem?.filename, attachItem?.originalname)}
                                             >
                                                 <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
@@ -125,7 +125,7 @@ export default function Class(props) {
                                 </div>
                             </div>
                             <button
-                                className="p-2 border mt-2 w-[280px] bg-blue-500 text-white font-medium rounded-sm"
+                                className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[280px] font-medium rounded-sm transition hover:scale-[1.02]"
                                 onClick={() => closeModal()}
                             >
                                 Fechar Detalhes

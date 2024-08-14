@@ -1,6 +1,6 @@
 import generateId from '../utils/generateIds.js'
 
-import fs, { cpSync } from 'fs'
+import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import multer from 'multer'

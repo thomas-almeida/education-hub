@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-import Class from "./modules/Class"
-import Exercises from "./modules/Exercise"
-import Menu from "./modules/Menu"
+import Class from "../views/modules/Class"
+import Exercises from "../views/modules/Exercise"
+import Menu from "../views/modules/Menu"
 
 export default function Screens({ activeScreen }) {
     return (
