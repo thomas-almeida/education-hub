@@ -34,10 +34,12 @@ export default function Menu(
                                 <h1 className="text-3xl font-semibold w-[40%] leading-8">Excel Avançado BigData</h1>
                             </div>
                             <div className="flex items-center py-4">
-                                <img src="/profile-pic.jpeg" className="w-[50px] rounded-3xl mr-1 shadow-md border-2 object-cover" alt="" />
+                                <img src="/profile-pic.jpeg" className="w-[50px] rounded-3xl mr-2 shadow-md border-2 object-cover" alt="" />
                                 <div className="relative top-1">
-                                    <h3 className="text-lg font-medium leading-3">Thomas Almeida</h3>
-                                    <p>Instrutor</p>
+                                    <h3 className="text-lg font-medium leading-3">
+                                        Thomas Almeida
+                                    </h3>
+                                    <p>{`${userData?.role === 'STUDENT' ? 'Instrutor' : 'Voce é o Instrutor deste Curso'}`}</p>
                                 </div>
                             </div>
                             <p className="py-1 w-[70%] text-slate-700 font-medium italic">Entender o funcionamento da ferramenta e seus contextos, como usar ela de forma profissional para diversos casos de uso, fazendo de nós profissionais altamente qualificados.</p>
@@ -50,7 +52,7 @@ export default function Menu(
                         </div>
                     </div>
                     <div className="flex items-center justify-start w-[85%] py-4 mt-1">
-                        <div className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white transition hover:scale-[1.02]">
+                        <div className={userData?.role === 'STUDENT' ? `border-2 rounded-md p-8 w-[300px] mr-2 bg-white transition hover:scale-[1.02]` : 'hidden'}>
                             <h3 className="text-lg font-medium pb-2">Frequência</h3>
                             <h1 className="text-3xl font-semibold">
                                 {calculateFreq(userData?.frequency)}%

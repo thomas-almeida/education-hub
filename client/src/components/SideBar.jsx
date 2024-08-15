@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 /* eslint-disable react/prop-types */
 export default function SideBar(
     {
@@ -46,7 +48,11 @@ export default function SideBar(
                         className={`p-2 my-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'class' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('class')}
                     >
-                        <a href="#">Minhas Aulas</a>
+                        <a href="#">
+                            {
+                                `${userTag === 'STUDENT' ? 'Minhas Aulas' : 'Aulas'}`
+                            }
+                        </a>
                     </li>
                     <li
                         className={`p-2 my-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
