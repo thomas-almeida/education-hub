@@ -64,7 +64,7 @@ export default function Class(props) {
         <>
             <div className={props.visible ? `flex items-center w-[75%]` : `hidden`}>
                 <div className="flex items-center">
-                    <div className="p-6 overflow-y-scroll h-[80vh]">
+                    <div className="p-6 overflow-y-auto h-[80vh]">
                         {
                             classListData.map(classItem => (
                                 <li

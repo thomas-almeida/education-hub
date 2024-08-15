@@ -5,7 +5,69 @@
     "name": "Thom Almeida",
     "email": "contato.thomasalmeidard@gmail.com",
     "password": "rstrst",
-    "frequency": 0,
+    "role": "ADMIN"
+  },
+  {
+    "id": "pjftio584",
+    "username": "calvin.eduhub",
+    "name": "Calvin Monteiro",
+    "email": "calvin@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
+    "role": "STUDENT"
+  },
+  {
+    "id": "vidkaz588",
+    "username": "guilherme.eduhub",
+    "name": "Guilherme Muniz",
+    "email": "guilherme@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
+    "role": "STUDENT"
+  },
+  {
+    "id": "kaqfkd396",
+    "username": "isabela.eduhub",
+    "name": "Isabela Marcelo",
+    "email": "isabela@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
+    "role": "STUDENT"
+  },
+  {
+    "id": "ziutxe173",
+    "username": "iasmin.eduhub",
+    "name": "Iasmin",
+    "email": "iasmin@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
+    "role": "STUDENT"
+  },
+  {
+    "id": "zqeuqf101",
+    "username": "raphael.eduhub",
+    "name": "Raphael",
+    "email": "raphael@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
+    "role": "STUDENT"
+  },
+  {
+    "id": "smedqx547",
+    "username": "juan.eduhub",
+    "name": "Juan",
+    "email": "juan@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
+    "role": "STUDENT"
+  },
+  {
+    "id": "sftpuy140",
+    "username": "alexandre.eduhub",
+    "name": "Alexandre",
+    "email": "alexandre@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 2,
     "role": "STUDENT"
   }
 ]
