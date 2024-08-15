@@ -6,9 +6,7 @@ import { fileURLToPath } from 'url'
 import multer from 'multer'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-//const usersDb = path.join(__dirname, '..', 'db', 'users.json')
 const classesDb = path.join(__dirname, '..', 'db', 'classes.json')
-const sheetsDir = path.join(__dirname, '..', 'db', 'sheets')
 const slidesDir = path.join(__dirname, '..', 'db', 'slides')
 
 const storage = multer.diskStorage({
@@ -20,7 +18,7 @@ const storage = multer.diskStorage({
   }
 })
 
-const uploadFile = multer({ storage: storage }).array('files', 10)
+const uploadFiles = multer({ storage }).array('files', 10)
 
 if (!fs.existsSync(slidesDir)) {
   fs.mkdirSync(slidesDir, { recursive: true })
@@ -31,7 +29,7 @@ async function uploadClass(req, res) {
   let classes = []
 
   try {
-    const { name, description, videoUrl, schedule } = req.body
+    const { name, description, schedule } = req.body
 
     if (!req.files || req.files.length === 0) {
       return res.status(401).send('nenhum arquivo enviado..')
@@ -59,7 +57,6 @@ async function uploadClass(req, res) {
       description,
       createdAt: Date.now(),
       schedule,
-      videoUrl,
       attachments,
       exercise: {},
       presenceList: {
@@ -141,7 +138,7 @@ async function getClasses(req, res) {
 }
 
 async function downloadFile(req, res) {
-  
+
   const { filename } = req.params
   const filePath = path.join(__dirname, '..', 'db', 'slides', filename)
 
@@ -157,7 +154,7 @@ async function downloadFile(req, res) {
 }
 
 export default {
-  uploadFile,
+  uploadFiles,
   uploadClass,
   getClassById,
   getClasses,

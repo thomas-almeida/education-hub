@@ -16,11 +16,11 @@ api.get('/exercises/get-exercise-by-id/:id', exercisesController.getExerciseById
 api.get('/exercises/get-exercises', exercisesController.getExercises)
 
 //classes
-api.post('/users/admin/create-class', classController.uploadFile, classController.uploadClass)
+api.post('/users/admin/create-class', classController.uploadFiles, classController.uploadClass)
 api.get('/classes/get-class-by-id/:id', classController.getClassById)
 api.get('/classes/get-classes', classController.getClasses)
 
 //donwload 
 api.get('/files/download/:filename', classController.downloadFile)
- 
+
 export default api

@@ -8,6 +8,7 @@ export default function Class(props) {
     const [classListData, setClassList] = useState([])
     const [isModalVisible, setIsVisible] = useState(false)
     const [currentClass, setCurrentClass] = useState({})
+    const [currentVideo, setCurrentVideo] = useState()
 
     useEffect(() => {
 
@@ -25,8 +26,16 @@ export default function Class(props) {
     }
 
     function openModal(classItem) {
+
         setIsVisible(true)
         setCurrentClass(classItem)
+
+        classItem?.attachments?.forEach(file => {
+            if (file?.mimetype === 'video/mp4' || file?.mimetype === 'video/x-matroska') {
+                setCurrentVideo(file?.filename)
+            }
+        })
+
     }
 
     async function donwloadFile(fileName, originalName) {
@@ -132,13 +141,17 @@ export default function Class(props) {
                             </button>
                         </div>
                         <div className="w-[60%] flex justify-center items-center p-4">
-                            <iframe
-                                className="border rounded-md shadow-lg"
-                                src={currentClass?.videoUrl}
-                                width={'100%'}
-                                height={'450px'}
-                            >
-                            </iframe>
+                            {currentVideo && (
+                                <video 
+                                    className="border-4 rounded-md shadow-xl"
+                                    width={'95%'} 
+                                    controls>
+                                    <source
+                                        src={`http://localhost:3004/files/${currentVideo}`}
+                                        type="video/mp4"
+                                    />
+                                </video>
+                            )}
                         </div>
                     </div>
                 </div>
