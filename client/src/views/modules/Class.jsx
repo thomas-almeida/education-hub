@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import axios from "axios"
+import baseUrl from '../utils/baseUrl'
 
 export default function Class(props) {
 
@@ -13,7 +14,7 @@ export default function Class(props) {
     useEffect(() => {
 
         async function getClasses() {
-            const response = await axios.get('http://localhost:3004/classes/get-classes')
+            const response = await axios.get(`${baseUrl.productionUrl}/classes/get-classes`)
             setClassList(response.data?.classes)
         }
 
@@ -40,7 +41,7 @@ export default function Class(props) {
 
     async function donwloadFile(fileName, originalName) {
         try {
-            const response = await axios.get(`http://localhost:3004/files/download/${fileName}`, {
+            const response = await axios.get(`${baseUrl.productionUrl}/files/download/${fileName}`, {
                 responseType: 'blob'
             })
 
@@ -66,7 +67,7 @@ export default function Class(props) {
                 <div className="flex items-center">
                     <div className="p-6 overflow-y-auto h-[80vh]">
                         {
-                            classListData.map(classItem => (
+                            classListData?.map(classItem => (
                                 <li
                                     key={classItem?.id}
                                     className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03]"
@@ -147,7 +148,7 @@ export default function Class(props) {
                                     width={'95%'} 
                                     controls>
                                     <source
-                                        src={`http://localhost:3004/files/${currentVideo}`}
+                                        src={`${baseUrl.productionUrl}/files/${currentVideo}`}
                                         type="video/mp4"
                                     />
                                 </video>

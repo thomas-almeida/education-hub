@@ -2,11 +2,13 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate, NavLink } from "react-router-dom"
 
+import baseUrl from './utils/baseUrl'
 
 export default function SignUp() {
 
     // Navigate
     const redirect = useNavigate()
+
 
     // Payload States
     const [username, setUsername] = useState('')
@@ -23,7 +25,6 @@ export default function SignUp() {
     }
 
     const [alertInfo, setAlertInfo] = useState('')
-    const serverEndpoint = 'http://localhost:3004'
 
     // create User
     async function createUser(event) {
@@ -32,7 +33,7 @@ export default function SignUp() {
 
         try {
             console.log(userPayload)
-            const response = await axios.post(`${serverEndpoint}/users/sign-up`, userPayload)
+            const response = await axios.post(`${baseUrl.productionUrl}/users/sign-up`, userPayload)
             redirect(`/home?id=${response.data.id}`)
 
         } catch (error) {

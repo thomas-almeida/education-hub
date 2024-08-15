@@ -2,6 +2,8 @@ import { NavLink, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useState } from "react"
 
+import baseUrl from './utils/baseUrl'
+
 export default function SignIn() {
 
     const redirect = useNavigate()
@@ -14,16 +16,16 @@ export default function SignIn() {
         password: password
     }
 
-    const serverEndpoint = 'http://localhost:3004'
     const [alertInfo, setAlertInfo] = useState('')
 
     async function signInUser(event) {
 
         event.preventDefault()
+        console.log(baseUrl.productionUrl)
 
         try {
 
-            const response = await axios.post(`${serverEndpoint}/users/sign-in`, userPayload)
+            const response = await axios.post(`${baseUrl.productionUrl}/users/sign-in`, userPayload)
             console.log(response.data.user)
             redirect(`/home?id=${response.data.user?.id}`)
 

@@ -4,6 +4,9 @@ import SideBar from "../components/SideBar"
 import axios from 'axios'
 import Screens from "../components/screens"
 
+import baseUrl from './utils/baseUrl.js'
+
+
 export default function Home() {
 
   const [userData, setUserData] = useState('')
@@ -14,7 +17,7 @@ export default function Home() {
     async function getUserData() {
       let url = window.location
       let userId = new URLSearchParams(url.search).get('id')
-      const response = await axios.get(`http://localhost:3004/users/get-user-by-id/${userId}`)
+      const response = await axios.get(`${baseUrl.productionUrl}/users/get-user-by-id/${userId}`)
       setUserData(response.data?.user)
     }
 
