@@ -14,7 +14,11 @@ export default function Class(props) {
     useEffect(() => {
 
         async function getClasses() {
-            const response = await axios.get(`${baseUrl.productionUrl}/classes/get-classes`)
+            const response = await axios.get(`${baseUrl.productionUrl}/classes/get-classes`, {
+                headers: {
+                    "ngrok-skip-browser-warning": "true"
+                }
+            })
             setClassList(response.data?.classes)
         }
 
@@ -63,7 +67,15 @@ export default function Class(props) {
 
     return (
         <>
-            <div className={props.visible ? `flex items-center w-[75%]` : `hidden`}>
+            {
+                classListData.length === 0 && (
+                    <div>
+                        <h1 className="text-center text-2xl font-medium">Nenhuma Aula Postada</h1>
+                        <p className="text-center italic">Todas as aulas aparecerão aqui</p>
+                    </div>
+                )
+            }
+            <div className={props.visible && classListData.length > 0 ? `flex items-center w-[75%]` : `hidden`}>
                 <div className="flex items-center">
                     <div className="p-6 overflow-y-auto h-[80vh]">
                         {
@@ -143,9 +155,9 @@ export default function Class(props) {
                         </div>
                         <div className="w-[60%] flex justify-center items-center p-4">
                             {currentVideo && (
-                                <video 
+                                <video
                                     className="border-4 rounded-md shadow-xl"
-                                    width={'95%'} 
+                                    width={'95%'}
                                     controls>
                                     <source
                                         src={`${baseUrl.productionUrl}/files/${currentVideo}`}

@@ -17,7 +17,11 @@ export default function Home() {
     async function getUserData() {
       let url = window.location
       let userId = new URLSearchParams(url.search).get('id')
-      const response = await axios.get(`${baseUrl.productionUrl}/users/get-user-by-id/${userId}`)
+      const response = await axios.get(`${baseUrl.productionUrl}/users/get-user-by-id/${userId}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "true"
+        }
+      })
       setUserData(response.data?.user)
     }
 
@@ -30,8 +34,9 @@ export default function Home() {
       <div className="flex items-center">
         <div className="flex items-center h-svh">
           <SideBar
-            userEmail={userData?.email}
+            userEmail={userData?.username}
             userName={userData?.name}
+            userTag={userData?.role}
             activeScreen={activeScreen}
             setActiveScreen={setActiveScreen}
           />
@@ -43,7 +48,9 @@ export default function Home() {
           </div>
           <div className="p-8 flex items-center justify-center h-[90vh]">
             <Screens
+              setActiveScreen={setActiveScreen}
               activeScreen={activeScreen}
+              userData={userData}
             />
           </div>
         </div>

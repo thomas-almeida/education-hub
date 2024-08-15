@@ -4,9 +4,15 @@ export default function SideBar(
         setActiveScreen,
         activeScreen,
         userName,
-        userEmail
+        userEmail,
+        userTag
     }
 ) {
+
+    function translateRole(role) {
+        return role === 'STUDENT' ? 'Aluno' : 'Admin'
+    }
+
     return (
         <div className="bg-white text-black h-svh w-[220px] border">
             <div className="flex items-center px-4 py-6">
@@ -19,6 +25,11 @@ export default function SideBar(
                     <div className="flex items-center font-normal">
                         <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%] text-slate-500">
                             {userEmail}
+                        </b>
+                    </div>
+                    <div className="flex items-center font-normal">
+                        <b className="border-2 border-gray-300 px-4 rounded-md font-medium text-sm whitespace-nowrap overflow-hidden text-ellipsis text-slate-500 mt-2">
+                            {translateRole(userTag)}
                         </b>
                     </div>
                 </div>
