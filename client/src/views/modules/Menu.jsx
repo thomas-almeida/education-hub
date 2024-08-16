@@ -10,6 +10,7 @@ export default function Menu(
 
     const totalClasses = 10
     const currentClasses = 2
+    const percent = currentClasses * 10
     const totalHomeworks = 0
 
     function calculateFreq(userFrequency) {
@@ -44,8 +45,8 @@ export default function Menu(
                             </div>
                             <p className="py-1 w-[70%] text-slate-700 font-medium italic">Entender o funcionamento da ferramenta e seus contextos, como usar ela de forma profissional para diversos casos de uso, fazendo de nós profissionais altamente qualificados.</p>
 
-                            <div className="border-2 mt-2 h-[9px] w-[550px] bg-gray-100 rounded-md">
-                                <div className={`bg-green-600 w-[${currentClasses * 10}%] h-[5px] rounded-md`}></div>
+                            <div className="border-2 mt-2 h-[9px] w-[100%] bg-gray-100 rounded-md">
+                                <div className={`bg-green-600 w-[${percent}%] h-[5px] rounded-md`}></div>
                                 <p className="border-2 w-[130px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-green-600 font-medium">
                                     {currentClasses} de {totalClasses} Aulas</p>
                             </div>
@@ -57,7 +58,7 @@ export default function Menu(
                             <h1 className="text-3xl font-semibold">
                                 {calculateFreq(userData?.frequency)}%
                             </h1>
-                            <p>📈 Aulas participadas: <b>{userData?.frequency}</b></p>
+                            <p>📈 Aulas participadas: <b>{userData?.frequency} de ${totalClasses}</b></p>
                         </div>
                         <div className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white transition hover:scale-[1.02]">
                             <h3 className="text-lg font-medium pb-2">Próxima Aula</h3>

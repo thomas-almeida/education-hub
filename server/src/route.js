@@ -2,6 +2,7 @@ import { Router } from "express"
 import userController from '../controllers/userController.js'
 import exercisesController from "../controllers/exercisesController.js"
 import classController from "../controllers/classController.js"
+import courseController from "../controllers/courseController.js"
 
 const api = Router()
 
@@ -22,5 +23,8 @@ api.get('/classes/get-classes', classController.getClasses)
 
 //donwload 
 api.get('/files/download/:filename', classController.downloadFile)
+
+//courses
+api.post('/users/admin/courses/create-course', courseController.createCourse)
 
 export default api
