@@ -25,64 +25,75 @@ if (!fs.existsSync(slidesDir)) {
 }
 
 async function uploadClass(req, res) {
-
-  let classes = []
+  let classes = [];
 
   try {
-    const { name, description, schedule } = req.body
+    const { id, name, description, schedule, videoUrl } = req.body;
 
     if (!req.files || req.files.length === 0) {
-      return res.status(401).send('nenhum arquivo enviado..')
+      return res.status(401).send('nenhum arquivo enviado..');
     }
 
     if (fs.existsSync(classesDb)) {
-      const data = fs.readFileSync(classesDb, 'utf-8')
-      classes = data ? JSON.parse(data) : []
+      const data = fs.readFileSync(classesDb, 'utf-8');
+      classes = data ? JSON.parse(data) : [];
     }
 
+    // Mapear os arquivos carregados
     const attachments = req.files.map(file => ({
       filename: file.filename,
       path: file.path.replace(/\\/g, '/'),
       originalname: file.originalname,
       mimetype: file.mimetype,
       size: file.size,
-    }))
+    }));
 
-    //const classPath = req.file.path.replace(/\\/g, '/')
-    const classId = generateId.generateExtenseId(classes)
+    let existingClassIndex = classes.findIndex(selectedClass => selectedClass.id === id);
 
-    const newClass = {
-      id: classId,
-      name,
-      description,
-      createdAt: Date.now(),
-      schedule,
-      attachments,
-      exercise: {},
-      presenceList: {
-        frequency: 0,
-        students: []
-      }
+    if (existingClassIndex !== -1) {
+      // Editar aula existente
+      classes[existingClassIndex] = {
+        ...classes[existingClassIndex],
+        name,
+        description,
+        schedule,
+        attachments: attachments.length > 0 ? attachments : classes[existingClassIndex].attachments,
+      };
+      console.log(`Class [${id}] has been updated`);
+    } else {
+      // Criar nova aula
+      const classId = generateId.generateExtenseId(classes);
+      const newClass = {
+        id: classId,
+        name,
+        description,
+        createdAt: Date.now(),
+        schedule,
+        attachments,
+        videoUrl,
+        exercise: {},
+        presenceList: {
+          frequency: 0,
+          students: [],
+        },
+      };
+      classes.push(newClass);
+      console.log(`Class [${classId}]${name} has been created for ${schedule}`);
     }
 
-    classes.push(newClass)
+    fs.writeFileSync(classesDb, JSON.stringify(classes, null, 2));
 
-    fs.writeFileSync(classesDb, JSON.stringify(classes, null, 2))
-    console.log(`Class [${classId}]${name} has been created for ${schedule}`)
     return res.status(201).json({
       message: 'success',
-      class: newClass
-    })
+      class: classes[existingClassIndex] || classes[classes.length - 1],
+    });
 
   } catch (error) {
-
-    console.error(error)
+    console.error(error);
     res.status(500).json({
-      message: 'internal server error'
-    })
-
+      message: 'internal server error',
+    });
   }
-
 }
 
 async function getClassById(req, res) {

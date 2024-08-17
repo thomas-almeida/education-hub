@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import baseUrl from '../utils/baseUrl'
+import Modal from "../../components/Modal"
 
 export default function Class(props) {
 
     const [classListData, setClassList] = useState([])
     const [isModalVisible, setIsVisible] = useState(false)
+    const [isVisibleClass, setIsVisibleClass] = useState(false)
     const [currentClass, setCurrentClass] = useState({})
     const [currentVideo, setCurrentVideo] = useState()
 
@@ -26,8 +28,12 @@ export default function Class(props) {
 
     }, [])
 
-    function closeModal() {
-        setIsVisible(false)
+    function closeModal(tag) {
+        if (tag === 'classes') {
+            setIsVisibleClass(false)
+        } else {
+            setIsVisible(false)
+        }
     }
 
     function openModal(classItem) {
@@ -41,6 +47,10 @@ export default function Class(props) {
             }
         })
 
+    }
+
+    function openCreateModal() {
+        setIsVisibleClass(true)
     }
 
     async function donwloadFile(fileName, originalName) {
@@ -72,6 +82,13 @@ export default function Class(props) {
                     <div>
                         <h1 className="text-center text-2xl font-medium">Nenhuma Aula Postada</h1>
                         <p className="text-center italic">Todas as aulas aparecerão aqui</p>
+
+                        <button
+                            className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[280px] font-medium rounded-sm transition hover:scale-[1.02]"
+                            onClick={() => openCreateModal()}
+                        >
+                            Criar Nova Aula
+                        </button>
                     </div>
                 )
             }
@@ -160,7 +177,7 @@ export default function Class(props) {
                                     width={'95%'}
                                     controls>
                                     <source
-                                        src={`${baseUrl.productionUrl}/files/${currentVideo}`}
+                                        src={`http://localhost:3004/files/${currentVideo}`}
                                         type="video/mp4"
                                     />
                                 </video>
@@ -169,6 +186,10 @@ export default function Class(props) {
                     </div>
                 </div>
             </div>
+            <Modal
+                visible={isVisibleClass}
+                closeModal={closeModal}
+            />
         </>
     )
 }

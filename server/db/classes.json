@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "jcjfvc672",
+    "name": "Uso Prático da Ferramenta",
+    "description": "Entender o funcionamento da ferramenta e seus contextos, como usar ela de forma profissional para diversos casos de uso, fazendo de nós profissionais altamente qualificados.",
+    "createdAt": 1723926741821,
+    "schedule": "14/08/2024",
+    "attachments": [
+      {
+        "filename": "1723926739629-Aula-1.mkv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723926739629-Aula-1.mkv",
+        "originalname": "Aula-1.mkv",
+        "mimetype": "video/x-matroska",
+        "size": 175874475
+      },
+      {
+        "filename": "1723926741795-AULA-1.pdf",
+        "path": "C:/Repos/education-hub/server/db/slides/1723926741795-AULA-1.pdf",
+        "originalname": "AULA-1.pdf",
+        "mimetype": "application/pdf",
+        "size": 1442478
+      },
+      {
+        "filename": "1723926741807-exemplo-csv.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723926741807-exemplo-csv.csv",
+        "originalname": "exemplo-csv.csv",
+        "mimetype": "text/csv",
+        "size": 17261
+      },
+      {
+        "filename": "1723926741811-frequencia-escolar.xlsx",
+        "path": "C:/Repos/education-hub/server/db/slides/1723926741811-frequencia-escolar.xlsx",
+        "originalname": "frequencia-escolar.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 14811
+      }
+    ],
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "wpehsw352",
+    "name": "CSV e Resolução de Exercício",
+    "description": "Nesta aula revisamos o objetivo do curso e sobre o CSV e sua usabilidade",
+    "createdAt": 1723926796724,
+    "schedule": "14/08/2024",
+    "attachments": [
+      {
+        "filename": "1723926791922-frequencia-real-diaria.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1723926791922-frequencia-real-diaria.csv",
+        "originalname": "frequencia-real-diaria.csv",
+        "mimetype": "text/csv",
+        "size": 838
+      },
+      {
+        "filename": "1723926791923-Aula-2.mp4",
+        "path": "C:/Repos/education-hub/server/db/slides/1723926791923-Aula-2.mp4",
+        "originalname": "Aula-2.mp4",
+        "mimetype": "video/mp4",
+        "size": 431513825
+      }
+    ],
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  }
+]
