@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react"
@@ -5,13 +6,16 @@ import axios from "axios"
 import baseUrl from '../utils/baseUrl'
 import Modal from "../../components/Modal"
 
-export default function Class(props) {
+export default function Class({
+    visible,
+    userData
+}) {
 
     const [classListData, setClassList] = useState([])
     const [isModalVisible, setIsVisible] = useState(false)
     const [isVisibleClass, setIsVisibleClass] = useState(false)
     const [currentClass, setCurrentClass] = useState({})
-    const [currentVideo, setCurrentVideo] = useState()
+    const [currentVideo, setCurrentVideo] = useState('')
 
     useEffect(() => {
 
@@ -21,6 +25,9 @@ export default function Class(props) {
                     "ngrok-skip-browser-warning": "true"
                 }
             })
+
+            console.log(userData?.role)
+
             setClassList(response.data?.classes)
         }
 
@@ -83,18 +90,33 @@ export default function Class(props) {
                         <h1 className="text-center text-2xl font-medium">Nenhuma Aula Postada</h1>
                         <p className="text-center italic">Todas as aulas aparecerão aqui</p>
 
-                        <button
-                            className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[280px] font-medium rounded-sm transition hover:scale-[1.02]"
-                            onClick={() => openCreateModal()}
-                        >
-                            Criar Nova Aula
-                        </button>
+                        {
+                            userData?.role === 'ADMIN' && (
+                                <button
+                                    className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[200px] font-medium rounded-sm transition hover:scale-[1.02]"
+                                    onClick={() => openCreateModal()}
+                                >
+                                    Criar Nova Aula
+                                </button>
+                            )
+                        }
+
                     </div>
                 )
             }
-            <div className={props.visible && classListData.length > 0 ? `flex items-center w-[75%]` : `hidden`}>
+            <div className={visible && classListData.length > 0 ? `flex items-center w-[75%]` : `hidden`}>
                 <div className="flex items-center">
                     <div className="p-6 overflow-y-auto h-[80vh]">
+                        {
+                            userData?.role === 'ADMIN' && (
+                                <button
+                                    className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[200px] font-medium rounded-sm transition hover:scale-[1.02]"
+                                    onClick={() => openCreateModal()}
+                                >
+                                    Criar Nova Aula
+                                </button>
+                            )
+                        }
                         {
                             classListData?.map(classItem => (
                                 <li
