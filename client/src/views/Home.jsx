@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import SideBar from "../components/SideBar"
 import axios from 'axios'
 import Screens from "../components/screens"
-
 import baseUrl from './utils/baseUrl.js'
 
 

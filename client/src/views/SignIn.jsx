@@ -21,12 +21,11 @@ export default function SignIn() {
     async function signInUser(event) {
 
         event.preventDefault()
-        console.log(baseUrl.productionUrl)
 
         try {
 
             const response = await axios.post(`${baseUrl.productionUrl}/users/sign-in`, userPayload)
-            console.log(response.data.user)
+            localStorage.setItem('userData', JSON.stringify(response.data.user))
             redirect(`/home?id=${response.data.user?.id}`)
 
         } catch (error) {

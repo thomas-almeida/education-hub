@@ -32,8 +32,8 @@ export default function SignUp() {
         event.preventDefault()
 
         try {
-            console.log(userPayload)
             const response = await axios.post(`${baseUrl.productionUrl}/users/sign-up`, userPayload)
+            localStorage.setItem('userData', JSON.stringify(response.data.user))
             redirect(`/home?id=${response.data.id}`)
 
         } catch (error) {
