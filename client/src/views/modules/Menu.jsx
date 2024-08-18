@@ -10,8 +10,8 @@ export default function Menu(
 
     const totalClasses = 10
     const currentClasses = 2
-    const percent = currentClasses * 10
     const totalHomeworks = 0
+    const percent = currentClasses * 10
 
     function calculateFreq(userFrequency) {
         const percentFrequency = (userFrequency / currentClasses) * 100
@@ -46,7 +46,10 @@ export default function Menu(
                             <p className="py-1 w-[70%] text-slate-700 font-medium italic">Entender o funcionamento da ferramenta e seus contextos, como usar ela de forma profissional para diversos casos de uso, fazendo de nós profissionais altamente qualificados.</p>
 
                             <div className="border-2 mt-2 h-[9px] w-[100%] bg-gray-100 rounded-md">
-                                <div className={`bg-green-600 w-[${percent}%] h-[5px] rounded-md`}></div>
+                                <div
+                                    style={{ width: `${percent}%` }}
+                                    className={`bg-green-600 h-[5px] rounded-md`}
+                                ></div>
                                 <p className="border-2 w-[130px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-green-600 font-medium">
                                     {currentClasses} de {totalClasses} Aulas</p>
                             </div>
