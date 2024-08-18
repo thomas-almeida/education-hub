@@ -81,12 +81,12 @@ export default function Modal({ visible, closeModal }) {
             ></textarea>
 
             <div className="mt-2">
-              <p>Link da Aula em Vídeo</p>
+              <p>ID da Aula no <b className="font-semibold">Google Drive</b></p>
               <input
                 type="text"
                 name="videoUrl"
                 className="border w-[100%] rounded-sm p-2 my-1"
-                placeholder="ex: https://www.youtube.com/embed/Hg7etQH63M8"
+                placeholder="ex: Insira o ID do Google Drive"
                 value={classUrl}
                 onChange={(e) => setClassUrl(e.target.value)}
               />

@@ -15,7 +15,6 @@ export default function Class({
     const [isModalVisible, setIsVisible] = useState(false)
     const [isVisibleClass, setIsVisibleClass] = useState(false)
     const [currentClass, setCurrentClass] = useState({})
-    const [currentVideo, setCurrentVideo] = useState('')
 
     useEffect(() => {
 
@@ -47,12 +46,6 @@ export default function Class({
 
         setIsVisible(true)
         setCurrentClass(classItem)
-
-        classItem?.attachments?.forEach(file => {
-            if (file?.mimetype === 'video/mp4' || file?.mimetype === 'video/x-matroska') {
-                setCurrentVideo(file?.filename)
-            }
-        })
 
     }
 
@@ -193,17 +186,15 @@ export default function Class({
                             </button>
                         </div>
                         <div className="w-[60%] flex justify-center items-center p-4">
-                            {currentVideo && (
-                                <video
-                                    className="border-4 rounded-md shadow-xl"
-                                    width={'95%'}
-                                    controls>
-                                    <source
-                                        src={`http://localhost:3004/files/${currentVideo}`}
-                                        type="video/mp4"
-                                    />
-                                </video>
-                            )}
+                            <iframe
+                                className="border-4 border-gray-400 rounded-md"
+                                src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
+                                width="90%"
+                                height="350px"
+                                allow="autoplay"
+                                allowFullScreen
+                                >
+                            </iframe>
                         </div>
                     </div>
                 </div>
