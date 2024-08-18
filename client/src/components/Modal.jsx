@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios"
 import { useState } from "react"
 import baseUrl from "../views/utils/baseUrl"
@@ -61,7 +62,7 @@ export default function Modal({ visible, closeModal }) {
       >
         <div className="bg-white p-10 rounded-md shadow-lg">
           <h1 className="text-lg mb-4 font-semibold">Criar Nova Aula</h1>
-          <form className="border p-4 block">
+          <form className=" block">
             <input
               type="text"
               name="name"
@@ -114,19 +115,18 @@ export default function Modal({ visible, closeModal }) {
                 />
                 <div className="flex flex-col items-center">
                   <p className="mt-1 text-sm text-gray-500">
-                    Drag and Drop file here or <span className="text-blue-600">Choose file</span>
+                    Arraste e Solte os arquivos ou <span className="text-blue-600">Escolha do Computador</span>
                   </p>
                 </div>
               </div>
 
               {selectedFiles.length > 0 && (
-                <div className="mt-4">
-                  <h2 className="text-lg font-semibold">Arquivos selecionados:</h2>
-                  <ul className="list-disc pl-5 mt-2">
+                <div className="mt-2">
+                  <ul className="list-none mt-2 grid grid-cols-2 overflow-y-auto max-h-[100px]">
                     {selectedFiles.map((file, index) => (
                       <li
                         key={index}
-                        className="text-gray-600 cursor-pointer"
+                        className="text-gray-600 cursor-pointer border my-1 max-w-[270px] py-1 px-2 rounded-md hover:border-blue-500 hover:shadow-lg"
                         onClick={() => handleRemoveFile(index)}
                       >
                         {file.name}
