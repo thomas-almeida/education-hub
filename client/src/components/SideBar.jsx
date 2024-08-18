@@ -1,5 +1,3 @@
-
-
 /* eslint-disable react/prop-types */
 export default function SideBar(
     {
@@ -12,7 +10,7 @@ export default function SideBar(
 ) {
 
     function translateRole(role) {
-        return role === 'STUDENT' ? 'Aluno' : 'Admin'
+        return role === 'STUDENT' ? 'Aluno(a)' : 'Professor(a)'
     }
 
     return (
