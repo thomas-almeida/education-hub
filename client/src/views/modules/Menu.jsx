@@ -61,7 +61,7 @@ export default function Menu(
                             <h1 className="text-3xl font-semibold">
                                 {calculateFreq(userData?.frequency)}%
                             </h1>
-                            <p>📈 Aulas participadas: <b>{userData?.frequency} de ${totalClasses}</b></p>
+                            <p>📈 Aulas participadas: <b>{userData?.frequency} de {totalClasses}</b></p>
                         </div>
                         <div className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white transition hover:scale-[1.02]">
                             <h3 className="text-lg font-medium pb-2">Próxima Aula</h3>
