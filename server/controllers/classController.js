@@ -8,6 +8,7 @@ import multer from 'multer'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const classesDb = path.join(__dirname, '..', 'db', 'classes.json')
 const slidesDir = path.join(__dirname, '..', 'db', 'slides')
+const coursesDb = path.join(__dirname, '..', 'db', 'courses.json')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -25,18 +26,25 @@ if (!fs.existsSync(slidesDir)) {
 }
 
 async function uploadClass(req, res) {
-  let classes = [];
+
+  let classes = []
+  let courses = []
 
   try {
-    const { id, courseId, name, description, schedule, videoUrl } = req.body;
+    const { id, courseId, name, description, schedule, videoUrl } = req.body
 
     if (!req.files || req.files.length === 0) {
-      return res.status(401).send('nenhum arquivo enviado..');
+      return res.status(401).send('nenhum arquivo enviado..')
     }
 
     if (fs.existsSync(classesDb)) {
-      const data = fs.readFileSync(classesDb, 'utf-8');
-      classes = data ? JSON.parse(data) : [];
+      const data = fs.readFileSync(classesDb, 'utf-8')
+      classes = data ? JSON.parse(data) : []
+    }
+
+    if (fs.existsSync(coursesDb)) {
+      const coursesData = fs.readFileSync(coursesDb, 'utf-8')
+      courses = coursesData ? JSON.parse(coursesData) : []
     }
 
     // Mapear os arquivos carregados
@@ -46,9 +54,9 @@ async function uploadClass(req, res) {
       originalname: file.originalname,
       mimetype: file.mimetype,
       size: file.size,
-    }));
+    }))
 
-    let existingClassIndex = classes.findIndex(selectedClass => selectedClass.id === id);
+    let existingClassIndex = classes.findIndex(selectedClass => selectedClass.id === id)
 
     if (existingClassIndex !== -1) {
       // Editar aula existente
@@ -58,11 +66,11 @@ async function uploadClass(req, res) {
         description,
         schedule,
         attachments: attachments.length > 0 ? attachments : classes[existingClassIndex].attachments,
-      };
-      console.log(`Class [${id}] has been updated`);
+      }
+      console.log(`Class [${id}] has been updated`)
     } else {
       // Criar nova aula
-      const classId = generateId.generateExtenseId(classes);
+      const classId = generateId.generateExtenseId(classes)
       const newClass = {
         id: classId,
         courseId,
@@ -77,23 +85,32 @@ async function uploadClass(req, res) {
           frequency: 0,
           students: [],
         },
-      };
-      classes.push(newClass);
-      console.log(`Class [${classId}]${name} has been created for ${schedule}`);
+      }
+
+      //adicionar +1 ao numero de aulas do curso
+      courses.forEach((courseItem) => {
+        if (courseItem.id === courseId) {
+          courseItem.currentClass++
+        }
+      })
+
+      classes.push(newClass)
+      console.log(`Class [${classId}]${name} has been created for ${schedule}`)
     }
 
-    fs.writeFileSync(classesDb, JSON.stringify(classes, null, 2));
+    fs.writeFileSync(classesDb, JSON.stringify(classes, null, 2))
+    fs.writeFileSync(coursesDb, JSON.stringify(courses, null, 2))
 
     return res.status(201).json({
       message: 'success',
       class: classes[existingClassIndex] || classes[classes.length - 1],
-    });
+    })
 
   } catch (error) {
-    console.error(error);
+    console.error(error)
     res.status(500).json({
       message: 'internal server error',
-    });
+    })
   }
 }
 
@@ -142,7 +159,7 @@ async function getClassesFromCourse(req, res) {
     classes = data ? JSON.parse(data) : []
 
     classes.forEach((classItem) => {
-      if(classItem.courseId === id) {
+      if (classItem.courseId === id) {
         classesFromCourse.push(classItem)
       }
     })
