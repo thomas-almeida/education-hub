@@ -28,7 +28,7 @@ async function uploadClass(req, res) {
   let classes = [];
 
   try {
-    const { id, name, description, schedule, videoUrl } = req.body;
+    const { id, courseId, name, description, schedule, videoUrl } = req.body;
 
     if (!req.files || req.files.length === 0) {
       return res.status(401).send('nenhum arquivo enviado..');
@@ -65,6 +65,7 @@ async function uploadClass(req, res) {
       const classId = generateId.generateExtenseId(classes);
       const newClass = {
         id: classId,
+        courseId,
         name,
         description,
         createdAt: Date.now(),
@@ -128,18 +129,27 @@ async function getClassById(req, res) {
   }
 }
 
-async function getClasses(req, res) {
+async function getClassesFromCourse(req, res) {
+
+  const id = req.params.id
 
   let classes = []
+  let classesFromCourse = []
 
   try {
 
     const data = fs.readFileSync(classesDb, 'utf-8')
     classes = data ? JSON.parse(data) : []
 
+    classes.forEach((classItem) => {
+      if(classItem.courseId === id) {
+        classesFromCourse.push(classItem)
+      }
+    })
+
     return res.status(200).json({
       message: 'success',
-      classes: classes
+      classes: classesFromCourse
     })
 
   } catch (error) {
@@ -168,6 +178,6 @@ export default {
   uploadFiles,
   uploadClass,
   getClassById,
-  getClasses,
+  getClassesFromCourse,
   downloadFile
 }

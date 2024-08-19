@@ -12,7 +12,7 @@ async function createCourse(req, res) {
     try {
 
         let courses = []
-        const { name, instructorId, descriprion, totalClasses } = req.body
+        const { name, instructorId, description, totalClasses } = req.body
 
         const data = fs.readFileSync(coursesDB, 'utf-8')
         courses = data ? JSON.parse(data) : []
@@ -23,10 +23,12 @@ async function createCourse(req, res) {
             id: courseId,
             name,
             instructorId,
-            descriprion,
+            description,
             totalClasses,
             currentClass: 0,
             nextClass: Date.now(),
+            icon: "",
+            exercises: []
         }
 
         courses.push(newCourse)
@@ -46,19 +48,65 @@ async function createCourse(req, res) {
     }
 }
 
-async function getCoursesPerTeacher(req, res) {
+async function getCoursesByInstructorId(req, res) {
     try {
 
-        let users = []
         let courses = []
+        let courseByInstructorId = []
 
-                
+        const id = req.params.id
+        const coursesData = fs.readFileSync(coursesDB, 'utf-8')
+
+        courses = coursesData ? JSON.parse(coursesData) : []
+
+        courses.forEach((course) => {
+            if (course?.instructorId === id) {
+                courseByInstructorId.push(course)
+            }
+        })
+
+        res.status(200).json({
+            message: 'success',
+            courses: courseByInstructorId
+        })
 
     } catch (error) {
         console.error(error)
     }
 }
 
+async function getStudentsByCourseId(req, res) {
+    try {
+
+        let users = []
+        let usersByCourseId = []
+
+        const id = req.params.id
+        const usersData = fs.readFileSync(usersDB, 'utf-8')
+
+        users = usersData ? JSON.parse(usersData) : []
+
+        users.forEach((user) => {
+            if (user?.role === 'STUDENT' && user?.courseId === id) {
+                usersByCourseId.push(user)
+            }
+        })
+
+        res.status(200).json({
+            mesasge: 'success',
+            users: usersByCourseId
+        })
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'internal server error'
+        })
+    }
+}
+
 export default {
-    createCourse
+    createCourse,
+    getCoursesByInstructorId,
+    getStudentsByCourseId
 }
