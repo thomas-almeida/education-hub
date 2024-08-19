@@ -15,24 +15,30 @@ export default function Class({
     const [isModalVisible, setIsVisible] = useState(false)
     const [isVisibleClass, setIsVisibleClass] = useState(false)
     const [currentClass, setCurrentClass] = useState({})
+    const [currentCourseId, setCurrentCourse] = useState('')
 
     useEffect(() => {
 
-        async function getClasses() {
-            const response = await axios.get(`${baseUrl.productionUrl}/classes/get-classes`, {
-                headers: {
-                    "ngrok-skip-browser-warning": "true"
-                }
-            })
-
-            console.log(userData?.role)
-
-            setClassList(response.data?.classes)
+        async function getClassesByCourseId() {
+            setCurrentCourse(localStorage.getItem('currentCourse'))
         }
 
+        async function getClasses() {
+            if (currentCourseId && currentCourseId !== '') {
+                const response = await axios.get(`${baseUrl.productionUrl}/classes/get-classes-from-course/${currentCourseId}`, {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                })
+
+                setClassList(response.data?.classes)
+            }
+        }
+
+        getClassesByCourseId()
         getClasses()
 
-    }, [])
+    }, [currentCourseId])
 
     function closeModal(tag) {
         if (tag === 'classes') {
@@ -193,7 +199,7 @@ export default function Class({
                                 height="350px"
                                 allow="autoplay"
                                 allowFullScreen
-                                >
+                            >
                             </iframe>
                         </div>
                     </div>
