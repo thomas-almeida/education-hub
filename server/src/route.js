@@ -19,12 +19,14 @@ api.get('/exercises/get-exercises', exercisesController.getExercises)
 //classes
 api.post('/users/admin/create-class', classController.uploadFiles, classController.uploadClass)
 api.get('/classes/get-class-by-id/:id', classController.getClassById)
-api.get('/classes/get-classes', classController.getClasses)
+api.get('/classes/get-classes-from-course/:id', classController.getClassesFromCourse)
 
 //donwload 
 api.get('/files/download/:filename', classController.downloadFile)
 
 //courses
 api.post('/users/admin/courses/create-course', courseController.createCourse)
+api.get('/users/admin/courses/get-courses-by-instructor-id/:id', courseController.getCoursesByInstructorId)
+api.get('/users/admin/courses/get-students-by-course-id/:id', courseController.getStudentsByCourseId)
 
 export default api
