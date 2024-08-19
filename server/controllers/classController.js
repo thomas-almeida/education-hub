@@ -91,6 +91,7 @@ async function uploadClass(req, res) {
       courses.forEach((courseItem) => {
         if (courseItem.id === courseId) {
           courseItem.currentClass++
+          courseItem.nextClass = schedule
         }
       })
 
