@@ -40,6 +40,19 @@ export default function Class({
 
     }, [currentCourseId])
 
+
+    function formatDate(timestamp) {
+
+        const numericTimeStamp = Number(timestamp)
+
+        const date = new Date(numericTimeStamp)
+        const day = String(date.getDate()).padStart(2, '0')
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const year = String(date.getFullYear()).slice(-2)
+
+        return `${day}/${month}/${year}`
+    }
+
     function closeModal(tag) {
         if (tag === 'classes') {
             setIsVisibleClass(false)
@@ -85,14 +98,14 @@ export default function Class({
         <>
             {
                 classListData.length === 0 && (
-                    <div>
+                    <div className="flex flex-col items-center">
                         <h1 className="text-center text-2xl font-medium">Nenhuma Aula Postada</h1>
-                        <p className="text-center italic">Todas as aulas aparecerão aqui</p>
+                        <p className="text-center italic">Selecione um curso no <b>Início</b> para ver suas aulas</p>
 
                         {
                             userData?.role === 'ADMIN' && (
                                 <button
-                                    className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[200px] font-medium rounded-sm transition hover:scale-[1.02]"
+                                    className="p-2 border-2 border-blue-400 text-blue-500 mt-4 w-[200px] font-medium rounded-sm transition hover:scale-[1.02]"
                                     onClick={() => openCreateModal()}
                                 >
                                     Criar Nova Aula
@@ -120,7 +133,7 @@ export default function Class({
                             classListData?.map(classItem => (
                                 <li
                                     key={classItem?.id}
-                                    className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03]"
+                                    className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03] w-[700px] max-w-[700px]"
                                     onClick={() => openModal(classItem)}
                                 >
                                     <div className="flex items-center">
@@ -138,7 +151,7 @@ export default function Class({
                                         {classItem?.description}
                                     </p>
                                     <b className="font-semibold border-2 p-1 px-2 rounded-md mr-4">
-                                        📅 {classItem?.schedule}
+                                        📅 {formatDate(classItem?.schedule)}
                                     </b>
                                     <b className="font-semibold border-2 p-1 px-2 rounded-md mr-4">
                                         🎥 Video
@@ -153,8 +166,8 @@ export default function Class({
                 </div>
                 <div className={isModalVisible ? `flex items-center justify-center absolute top-0 left-0 h-[100vh] w-[100%] bg-[#00000054] z-50` : `hidden`}>
                     <div className="p-12 bg-white w-[85%] h-[680px] flex rounded-md shadow-2xl">
-                        <div className="w-[40%] py-10">
-                            <div className="flex items-center mb-4">
+                        <div className="justify-center items-center py-2">
+                            <div className="flex items-center mb-6">
                                 <img
                                     src="/excel-2.png"
                                     className="w-[30px] mr-1"
@@ -162,10 +175,21 @@ export default function Class({
                                 <h2 className="font-semibold text-xl">
                                     {currentClass?.name}
                                 </h2>
+                                <p className="border-2 w-[125px] text-center p-1 rounded-md ml-10">
+                                    📅 {formatDate(currentClass?.schedule)}
+                                </p>
                             </div>
-                            <p className="border-2 w-[125px] text-center p-1 rounded-md">
-                                📅 {currentClass?.schedule}
-                            </p>
+                            <iframe
+                                className="border-4 border-gray-400 rounded-md shadow-lg"
+                                src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
+                                width="750px"
+                                height="450px"
+                                allow="autoplay"
+                                allowFullScreen
+                            >
+                            </iframe>
+                        </div>
+                        <div className="py-2 ml-4 mt-12">
                             <p className="w-[80%] pt-2 text-md">{currentClass?.description}</p>
                             <div className="pt-2 py-2 mt-2 rounded-md">
                                 <b className="font-semibold">📁 Materiais de Apoio</b>
@@ -190,17 +214,6 @@ export default function Class({
                             >
                                 Fechar Detalhes
                             </button>
-                        </div>
-                        <div className="w-[60%] flex justify-center items-center p-4">
-                            <iframe
-                                className="border-4 border-gray-400 rounded-md"
-                                src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
-                                width="90%"
-                                height="350px"
-                                allow="autoplay"
-                                allowFullScreen
-                            >
-                            </iframe>
                         </div>
                     </div>
                 </div>
