@@ -133,23 +133,26 @@ export default function Class({
                             classListData?.map(classItem => (
                                 <li
                                     key={classItem?.id}
-                                    className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03] w-[700px] max-w-[700px]"
-                                    onClick={() => openModal(classItem)}
+                                    className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03] w-[700px] max-w-[700px] relative"
                                 >
-                                    <div className="flex items-center">
-                                        <img
-                                            src="/excel-2.png"
-                                            className="w-[30px] mr-1"
-                                        />
-                                        <h2 className="font-semibold text-xl">
-                                            {classItem?.name}
-                                        </h2>
-                                    </div>
-                                    <p
-                                        className="w-[85%] py-2 mb-3"
+                                    <div
+                                        onClick={() => openModal(classItem)}
                                     >
-                                        {classItem?.description}
-                                    </p>
+                                        <div className="flex items-center">
+                                            <img
+                                                src="/excel-2.png"
+                                                className="w-[30px] mr-1"
+                                            />
+                                            <h2 className="font-semibold text-xl">
+                                                {classItem?.name}
+                                            </h2>
+                                        </div>
+                                        <p
+                                            className="w-[85%] py-2 mb-3"
+                                        >
+                                            {classItem?.description}
+                                        </p>
+                                    </div>
                                     <b className="font-semibold border-2 p-1 px-2 rounded-md mr-4">
                                         📅 {formatDate(classItem?.schedule)}
                                     </b>
@@ -159,6 +162,13 @@ export default function Class({
                                     <b className="font-semibold border-2 p-1 px-2 rounded-md">
                                         📁 Material de Apoio
                                     </b>
+                                    {
+                                        userData?.role === 'ADMIN' && (
+                                            <b className="font-semibold border-2 p-1 px-4 rounded-md absolute right-3 bottom-3 hover:border-blue-500">
+                                                ✏ Editar
+                                            </b>
+                                        )
+                                    }
                                 </li>
                             ))
                         }
@@ -180,7 +190,7 @@ export default function Class({
                                 </p>
                             </div>
                             <iframe
-                                className="border-4 border-gray-400 rounded-md shadow-lg"
+                                className="border-4 border-gray-400 rounded-md shadow-lg hover:border-blue-500"
                                 src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
                                 width="750px"
                                 height="450px"

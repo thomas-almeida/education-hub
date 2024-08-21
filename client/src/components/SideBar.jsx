@@ -24,7 +24,7 @@ export default function SideBar(
                     </div>
                     <div className="flex items-center font-normal">
                         <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%] text-slate-500">
-                            {userEmail}
+                            @{userEmail}
                         </b>
                     </div>
                     <div className="flex items-center font-normal">
