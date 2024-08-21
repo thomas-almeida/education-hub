@@ -18,9 +18,8 @@ export default function Menu(
 
     const [coursesList, setCoursesList] = useState([])
 
-    function calculateFreq(userFrequency) {
-        const percentFrequency = (userFrequency / currentClasses) * 100
-        return percentFrequency.toFixed(0)
+    function calculateFreq(userFrequency, currentClass) {
+        return (userFrequency / currentClass) * 100
     }
 
     function formatDate(timestamp) {
@@ -109,11 +108,18 @@ export default function Menu(
                                             <p className="border-2 w-[130px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
                                                 📘 {course.currentClass} de {course.totalClasses} Aulas
                                             </p>
+                                            {
+                                                userData?.role === 'STUDENT' && (
+                                                    <p className="border-2 w-[180px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
+                                                        📐 Frequência: {calculateFreq(userData?.frequency, course.currentClass)}%
+                                                    </p>
+                                                )
+                                            }
                                             <p className="border-2 w-[230px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
                                                 📅 Próxima Aula: {formatDate(course.nextClass)}
                                             </p>
-                                            <p className="border-2 w-[130px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold">
-                                                📅 Exercícios: {course.exercises.length}
+                                            <p className="border-2 w-[200px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold">
+                                                📄 Exercícios: {course.exercises.length === 0 ? 'Nenhum' : course.exercises.length}
                                             </p>
                                         </div>
                                     </div>
@@ -122,13 +128,6 @@ export default function Menu(
                         ))
                     }
                     <div className="flex items-center justify-start w-[85%] py-4 mt-1">
-                        <div className={userData?.role === 'STUDENT' ? `border-2 rounded-md p-8 w-[300px] mr-2 bg-white transition hover:scale-[1.02]` : 'hidden'}>
-                            <h3 className="text-lg font-medium pb-2">Frequência</h3>
-                            <h1 className="text-3xl font-semibold">
-                                {calculateFreq(userData?.frequency)}%
-                            </h1>
-                            <p>📈 Aulas participadas: <b>{userData?.frequency} de {totalClasses}</b></p>
-                        </div>
                         <div
                             className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02]"
                             onClick={() => setActiveScreen('exercises')}
