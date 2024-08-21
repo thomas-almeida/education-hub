@@ -27,6 +27,7 @@ api.get('/files/download/:filename', classController.downloadFile)
 //courses
 api.post('/users/admin/courses/create-course', courseController.createCourse)
 api.get('/users/admin/courses/get-courses-by-instructor-id/:id', courseController.getCoursesByInstructorId)
+api.get('/users/admin/courses/get-courses-by-student-id/:id', courseController.getCoursesByStudentId)
 api.get('/users/admin/courses/get-students-by-course-id/:id', courseController.getStudentsByCourseId)
 
 export default api

@@ -75,6 +75,36 @@ async function getCoursesByInstructorId(req, res) {
     }
 }
 
+async function getCoursesByStudentId(req, res) {
+    try {
+
+        let courses = []
+        let courseByStudentId = []
+
+        const id = req.params.id
+        const coursesData = fs.readFileSync(coursesDB, 'utf-8')
+
+        courses = coursesData ? JSON.parse(coursesData) : []
+
+        courses.forEach((course) => {
+            if (course?.id === id) {
+                courseByStudentId.push(course)
+            }
+        })
+
+        res.status(200).json({
+            message: 'success',
+            courses: courseByStudentId
+        })
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'internal server error'
+        })
+    }
+}
+
 async function getStudentsByCourseId(req, res) {
     try {
 
@@ -108,5 +138,6 @@ async function getStudentsByCourseId(req, res) {
 export default {
     createCourse,
     getCoursesByInstructorId,
+    getCoursesByStudentId,
     getStudentsByCourseId
 }
