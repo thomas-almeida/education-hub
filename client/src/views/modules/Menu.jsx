@@ -16,7 +16,7 @@ export default function Menu(
     const currentClasses = 2
     const totalHomeworks = 0
 
-    const [coursesByInstructor, setCoursesByInstructor] = useState([])
+    const [coursesList, setCoursesList] = useState([])
 
     function calculateFreq(userFrequency) {
         const percentFrequency = (userFrequency / currentClasses) * 100
@@ -41,12 +41,22 @@ export default function Menu(
 
             if (userData && userData?.id) {
                 const userId = userData?.id
-                const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-instructor-id/${userId}`, {
-                    headers: {
-                        "ngrok-skip-browser-warning": "true"
-                    }
-                })
-                setCoursesByInstructor(response.data?.courses)
+
+                if (userData.role === 'ADMIN') {
+                    const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-instructor-id/${userId}`, {
+                        headers: {
+                            "ngrok-skip-browser-warning": "true"
+                        }
+                    })
+                    setCoursesList(response.data?.courses)
+                } else {
+                    const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-student-id/${userData?.courseId}`, {
+                        headers: {
+                            "ngrok-skip-browser-warning": "true"
+                        }
+                    })
+                    setCoursesList(response.data?.courses)
+                }
             }
 
         }
@@ -66,10 +76,10 @@ export default function Menu(
                 <div className="flex flex-col items-center">
                     <div className="flex justify-start w-[85%] mb-4 flex-col">
                         <h2 className="w-auto text-left text-2xl font-semibold">Meus Cursos</h2>
-                        <p>{userData?.role === 'ADMIN' ? 'Cursos que você é o professor' : 'Cursos que você está matroculado'}</p>
+                        <p>{userData?.role === 'ADMIN' ? 'Cursos que você é o professor' : 'Cursos que você está matriculado'}</p>
                     </div>
                     {
-                        coursesByInstructor.map(course => (
+                        coursesList.map(course => (
                             <div
                                 className="flex items-center rounded-md border-2 shadow-sm w-[85%] my-2 bg-white cursor-pointer transition hover:scale-[1.02]"
                                 onClick={() => showClassesFromCourse(course.id)}
@@ -85,7 +95,7 @@ export default function Menu(
                                             <h3 className="text-lg font-medium leading-3">
                                                 Thomas Almeida
                                             </h3>
-                                            <p>{`${userData?.role === 'ADMIN' && course?.instructorId === userData?.id ? 'Voce é o Instrutor deste Curso' : '//'}`}</p>
+                                            <p>{`${userData?.role === 'ADMIN' && course?.instructorId === userData?.id ? 'Voce é o Instrutor deste Curso' : 'Instrutor'}`}</p>
                                         </div>
                                     </div>
                                     <p className="py-1 w-[70%] text-slate-700 font-medium italic">{course?.description}</p>
