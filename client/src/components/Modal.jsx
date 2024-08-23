@@ -1,16 +1,39 @@
 /* eslint-disable react/prop-types */
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import baseUrl from "../views/utils/baseUrl"
 
-export default function Modal({ visible, closeModal }) {
+export default function Modal({ visible, closeModal, currentClass }) {
 
   const [selectedFiles, setSelectedFiles] = useState([])
 
+  const [classId, setClassId] = useState(null)
   const [className, setClassName] = useState('')
   const [classDescription, setClassDescription] = useState('')
   const [classDate, setClassDate] = useState('')
   const [classUrl, setClassUrl] = useState('')
+  const [classData, setClassData] = useState(null)
+
+  useEffect(() => {
+
+    if (visible) {
+      // retornar aula atual via prop
+      setClassData(currentClass)
+
+      // carregar inputs com os dados da aula
+      setClassId(classData?.id)
+      setClassName(classData?.name)
+      setClassDescription(classData?.description)
+      setClassDate(classData?.schedule)
+      setClassUrl(classData?.videoUrl)
+      if (classData?.attachments !== undefined) {
+        setTimeout(() => {
+          setSelectedFiles(classData?.attachments)
+          console.log(selectedFiles)
+        }, 500)
+      }
+    }
+  })
 
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files)
@@ -26,6 +49,12 @@ export default function Modal({ visible, closeModal }) {
   async function createClass() {
 
     const formData = new FormData()
+
+    if (classId !== null) {
+      formData.append("id", classId)
+    }
+
+    console.log(classId)
     formData.append("name", className)
     formData.append("description", classDescription)
     formData.append("schedule", classDate)
@@ -61,7 +90,11 @@ export default function Modal({ visible, closeModal }) {
         }
       >
         <div className="bg-white p-10 rounded-md shadow-lg">
-          <h1 className="text-lg mb-4 font-semibold">Criar Nova Aula</h1>
+          <h1 className="text-lg mb-4 font-semibold">
+            {
+              currentClass === undefined ? 'Criar Nova Aula' : 'Editar Aula'
+            }
+          </h1>
           <form className=" block">
             <input
               type="text"
@@ -103,7 +136,7 @@ export default function Modal({ visible, closeModal }) {
               />
             </div>
 
-            <div className="mt-4">
+            <div className="mt-2">
               <p>Materiais de Apoio</p>
               <div className="border-dashed border-2 border-gray-300 rounded-md p-6 text-center relative cursor-pointer hover:border-blue-400 transition-colors">
                 <input
@@ -121,15 +154,16 @@ export default function Modal({ visible, closeModal }) {
               </div>
 
               {selectedFiles.length > 0 && (
-                <div className="mt-2">
+                <div className="mt-2 border p-1 rounded-md">
                   <ul className="list-none mt-2 grid grid-cols-2 overflow-y-auto max-h-[100px]">
                     {selectedFiles.map((file, index) => (
                       <li
                         key={index}
-                        className="text-gray-600 cursor-pointer border my-1 max-w-[270px] py-1 px-2 rounded-md hover:border-blue-500 hover:shadow-lg"
+                        className="text-gray-600 cursor-pointer border my-1 max-w-[270px] py-1 px-2 rounded-md hover:border-blue-500 hover:shadow-lg flex"
                         onClick={() => handleRemoveFile(index)}
                       >
-                        {file.name}
+                        <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
+                        <p>{file.name || file.originalname}</p>
                       </li>
                     ))}
                   </ul>
@@ -141,10 +175,12 @@ export default function Modal({ visible, closeModal }) {
 
           <div className="">
             <button
-              className="p-2 border-2 bg-blue-500 text-white mt-2 w-[280px] font-medium rounded-sm transition hover:scale-[1.02] mr-1"
+              className="p-2 border-2 bg-blue-500 text-white mt-4 w-[280px] font-medium rounded-sm transition hover:scale-[1.02] mr-1"
               onClick={() => createClass()}
             >
-              Criar Nova Aula
+              {
+                currentClass === undefined ? 'Criar Nova Aula' : 'Editar Aula'
+              }
             </button>
             <button
               className="p-2 border-2 border-blue-400 text-blue-500 mt-2 w-[280px] font-medium rounded-sm transition hover:scale-[1.02] ml-1"
