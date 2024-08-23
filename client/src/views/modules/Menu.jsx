@@ -19,17 +19,13 @@ export default function Menu(
     function calculateFreq(userFrequency, currentClass) {
         return (userFrequency / currentClass) * 100
     }
-
+    
     function formatDate(timestamp) {
+        const yy = String(timestamp).slice("", 4)
+        const mm = String(timestamp).slice(5, 7)
+        const dd = String(timestamp).slice(8)
 
-        const numericTimeStamp = Number(timestamp)
-
-        const date = new Date(numericTimeStamp)
-        const day = String(date.getDate()).padStart(2, '0')
-        const month = String(date.getMonth() + 1).padStart(2, '0')
-        const year = String(date.getFullYear()).slice(-2)
-
-        return `${day}/${month}/${year}`
+        return `${dd}/${mm}/${yy}`
     }
 
     useEffect(() => {
