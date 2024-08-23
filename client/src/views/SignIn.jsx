@@ -10,13 +10,13 @@ export default function SignIn() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [alertInfo, setAlertInfo] = useState('')
+    const [alertVisible, setAlertVisible] = useState(false)
 
     const userPayload = {
         username: username,
         password: password
     }
-
-    const [alertInfo, setAlertInfo] = useState('')
 
     async function signInUser(event) {
 
@@ -30,8 +30,8 @@ export default function SignIn() {
 
         } catch (error) {
             console.error(error)
-            setAlertInfo(error)
-            alert(alertInfo)
+            setAlertVisible(true)
+            setAlertInfo('Usuário ou Senha Incorretos')
         }
     }
 
@@ -65,11 +65,15 @@ export default function SignIn() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
+                                <p className={ alertVisible ? `font-medium my-2 p-1 border bg-zinc-50 text-center` : `hidden`}>
+                                    {alertInfo}
+                                </p>
                                 <input
                                     type="submit"
                                     className="border w-[100%] my-2 p-2 rounded-sm bg-blue-500 text-white font-medium cursor-pointer text-lg transition hover:scale-[1.02]"
                                     value="Entrar"
                                 />
+
                                 <p className="text-center mt-4">
                                     Ainda sem login?
                                     <NavLink to={"/sign-up"}>
@@ -81,7 +85,7 @@ export default function SignIn() {
                     </div>
                 </div>
                 <div className="border w-[50%] bg-blue-500 h-screen flex items-center justify-center">
-                    <img src="/edu-hub-logo.png" className="w-[350px] object-fill"/>
+                    <img src="/edu-hub-logo.png" className="w-[350px] object-fill" />
                 </div>
             </div>
         </>
