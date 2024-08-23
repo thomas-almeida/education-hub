@@ -49,63 +49,68 @@ export default function SignUp() {
     return (
         <>
             <div className="flex justify-center items-center h-screen">
-                <div className="w-[50%]">
-                    <div className="flex items-center justify-center">
-                        <img
-                            src="/edu-hub-logo.png"
-                            className="w-[50px] relative top-1"
-                        />
-                        <h1 className="text-4xl font-semibold text-blue-500">edu.hub</h1>
+                <div className="w-[50%] px-12 flex items-center justify-center">
+                    <div className="w-[80%]">
+                        <div className="flex items-center justify-center">
+                            <img
+                                src="/edu-hub-logo.png"
+                                className="w-[50px] relative top-1"
+                            />
+                            <h1 className="text-4xl font-semibold text-blue-500">edu.hub</h1>
+                        </div>
+                        <div className="mt-5">
+                            <form className="" onSubmit={createUser}>
+                                <p className="text-blue-500 font-medium">Dados de Login</p>
+                                <input
+                                    type="text"
+                                    className="border w-[100%] my-2 p-2 rounded-sm text-lg"
+                                    placeholder="Nome de Usuário"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    className="border w-[100%] my-2 p-2 rounded-sm text-lg"
+                                    placeholder="Seu Nome"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                />
+                                <input
+                                    type="email"
+                                    className="border w-[100%] my-2 p-2 rounded-sm text-lg"
+                                    placeholder="Seu Melhor Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                                <p className="text-blue-500 font-medium">Senha</p>
+                                <input
+                                    type="password"
+                                    className="border w-[100%] my-2 p-2 rounded-sm text-lg"
+                                    placeholder="Escolha uma senha"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                                <input
+                                    type="submit"
+                                    className="border w-[100%] my-2 p-2 py-3 rounded-sm bg-blue-500 text-white font-medium cursor-pointer transition hover:scale-[1.02]"
+                                    value="Registrar Aluno"
+                                />
+                                <p className="text-center mt-4">
+                                    Já tem conta?
+                                    <NavLink to={"/"}>
+                                        <b className="font-semibold text-blue-500"> faça login aqui.</b>
+                                    </NavLink>
+                                </p>
+                            </form>
+                        </div>
                     </div>
-                    <div className="mt-5">
-                        <form className="" onSubmit={createUser}>
-                            <p className="text-blue-500 font-medium">Dados de Login</p>
-                            <input
-                                type="text"
-                                className="border w-[100%] my-2 p-2 rounded-sm text-lg"
-                                placeholder="Nome de Usuário"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                required
-                            />
-                            <input
-                                type="text"
-                                className="border w-[100%] my-2 p-2 rounded-sm text-lg"
-                                placeholder="Seu Nome"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-                            <input
-                                type="email"
-                                className="border w-[100%] my-2 p-2 rounded-sm text-lg"
-                                placeholder="Seu Melhor Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                            <p className="text-blue-500 font-medium">Senha</p>
-                            <input
-                                type="password"
-                                className="border w-[100%] my-2 p-2 rounded-sm text-lg"
-                                placeholder="Escolha uma senha"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                            <input
-                                type="submit"
-                                className="border w-[100%] my-2 p-2 py-3 rounded-sm bg-blue-500 text-white font-medium cursor-pointer"
-                                value="Registrar Aluno"
-                            />
-                            <p className="text-center mt-4">
-                                Já tem conta?
-                                <NavLink to={"/"}>
-                                    <b className="font-semibold text-blue-500"> faça login aqui.</b>
-                                </NavLink>
-                            </p>
-                        </form>
-                    </div>
+                </div>
+                <div className="border w-[50%] bg-blue-500 h-screen flex items-center justify-center">
+                    <img src="/edu-hub-logo.png" className="w-[350px] object-fill" />
                 </div>
             </div>
         </>
