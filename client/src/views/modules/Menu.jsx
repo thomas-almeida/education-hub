@@ -12,8 +12,6 @@ export default function Menu(
     }
 ) {
 
-    const totalClasses = 10
-    const currentClasses = 2
     const totalHomeworks = 0
 
     const [coursesList, setCoursesList] = useState([])
@@ -60,6 +58,10 @@ export default function Menu(
 
         }
 
+        async function getStudentsByCourseId() {
+            
+        }
+
         getCourses()
 
     }, [userData])
@@ -95,6 +97,7 @@ export default function Menu(
                                                 Thomas Almeida
                                             </h3>
                                             <p>{`${userData?.role === 'ADMIN' && course?.instructorId === userData?.id ? 'Voce é o Instrutor deste Curso' : 'Instrutor'}`}</p>
+                                            <p>{totalStudents} Estudantes</p>
                                         </div>
                                     </div>
                                     <p className="py-1 w-[70%] text-slate-700 font-medium italic">{course?.description}</p>
