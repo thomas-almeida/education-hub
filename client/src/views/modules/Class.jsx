@@ -14,7 +14,7 @@ export default function Class({
     const [classListData, setClassList] = useState([])
     const [isModalVisible, setIsVisible] = useState(false)
     const [isVisibleClass, setIsVisibleClass] = useState(false)
-    const [currentClass, setCurrentClass] = useState({})
+    const [currentClass, setCurrentClass] = useState()
     const [currentCourseId, setCurrentCourse] = useState('')
 
     useEffect(() => {
@@ -42,15 +42,11 @@ export default function Class({
 
 
     function formatDate(timestamp) {
+        const yy = String(timestamp).slice("", 4)
+        const mm = String(timestamp).slice(5, 7)
+        const dd = String(timestamp).slice(8)
 
-        const numericTimeStamp = Number(timestamp)
-
-        const date = new Date(numericTimeStamp)
-        const day = String(date.getDate()).padStart(2, '0')
-        const month = String(date.getMonth() + 1).padStart(2, '0')
-        const year = String(date.getFullYear()).slice(-2)
-
-        return `${day}/${month}/${year}`
+        return `${dd}/${mm}/${yy}`
     }
 
     function closeModal(tag) {
@@ -62,15 +58,19 @@ export default function Class({
     }
 
     function openModal(classItem) {
-
         setIsVisible(true)
         setCurrentClass(classItem)
-
     }
 
     function openCreateModal() {
         setIsVisibleClass(true)
     }
+
+    async function editClass(classItem) {
+        setCurrentClass(classItem)
+        setIsVisibleClass(true)
+    }
+
 
     async function donwloadFile(fileName, originalName) {
         try {
@@ -164,7 +164,10 @@ export default function Class({
                                     </b>
                                     {
                                         userData?.role === 'ADMIN' && (
-                                            <b className="font-semibold border-2 p-1 px-4 rounded-md absolute right-3 bottom-3 hover:border-blue-500">
+                                            <b
+                                                className="font-semibold border-2 p-1 px-4 rounded-md absolute right-3 bottom-3 hover:border-blue-500"
+                                                onClick={() => editClass(classItem)}
+                                            >
                                                 ✏ Editar
                                             </b>
                                         )
@@ -231,6 +234,7 @@ export default function Class({
             <Modal
                 visible={isVisibleClass}
                 closeModal={closeModal}
+                currentClass={currentClass}
             />
         </>
     )
