@@ -24,7 +24,7 @@ export default function Home() {
       setUserData(response.data?.user)
     }
 
-    getUserData()
+    getUserData()   
 
   }, [])
 

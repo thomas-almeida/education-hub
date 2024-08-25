@@ -1,6 +1,6 @@
 import generateId from '../utils/generateIds.js'
 
-import fs, { fsync } from 'fs'
+import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import multer from 'multer'
@@ -8,7 +8,7 @@ import multer from 'multer'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 //const usersDb = path.join(__dirname, '..', 'db', 'users.json')
 const exercisesDb = path.join(__dirname, '..', 'db', 'exercises.json')
-const sheetsDir = path.join(__dirname, '..', 'db', 'sheets')
+const sheetsDir = path.join(__dirname, '..', 'db', 'slides')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -42,7 +42,6 @@ async function uploadExercise(req, res) {
       exercises = data ? JSON.parse(data) : []
     }
 
-    const exercisePath = req.file.path.replace(/\\/g, '/')
     const exerciseId = generateId.generateExtenseId(exercises)
 
     const newExercise = {
@@ -112,7 +111,7 @@ async function getExerciseById(req, res) {
   }
 }
 
-async function getExercises(params) {
+async function getExercises(req, res) {
 
   let exercises = []
 
@@ -132,10 +131,9 @@ async function getExercises(params) {
 
 }
 
-
 export default {
   uploadFile,
   uploadExercise,
   getExerciseById,
-  getExercises
+  getExercises,
 }

@@ -26,6 +26,9 @@ export default function SignIn() {
 
             const response = await axios.post(`${baseUrl.productionUrl}/users/sign-in`, userPayload)
             localStorage.setItem('userData', JSON.stringify(response.data.user))
+            if (localStorage.getItem('isSolved') !== false || localStorage.getItem('isSolved') !== true) {
+                localStorage.setItem('isSolved', false)
+            }
             redirect(`/home?id=${response.data.user?.id}`)
 
         } catch (error) {
@@ -65,7 +68,7 @@ export default function SignIn() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
-                                <p className={ alertVisible ? `font-medium my-2 p-1 border bg-zinc-50 text-center` : `hidden`}>
+                                <p className={alertVisible ? `font-medium my-2 p-1 border bg-zinc-50 text-center` : `hidden`}>
                                     {alertInfo}
                                 </p>
                                 <input

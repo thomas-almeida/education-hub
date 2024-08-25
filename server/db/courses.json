@@ -8,6 +8,21 @@
     "currentClass": 2,
     "nextClass": "2023-08-26",
     "icon": "/excel-2.png",
-    "exercises": []
+    "exercises": [
+      {
+        "id": "cfkpsp321",
+        "name": "Funções Estatísticas - Aula 3",
+        "description": "Com base na planilha que vimos hoje e nas funções estatísticas, crie as interações necessárias para uma busca de imóveis com o próprio método de \nID’s únicos, onde sua busca deve conter os seguintes requisitos:\n\nUse CONCATENAR para criar seu ID único;\nUse PROCV para resgatar os valores do imóvel pelo seu ID único;\nUse CONTSE para definir quantos imóveis se localizam na cidade de São Paulo;\nNomeie os intervalos de dados relevantes (opcional); \nAdicione Filtros ás colunas da tabela.",
+        "createdAt": 1724624465247,
+        "attachment": {
+          "filename": "1724624465241-EXERCICIO-BASE-AULA-3.xlsx",
+          "path": "C:\\Repos\\education-hub\\server\\db\\sheets\\1724624465241-EXERCICIO-BASE-AULA-3.xlsx",
+          "originalname": "EXERCICIO-BASE-AULA-3.xlsx",
+          "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 27233
+        },
+        "solutioners": []
+      }
+    ]
   }
 ]
