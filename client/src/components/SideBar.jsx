@@ -10,7 +10,13 @@ export default function SideBar(
 ) {
 
     function translateRole(role) {
-        return role === 'STUDENT' ? 'Aluno(a)' : 'Professor(a)'
+        if (role === 'STUDENT') {
+            return role = 'Aluno(a)'
+        } else if (role === 'SPONSOR') {
+            return role = 'Convidado(a)'
+        } else {
+            return role = 'Professor(a)'
+        }
     }
 
     return (
