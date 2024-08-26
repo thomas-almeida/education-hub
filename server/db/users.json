@@ -14,7 +14,7 @@
     "email": "calvin@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   },
   {
@@ -24,7 +24,7 @@
     "email": "guilherme@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   },
   {
@@ -34,7 +34,7 @@
     "email": "isabela@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   },
   {
@@ -44,7 +44,7 @@
     "email": "iasmin@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   },
   {
@@ -54,7 +54,7 @@
     "email": "raphael@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   },
   {
@@ -64,7 +64,7 @@
     "email": "juan@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   },
   {
@@ -74,7 +74,25 @@
     "email": "alexandre@gmail.com",
     "password": "3KHIErst",
     "frequency": 2,
-    "courseId":"lbvtnr472",
+    "courseId": "lbvtnr472",
+    "role": "STUDENT"
+  },
+  {
+    "id": "psflpk782",
+    "username": "maira.eduhub",
+    "name": "Maira",
+    "email": "maira@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 0,
+    "role": "SPONSOR"
+  },
+  {
+    "id": "vkutkx347",
+    "username": "miriam.eduhub",
+    "name": "Miriam",
+    "email": "miriam@gmail.com",
+    "password": "3KHIErst",
+    "frequency": 0,
     "role": "STUDENT"
   }
 ]
