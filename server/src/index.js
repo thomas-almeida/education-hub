@@ -17,5 +17,5 @@ app.use(api)
 app.use('/files', express.static(path.join(__dirname, '..', 'db', 'slides')))
 
 app.listen(port, () => {
-    console.log(`🎓 EDUCATION HUB ONLINE IN https://workable-sloth-strangely.ngrok-free.app`)
+    console.log(`🎓 EDUCATION HUB ONLINE`)
 })

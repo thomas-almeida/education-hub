@@ -75,8 +75,13 @@ export default function Class({
     async function donwloadFile(fileName, originalName) {
         try {
             const response = await axios.get(`${baseUrl.productionUrl}/files/download/${fileName}`, {
+                headers: {
+                    'ngrok-skip-browser-warning': 'none'
+                }
+            }, {
                 responseType: 'blob'
-            })
+            },
+            )
 
             const url = window.URL.createObjectURL(new Blob([response.data]))
             const link = document.createElement('a')
