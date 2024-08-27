@@ -124,4 +124,12 @@
     font-size: 1.05rem !important;
   }
 
+  .form-banner {
+    display: none !important;
+  }
+
+  .form-info {
+    width: auto !important;
+  }
+
 }
