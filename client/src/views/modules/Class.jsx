@@ -72,34 +72,6 @@ export default function Class({
         setIsVisibleClass(true)
     }
 
-
-    async function donwloadFile(fileName, originalName) {
-        try {
-            const response = await axios.get(`${baseUrl.productionUrl}/files/download/${fileName}`, {
-                headers: {
-                    'ngrok-skip-browser-warning': 'none'
-                }
-            }, {
-                responseType: 'blob'
-            },
-            )
-
-            const url = window.URL.createObjectURL(new Blob([response.data]))
-            const link = document.createElement('a')
-            link.href = url
-            link.setAttribute('download', originalName)
-            document.body.appendChild(link)
-            link.click()
-            link.parentNode.removeChild(link)
-
-            alert('Material Baixado com sucesso!')
-
-        } catch (error) {
-            console.error("Erro ao baixar o arquivo:", error)
-            alert('Erro ao baixar material de apoio')
-        }
-    }
-
     return (
         <>
             {

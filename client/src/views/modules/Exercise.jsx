@@ -36,32 +36,6 @@ export default function Exercises(props) {
         console.log(isSolved)
     }
 
-
-    async function donwloadFile(fileName, originalName) {
-
-        console.log(fileName, originalName)
-
-        try {
-            const response = await axios.get(`${baseUrl.productionUrl}/files/download/${fileName}`, {
-                responseType: 'blob'
-            })
-
-            const url = window.URL.createObjectURL(new Blob([response.data]))
-            const link = document.createElement('a')
-            link.href = url
-            link.setAttribute('download', originalName)
-            document.body.appendChild(link)
-            link.click()
-            link.parentNode.removeChild(link)
-
-            alert('Material Baixado com sucesso!')
-
-        } catch (error) {
-            console.error("Erro ao baixar o arquivo:", error)
-            alert('Erro ao baixar material de apoio')
-        }
-    }
-
     return (
         <>
             {
@@ -108,30 +82,36 @@ export default function Exercises(props) {
                                         </textarea>
                                         <h2 className="text-lg font-semibold">🗂 Material de Apoio</h2>
                                         <div className="flex items-center justify-between py-4">
-                                            <div
-                                                className="border-2 max-w-[270px] p-2 rounded-md flex items-center justify-center cursor-pointer hover:border-blue-500 hover:shadow-md"
-                                                onClick={() => donwloadFile(exercise.attachment.filename, exercise.attachment.originalname)}
+
+                                            <a
+                                                href={`${baseUrl.productionUrl}/files/download/${exercise?.attachment?.filename}`}
+                                                className="flex items-center relative w-[100%]"
                                             >
-                                                <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
-                                                <h3>
-                                                    {
-                                                        exercise?.attachment?.originalname
-                                                    }
-                                                </h3>
-                                            </div>
-                                            <div
-                                                className={`border-2 max-w-[270px] p-2 rounded-md flex items-center justify-center cursor-pointer hover:border-blue-500 hover:shadow-md ${isSolved === 'true' ? 'text-green-600 font-bold border-green-500 hover:border-green-500' : ''}`}
-                                                onClick={() => solveExercise()}
-                                            >
-                                                <p className="pr-2">
-                                                    ✅
-                                                </p>
-                                                <h3>
-                                                    {
-                                                        isSolved === 'true' ? 'Exercício Entregue!' : 'Marcar Como Entregue'
-                                                    }
-                                                </h3>
-                                            </div>
+                                                <div
+                                                    className="border-2 max-w-[270px] p-2 rounded-md flex items-center justify-center cursor-pointer hover:border-blue-500 hover:shadow-md"
+                                                >
+                                                    <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
+                                                    <h3>
+                                                        {
+                                                            exercise?.attachment?.originalname
+                                                        }
+                                                    </h3>
+                                                </div>
+                                                <div
+                                                    className={`absolute right-0 border-2 max-w-[270px] p-2 rounded-md flex items-center justify-center cursor-pointer hover:border-blue-500 hover:shadow-md ${isSolved === 'true' ? 'text-green-600 font-bold border-green-500 hover:border-green-500' : ''}`}
+                                                    onClick={() => solveExercise()}
+                                                >
+                                                    <p className="pr-2">
+                                                        ✅
+                                                    </p>
+                                                    <h3>
+                                                        {
+                                                            isSolved === 'true' ? 'Exercício Entregue!' : 'Marcar Como Entregue'
+                                                        }
+                                                    </h3>
+                                                </div>
+                                            </a>
+
                                         </div>
                                     </div>
                                 ))
