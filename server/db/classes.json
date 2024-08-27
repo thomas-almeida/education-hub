@@ -1,58 +1,35 @@
 [
   {
-    "id": "olulmm944",
+    "id": "cylbry250",
     "courseId": "lbvtnr472",
     "name": "Uso Prático da Ferramenta",
     "description": "Entender o funcionamento da ferramenta e seus contextos, como usar ela de forma profissional para diversos casos de uso, fazendo de nós profissionais altamente qualificados.",
-    "createdAt": 1724277942162,
-    "schedule": "2023-08-12",
+    "createdAt": 1724727727466,
+    "schedule": "2024-08-14",
     "attachments": [
       {
-        "filename": "1724277941899-AULA-1.pdf",
-        "path": "C:/Repos/education-hub/server/db/slides/1724277941899-AULA-1.pdf",
+        "filename": "1724727727355-AULA-1.pdf",
+        "path": "C:/Repos/education-hub/server/db/slides/1724727727355-AULA-1.pdf",
         "originalname": "AULA-1.pdf",
         "mimetype": "application/pdf",
         "size": 1442478
       },
       {
-        "filename": "1724277942155-exemplo-csv.csv",
-        "path": "C:/Repos/education-hub/server/db/slides/1724277942155-exemplo-csv.csv",
+        "filename": "1724727727464-exemplo-csv.csv",
+        "path": "C:/Repos/education-hub/server/db/slides/1724727727464-exemplo-csv.csv",
         "originalname": "exemplo-csv.csv",
         "mimetype": "text/csv",
         "size": 17261
       },
       {
-        "filename": "1724277942156-frequencia-escolar.xlsx",
-        "path": "C:/Repos/education-hub/server/db/slides/1724277942156-frequencia-escolar.xlsx",
+        "filename": "1724727727464-frequencia-escolar.xlsx",
+        "path": "C:/Repos/education-hub/server/db/slides/1724727727464-frequencia-escolar.xlsx",
         "originalname": "frequencia-escolar.xlsx",
         "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "size": 14811
       }
     ],
     "videoUrl": "1SsOZxbHt1W0JTiKLkfW6t9mYYTSaPJqG",
-    "exercise": {},
-    "presenceList": {
-      "frequency": 0,
-      "students": []
-    }
-  },
-  {
-    "id": "keotmi718",
-    "courseId": "lbvtnr472",
-    "name": "CSV - Extraindo Volumes de Dados",
-    "description": "Nessa aula, vimos os detalhes do formato CSV, ideal para extrair e importar dados complexos facilitando a forma de transferir grandes planilhas",
-    "createdAt": 1724278091629,
-    "schedule": "2023-08-14",
-    "attachments": [
-      {
-        "filename": "1724278091627-frequencia-real-diaria.csv",
-        "path": "C:/Repos/education-hub/server/db/slides/1724278091627-frequencia-real-diaria.csv",
-        "originalname": "frequencia-real-diaria.csv",
-        "mimetype": "text/csv",
-        "size": 838
-      }
-    ],
-    "videoUrl": "1YT0YhBFHRULDJvw24cUw7LpfAHYYEFcF",
     "exercise": {},
     "presenceList": {
       "frequency": 0,

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
@@ -214,14 +215,16 @@ export default function Class({
                                 <div className="mt-2">
                                     {
                                         currentClass?.attachments?.map(attachItem => (
-                                            <div
-                                                key={attachItem.filename}
-                                                className="flex items-center cursor-pointer border-2 w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
-                                                onClick={() => donwloadFile(attachItem?.filename, attachItem?.originalname)}
-                                            >
-                                                <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
-                                                <h3>{attachItem.originalname}</h3>
-                                            </div>
+                                            <a href={`${baseUrl.productionUrl}/files/download/${attachItem?.filename}`}>
+                                                <div
+                                                    key={attachItem.filename}
+                                                    className="flex items-center cursor-pointer border-2 w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
+                                                    
+                                                >
+                                                    <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
+                                                    <h3>{attachItem.originalname}</h3>
+                                                </div>
+                                            </a>
                                         ))
                                     }
                                 </div>
