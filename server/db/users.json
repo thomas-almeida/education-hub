@@ -84,6 +84,7 @@
     "email": "maira@gmail.com",
     "password": "3KHIErst",
     "frequency": 0,
+    "courseId": "lbvtnr472",
     "role": "SPONSOR"
   },
   {
@@ -93,6 +94,7 @@
     "email": "miriam@gmail.com",
     "password": "3KHIErst",
     "frequency": 0,
+    "courseId": "lbvtnr472",
     "role": "STUDENT"
   }
 ]
