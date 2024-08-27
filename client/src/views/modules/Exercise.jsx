@@ -48,7 +48,7 @@ export default function Exercises(props) {
             }
             {
                 exerciseList.length > 0 && (
-                    <div className={props.visible ? `flex items-center justify-center w-[75%]` : `hidden`}>
+                    <div className={props.visible ? `flex items-center justify-center w-[75%] exercise-item` : `hidden`}>
                         <div className="h-[80vh] overflow-y-auto p-6">
 
                             {
@@ -66,7 +66,7 @@ export default function Exercises(props) {
                                                 draggable={false}
                                             />
                                             <h1
-                                                className="text-2xl font-semibold"
+                                                className="text-2xl font-semibold exercise-name"
                                             >
                                                 {exercise?.name}
                                             </h1>
@@ -74,14 +74,14 @@ export default function Exercises(props) {
                                         <textarea
                                             value={exercise?.description}
                                             rows={10}
-                                            className="w-[700px] pointer-events-none"
+                                            className="w-[700px] exercise-description"
                                             contentEditable={false}
                                             readOnly
                                         >
 
                                         </textarea>
                                         <h2 className="text-lg font-semibold">🗂 Material de Apoio</h2>
-                                        <div className="flex items-center justify-between py-4">
+                                        <div className="flex items-center justify-between py-4 exercise-options">
 
                                             <a
                                                 href={`${baseUrl.productionUrl}/files/download/${exercise?.attachment?.filename}`}

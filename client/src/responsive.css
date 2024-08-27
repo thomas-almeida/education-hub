@@ -1,0 +1,127 @@
+@media only screen and (max-width: 700px) {
+  .sidebar {
+    display: none !important;
+  }
+
+  .home-container {
+    height: auto !important;
+  }
+
+  .screens-container {
+    padding: 5px !important;
+    height: auto !important;
+  }
+
+  .screens {
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  .course-banner {
+    padding: 20px 20px !important;
+    width: 100% !important;
+  }
+
+  .course-banner>div>h1 {
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    width: 90% !important;
+    line-height: 120% !important;
+  }
+
+  .course-banner h3 {
+    font-size: 0.8rem !important;
+  }
+
+  .course-banner img {
+    width: 35px !important;
+  }
+
+  .course-banner p {
+    font-size: 0.75rem !important;
+    width: auto !important;
+  }
+
+  .course-status {
+    flex-direction: column !important;
+  }
+
+  .course-status p {
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .exercises-box {
+    padding: 10px 20px !important;
+  }
+
+  .class-container {
+    width: auto !important;
+    max-width: auto !important;
+  }
+
+  .class-item {
+    width: 100% !important;
+    border: 2px solid #ddd;
+  }
+
+  .class-item img {
+    width: 30px !important;
+  }
+
+  .class-item h2 {
+    font-size: 1.05rem !important;
+  }
+
+  .class-item p {
+    font-size: 0.8rem;
+  }
+
+  .class-item b {
+    display: none;
+  }
+
+  iframe {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .modal-class {
+    flex-direction: column !important;
+    padding: 10px !important;
+    height: auto !important;
+  }
+
+  .modal-class p {
+    display: none !important;
+  }
+
+  .class-materials {
+    margin: 0 !important;
+  }
+
+  .exercise-item {
+    width: 100% !important;
+  }
+
+  .exercise-description {
+    width: 100% !important;
+    height: 250px;
+  }
+
+  .exercise-options a {
+    flex-direction: column !important;
+    justify-content: start;
+  }
+
+  .exercise-options a div {
+    position: relative;
+    width: 100%;
+    margin: 5px 0px;
+  }
+
+  .exercise-name {
+    font-size: 1.05rem !important;
+  }
+
+}

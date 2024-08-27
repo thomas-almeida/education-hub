@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './views/Home'
 import SignIn from './views/SignIn'
 import SignUp from './views/SignUp'
+import './responsive.css'
 
 function App() {
 

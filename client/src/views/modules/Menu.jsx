@@ -66,7 +66,7 @@ export default function Menu(
     return (
         <>
             <div className={visible ? `flex items-center justify-center` : `hidden`}>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center menu-container">
                     <div className="flex justify-start w-[85%] mb-4 flex-col">
                         <h2 className="w-auto text-left text-2xl font-semibold">Meus Cursos</h2>
                         <p>{userData?.role === 'ADMIN' ? 'Cursos que você é o professor' : 'Cursos que você está matriculado'}</p>
@@ -78,7 +78,7 @@ export default function Menu(
                                 onClick={() => showClassesFromCourse(course.id)}
                                 key={course?.id}
                             >
-                                <div className="p-12 h-[360px]">
+                                <div className="p-12 h-[360px] course-banner">
                                     <div className="flex items-center relative left-[-12px]">
                                         <img src={course.icon} className="w-[60px] mr-2" alt="" />
                                         <h1 className="text-3xl font-semibold w-[40%] leading-8">{course?.name}</h1>
@@ -98,7 +98,7 @@ export default function Menu(
                                             style={{ width: `${course.currentClass * 10}%` }}
                                             className={`bg-green-600 h-[5px] rounded-md`}
                                         ></div>
-                                        <div className="flex mt-1">
+                                        <div className="flex mt-1 course-status">
                                             <p className="border-2 w-[130px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
                                                 📘 {course.currentClass} de {course.totalClasses} Aulas
                                             </p>
@@ -123,7 +123,7 @@ export default function Menu(
                     }
                     <div className="flex items-center justify-start w-[85%] py-4 mt-1">
                         <div
-                            className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02]"
+                            className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
                             onClick={() => setActiveScreen('exercises')}
                         >
                             <h3 className="text-lg font-medium pb-2">Exercícios</h3>
