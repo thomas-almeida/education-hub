@@ -49,7 +49,7 @@ export default function SignUp() {
     return (
         <>
             <div className="flex justify-center items-center h-screen">
-                <div className="w-[50%] px-12 flex items-center justify-center">
+                <div className="w-[50%] px-12 flex items-center justify-center form-info">
                     <div className="w-[80%]">
                         <div className="flex items-center justify-center">
                             <img
@@ -109,7 +109,7 @@ export default function SignUp() {
                         </div>
                     </div>
                 </div>
-                <div className="border w-[50%] bg-blue-500 h-screen flex items-center justify-center">
+                <div className="border w-[50%] bg-blue-500 h-screen flex items-center justify-center form-banner">
                     <img src="/edu-hub-logo.png" className="w-[350px] object-fill" />
                 </div>
             </div>

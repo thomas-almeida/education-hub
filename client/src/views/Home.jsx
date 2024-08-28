@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <div className="flex items-center">
-        <div className="flex items-center h-svh">
+        <div className="flex items-center h-svh home-container">
           <SideBar
             userEmail={userData?.username}
             userName={userData?.name}
@@ -40,12 +40,12 @@ export default function Home() {
             setActiveScreen={setActiveScreen}
           />
         </div>
-        <div className="w-[100%] bg-[#fcfbf9]">
+        <div className="w-[100%] bg-[#fcfbf9] screens">
           <div className="flex items-center px-8 py-3 justify-end">
             <img src="/edu-hub-logo.png" className="w-[30px] mr-1 relative top-1" alt="" />
             <h1 className="text-2xl font-semibold text-blue-500">edu.hub</h1>
           </div>
-          <div className="p-8 flex items-center justify-center h-[90vh]">
+          <div className="p-8 flex items-center justify-center h-[90vh] screens-container">
             <Screens
               setActiveScreen={setActiveScreen}
               activeScreen={activeScreen}

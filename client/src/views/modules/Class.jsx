@@ -94,7 +94,7 @@ export default function Class({
                     </div>
                 )
             }
-            <div className={visible && classListData.length > 0 ? `flex items-center w-[75%]` : `hidden`}>
+            <div className={visible && classListData.length > 0 ? `flex items-center w-[75%] class-container` : `hidden`}>
                 <div className="flex items-center">
                     <div className="p-6 overflow-y-auto h-[80vh]">
                         {
@@ -111,7 +111,7 @@ export default function Class({
                             classListData?.map(classItem => (
                                 <li
                                     key={classItem?.id}
-                                    className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03] w-[700px] max-w-[700px] relative"
+                                    className="list-none border bg-white p-4 rounded-md shadow-md cursor-pointer my-3 transition hover:scale-[1.03] w-[700px] max-w-[700px] relative class-item"
                                 >
                                     <div
                                         onClick={() => openModal(classItem)}
@@ -156,7 +156,7 @@ export default function Class({
                     </div>
                 </div>
                 <div className={isModalVisible ? `flex items-center justify-center absolute top-0 left-0 h-[100vh] w-[100%] bg-[#00000054] z-50` : `hidden`}>
-                    <div className="p-12 bg-white w-[85%] h-[680px] flex rounded-md shadow-2xl">
+                    <div className="p-12 bg-white w-[85%] h-[680px] flex rounded-md shadow-2xl modal-class">
                         <div className="justify-center items-center py-2">
                             <div className="flex items-center mb-6">
                                 <img
@@ -180,7 +180,7 @@ export default function Class({
                             >
                             </iframe>
                         </div>
-                        <div className="py-2 ml-4 mt-12">
+                        <div className="py-2 ml-4 mt-12 class-materials">
                             <p className="w-[80%] pt-2 text-md">{currentClass?.description}</p>
                             <div className="pt-2 py-2 mt-2 rounded-md">
                                 <b className="font-semibold">📁 Materiais de Apoio</b>

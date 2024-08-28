@@ -20,7 +20,7 @@ export default function SideBar(
     }
 
     return (
-        <div className="bg-white text-black h-svh w-[220px] border">
+        <div className="bg-white text-black h-svh w-[220px] border sidebar">
             <div className="flex items-center px-4 py-6">
                 <div className="">
                     <div className="flex items-center">
