@@ -86,6 +86,7 @@ export default function Exercises(props) {
                                             <a
                                                 href={`${baseUrl.productionUrl}/files/download/${exercise?.attachment?.filename}`}
                                                 className="flex items-center relative w-[100%]"
+                                                download
                                             >
                                                 <div
                                                     className="border-2 max-w-[270px] p-2 rounded-md flex items-center justify-center cursor-pointer hover:border-blue-500 hover:shadow-md"
