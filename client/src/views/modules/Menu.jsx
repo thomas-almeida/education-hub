@@ -105,7 +105,7 @@ export default function Menu(
                                             {
                                                 userData?.role === 'STUDENT' && (
                                                     <p className="border-2 w-[180px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
-                                                        📐 Frequência: {calculateFreq(userData?.frequency, course.currentClass)}%
+                                                        📐 Frequência: {calculateFreq(userData?.frequency, course.currentClass).toFixed(2)}%
                                                     </p>
                                                 )
                                             }
