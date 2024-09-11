@@ -88,5 +88,58 @@
       "frequency": 0,
       "students": []
     }
+  },
+  {
+    "id": "qrogyw542",
+    "courseId": "lbvtnr472",
+    "name": "Função SE",
+    "description": "Nessa aula vamos conhecer o conceito e aplicações diversas das condicionais no Excel, como usamos situaçõe para criar dinamicas usando a função condicional.",
+    "createdAt": 1726087519738,
+    "schedule": "2024-09-09",
+    "attachments": [
+      {
+        "filename": "1726087518321-AULA #4.pdf",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087518321-AULA #4.pdf",
+        "originalname": "AULA #4.pdf",
+        "mimetype": "application/pdf",
+        "size": 12195229
+      }
+    ],
+    "videoUrl": "124p2dLYpI6ZQjE7p3DJfjbYWmm7yPUuD",
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "wqgwrw046",
+    "courseId": "lbvtnr472",
+    "name": "Filtros e Gráficos",
+    "description": "Nessa aula vamos conhecer formas de filtrar dados e personalizar opções em células repetitivas que podemos evitar colocando opções de entrada de dados, nessa aula também corrijimos um exercício da aula passada e introduzimos aos gráficos.",
+    "createdAt": 1726087900963,
+    "schedule": "2024-09-11",
+    "attachments": [
+      {
+        "filename": "1726087899201-Aula 5 - GrÃ¡ficos e Filtros.xlsx",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087899201-Aula 5 - GrÃ¡ficos e Filtros.xlsx",
+        "originalname": "Aula 5 - GrÃ¡ficos e Filtros.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 14490
+      },
+      {
+        "filename": "1726087899201-AULA #5.pdf",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087899201-AULA #5.pdf",
+        "originalname": "AULA #5.pdf",
+        "mimetype": "application/pdf",
+        "size": 16142066
+      }
+    ],
+    "videoUrl": "1ue9I_L7VHtEK5Y41rPHLzQZIxfvCAdGM",
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
   }
 ]

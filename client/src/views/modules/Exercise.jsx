@@ -55,7 +55,7 @@ export default function Exercises(props) {
                                 exerciseList.map(exercise => (
                                     <div
                                         key={exercise?.id}
-                                        className="border-2 p-4 rounded-md shadow-md transition hover:scale-[1.02] bg-white"
+                                        className="border-2 p-4 rounded-md shadow-md transition hover:scale-[1.02] bg-white mt-4"
                                     >
                                         <div
                                             className="flex items-center mb-4"

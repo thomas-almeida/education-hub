@@ -12,5 +12,19 @@
       "size": 23870
     },
     "solutioners": []
+  },
+  {
+    "id": "ezipyi916",
+    "name": "Condicionais",
+    "description": "Com base nessa planilha que valida usuarios e suas senhas, corrija o \"Bug\" de validação que há nos usuarios e senhas:\n- Ao inserir um usuario da lista e uma senha válida, o acesso no STATUS é liberado.\n- Note que ao inserir QUALQUER usuário e QUALQUER senha dentro da listagem o acesso é liberado.\n\nDesafio: Faça com que o acesso seja liberado apenas se o USUARIO e a SENHA sejam exatamente correspondentes ao mesmo registro.",
+    "createdAt": 1726088432235,
+    "attachment": {
+      "filename": "1726088432233-EXERCICIO condicionais.xlsx",
+      "path": "/home/home-server/Repos/education-hub/server/db/slides/1726088432233-EXERCICIO condicionais.xlsx",
+      "originalname": "EXERCICIO condicionais.xlsx",
+      "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "size": 10268
+    },
+    "solutioners": []
   }
 ]
