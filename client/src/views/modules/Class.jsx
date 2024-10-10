@@ -94,7 +94,7 @@ export default function Class({
                     </div>
                 )
             }
-            <div className={visible && classListData.length > 0 ? `flex items-center w-[75%] class-container` : `hidden`}>
+            <div className={visible && classListData.length > 0 ? `flex justify-center items-center w-[75%] class-container` : `hidden`}>
                 <div className="flex items-center">
                     <div className="p-6 overflow-y-auto h-[80vh]">
                         {

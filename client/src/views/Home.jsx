@@ -36,11 +36,12 @@ export default function Home() {
             userEmail={userData?.username}
             userName={userData?.name}
             userTag={userData?.role}
+            userId={userData?.id}
             activeScreen={activeScreen}
             setActiveScreen={setActiveScreen}
           />
         </div>
-        <div className="w-[100%] bg-[#fcfbf9] screens">
+        <div className="w-[100%] screens">
           <div className="flex items-center px-8 py-3 justify-end">
             <img src="/edu-hub-logo.png" className="w-[30px] mr-1 relative top-1" alt="" />
             <h1 className="text-2xl font-semibold text-blue-500">edu.hub</h1>

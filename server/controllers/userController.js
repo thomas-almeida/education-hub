@@ -120,9 +120,48 @@ async function getUserById(req, res) {
   }
 }
 
+async function getStudents(req, res) {
+  try {
+
+    const id = req.params.id
+    let users = []
+    let students = []
+
+    const data = fs.readFileSync(dbPath, 'utf-8')
+    users = data ? JSON.parse(data) : []
+
+    const userExist = users.some(user => user.id === id)
+
+    if (!userExist) {
+      res.status(401).json({ message: 'user not found' })
+    }
+
+    const user = users.find(user => user.id === id)
+
+    users.forEach((userItem) => {
+      if (user.role === 'ADMIN' || user.role === 'SPONSOR') {
+        if (userItem.role === 'STUDENT') {
+          students.push(userItem)
+        }
+      }
+    })
+
+    res.status(200).json({
+      message: 'success',
+      students: students
+    })
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      message: 'internal server error'
+    })
+  }
+}
 
 export default {
   signUp,
   signIn,
-  getUserById
+  getUserById,
+  getStudents
 }
