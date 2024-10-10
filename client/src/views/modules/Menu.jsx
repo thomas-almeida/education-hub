@@ -3,11 +3,13 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import baseUrl from "../utils/baseUrl"
+import Breadcrumb from "../../components/breadcrumb"
 
 export default function Menu(
     {
         visible,
         setActiveScreen,
+        activeScreen,
         userData
     }
 ) {
@@ -68,6 +70,10 @@ export default function Menu(
             <div className={visible ? `flex items-center justify-center` : `hidden`}>
                 <div className="flex flex-col items-center menu-container">
                     <div className="flex justify-start w-[85%] mb-4 flex-col">
+                        <Breadcrumb 
+                            activeScreen={activeScreen}
+                            setActiveScreen={setActiveScreen}
+                        />
                         <h2 className="w-auto text-left text-2xl font-semibold">Meus Cursos</h2>
                         <p>{userData?.role === 'ADMIN' || userData?.role === 'SPONSOR' ? 'Cursos que você é Adminstrador ou Convidado' : 'Cursos que você está matriculado'}</p>
                     </div>

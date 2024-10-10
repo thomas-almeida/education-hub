@@ -3,8 +3,13 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import baseUrl from "../utils/baseUrl"
+import Breadcrumb from "../../components/breadcrumb"
 
-export default function Exercises(props) {
+export default function Exercises({
+    setActiveScreen,
+    activeScreen,
+    visible
+}) {
 
     const [exerciseList, setExerciseList] = useState([])
     const [isSolved, setIsSolved] = useState(null)
@@ -38,9 +43,10 @@ export default function Exercises(props) {
 
     return (
         <>
+
             {
                 exerciseList.length <= 0 && (
-                    <div className={props.visible ? `block` : `hidden`}>
+                    <div className={visible ? `block` : `hidden`}>
                         <h1 className="text-center text-2xl font-medium">Nenhum Exercício Postado</h1>
                         <p className="text-center italic">Todos os exercícios aparecerão aqui</p>
                     </div>
@@ -48,7 +54,13 @@ export default function Exercises(props) {
             }
             {
                 exerciseList.length > 0 && (
-                    <div className={props.visible ? `flex items-center justify-center w-[75%] exercise-item` : `hidden`}>
+                    <div className={visible ? `flex items-center justify-center w-[75%] exercise-item flex-col` : `hidden`}>
+                        <div className="w-[100%]">
+                            <Breadcrumb
+                                setActiveScreen={setActiveScreen}
+                                activeScreen={activeScreen}
+                            />
+                        </div>
                         <div className="h-[80vh] overflow-y-auto p-6">
 
                             {

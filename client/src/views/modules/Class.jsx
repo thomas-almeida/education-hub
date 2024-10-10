@@ -6,10 +6,13 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import baseUrl from '../utils/baseUrl'
 import Modal from "../../components/Modal"
+import Breadcrumb from "../../components/breadcrumb"
 
 export default function Class({
     visible,
-    userData
+    userData,
+    setActiveScreen,
+    activeScreen
 }) {
 
     const [classListData, setClassList] = useState([])
@@ -95,7 +98,13 @@ export default function Class({
                 )
             }
             <div className={visible && classListData.length > 0 ? `flex justify-center items-center w-[75%] class-container` : `hidden`}>
-                <div className="flex items-center">
+                <div className="flex items-center flex-col">
+                    <div className="flex items-center justify-start w-[100%]">
+                        <Breadcrumb 
+                            setActiveScreen={setActiveScreen}
+                            activeScreen={activeScreen}
+                        />
+                    </div>
                     <div className="p-6 overflow-y-auto h-[80vh]">
                         {
                             userData?.role === 'ADMIN' && (
