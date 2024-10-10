@@ -69,7 +69,7 @@ export default function Menu(
                 <div className="flex flex-col items-center menu-container">
                     <div className="flex justify-start w-[85%] mb-4 flex-col">
                         <h2 className="w-auto text-left text-2xl font-semibold">Meus Cursos</h2>
-                        <p>{userData?.role === 'ADMIN' ? 'Cursos que você é o professor' : 'Cursos que você está matriculado'}</p>
+                        <p>{userData?.role === 'ADMIN' || userData?.role === 'SPONSOR' ? 'Cursos que você é Adminstrador ou Convidado' : 'Cursos que você está matriculado'}</p>
                     </div>
                     {
                         coursesList.map(course => (
@@ -126,14 +126,30 @@ export default function Menu(
                             className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
                             onClick={() => setActiveScreen('exercises')}
                         >
-                            <h3 className="text-lg font-medium pb-2">Exercícios</h3>
+                            <h3 className="text-lg font-medium pb-2">Treinar Conhecimentos</h3>
                             <div className="flex">
                                 <div>
-                                    <h1 className="text-3xl font-semibold">{totalHomeworks} Atividades</h1>
+                                    <h1 className="text-3xl font-semibold">Exercícios</h1>
                                     <p
                                         className="text-blue-500 font-semibold cursor-pointer"
                                     >
-                                        Ver meus exercícios
+                                        Ver exercícios disponíveis
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
+                            onClick={() => setActiveScreen('class')}
+                        >
+                            <h3 className="text-lg font-medium pb-2">Assista as Gravações</h3>
+                            <div className="flex">
+                                <div>
+                                    <h1 className="text-3xl font-semibold">Aulas</h1>
+                                    <p
+                                        className="text-blue-500 font-semibold cursor-pointer"
+                                    >
+                                        Ver todas as aulas
                                     </p>
                                 </div>
                             </div>
