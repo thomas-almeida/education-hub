@@ -140,7 +140,7 @@ export default function Menu(
                         </div>
                         <div
                             className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
-                            onClick={() => setActiveScreen('class')}
+                            onClick={() => showClassesFromCourse(coursesList[0].id)}
                         >
                             <h3 className="text-lg font-medium pb-2">Assista as Gravações</h3>
                             <div className="flex">
