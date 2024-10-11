@@ -98,8 +98,8 @@
     "schedule": "2024-09-09",
     "attachments": [
       {
-        "filename": "1726087518321-AULA #4.pdf",
-        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087518321-AULA #4.pdf",
+        "filename": "1726087518321-AULA 4.pdf",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087518321-AULA 4.pdf",
         "originalname": "AULA #4.pdf",
         "mimetype": "application/pdf",
         "size": 12195229
@@ -128,14 +128,67 @@
         "size": 14490
       },
       {
-        "filename": "1726087899201-AULA #5.pdf",
-        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087899201-AULA #5.pdf",
+        "filename": "1726087899201-AULA 5.pdf",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1726087899201-AULA 5.pdf",
         "originalname": "AULA #5.pdf",
         "mimetype": "application/pdf",
         "size": 16142066
       }
     ],
     "videoUrl": "1ue9I_L7VHtEK5Y41rPHLzQZIxfvCAdGM",
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "zastxu754",
+    "courseId": "lbvtnr472",
+    "name": "Casos de Uso #1",
+    "description": "Nessa Aula, iniciamos o processo de resolver problemas em casos de uso de personas que simulam clientes reais e situações do citidiano.",
+    "createdAt": 1727297342579,
+    "schedule": "2024-09-25",
+    "attachments": [
+      {
+        "filename": "1727297340575-AULA #6.pdf",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1727297340575-AULA #6.pdf",
+        "originalname": "AULA #6.pdf",
+        "mimetype": "application/pdf",
+        "size": 15145034
+      },
+      {
+        "filename": "1727297342571-CASOS DE USO 1.xlsx",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1727297342571-CASOS DE USO 1.xlsx",
+        "originalname": "CASOS DE USO 1.xlsx",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 18641
+      }
+    ],
+    "videoUrl": "1HCG6QqpnHPjYVsHRHU0hydyByYJDx5xl",
+    "exercise": {},
+    "presenceList": {
+      "frequency": 0,
+      "students": []
+    }
+  },
+  {
+    "id": "rnirku114",
+    "courseId": "lbvtnr472",
+    "name": "Casos de Uso #2",
+    "description": "Nessa Aula, após criarmos algumas visões, vamos avançar em visões mais complexas, usando a tabela dinâmica e funções INDICE e CORRESP",
+    "createdAt": 1728510866553,
+    "schedule": "2024-10-09",
+    "attachments": [
+      {
+        "filename": "1728510866391-AULA 7.pdf",
+        "path": "/home/home-server/Repos/education-hub/server/db/slides/1728510866391-AULA 7.pdf",
+        "originalname": "AULA 7.pdf",
+        "mimetype": "application/pdf",
+        "size": 26160607
+      }
+    ],
+    "videoUrl": "1tji37_VPvlMenXdtdZm38medYoPixgmx",
     "exercise": {},
     "presenceList": {
       "frequency": 0,

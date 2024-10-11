@@ -26,5 +26,33 @@
       "size": 10268
     },
     "solutioners": []
+  },
+  {
+    "id": "ebqkoj721",
+    "name": "Criando Visões",
+    "description": "Com base na planilha que vimos hoje, é possível criar diferentes visões para tratar e apresentar dados de melhores formas, com base no que vimos na aula crie as seguintes tabelas:\n\n- QUAIS SÃO AS CIDADES COM MAIOR NÚMERO\nDE IMÓVEIS COMERCIAIS?\n- Qual o Total de Imóveis por ESTADO\n- Qual o Total de VALOR IPO por SEGMENTO DO FII\n- Qual o Total de IMOVEIS por SEGMENTO DO FII",
+    "createdAt": 1727297753088,
+    "attachment": {
+      "filename": "1727297753086-CASOS DE USO 1.xlsx",
+      "path": "/home/home-server/Repos/education-hub/server/db/slides/1727297753086-CASOS DE USO 1.xlsx",
+      "originalname": "CASOS DE USO 1.xlsx",
+      "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "size": 18641
+    },
+    "solutioners": []
+  },
+  {
+    "id": "kpzrcy633",
+    "name": "Tabelas Dinâmicas",
+    "description": "Com no que vimos na aula \"Casos de Uso #2\", é possível criar diferentes visões usando Tabelas Dinâmicas, com base no que vimos nessa aula crie as seguintes visões faltantes:\n\n- Qual o Total de Imóveis por ESTADO\n- Qual o Total de VALOR IPO por SEGMENTO DO FII\n- Qual o Total de IMOVEIS por SEGMENTO DO FII",
+    "createdAt": 1728511161322,
+    "attachment": {
+      "filename": "1728511161180-AULA 7.pdf",
+      "path": "/home/home-server/Repos/education-hub/server/db/slides/1728511161180-AULA 7.pdf",
+      "originalname": "AULA 7.pdf",
+      "mimetype": "application/pdf",
+      "size": 26160607
+    },
+    "solutioners": []
   }
 ]

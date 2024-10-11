@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
+import baseUrl from "../views/utils/baseUrl";
 import axios from 'axios'
 
 export default function SideBar(
@@ -14,7 +15,7 @@ export default function SideBar(
     }
 ) {
 
-    const [students, setStudents] = useState('')
+    const [students, setStudents] = useState([])
 
     function translateRole(role) {
         if (role === 'STUDENT') {
@@ -31,8 +32,13 @@ export default function SideBar(
         async function getStudents() {
             try {
 
+                console.log(userId !== undefined)
                 if (userId !== undefined) {
-                    const response = await axios.get(`${baseUrl.productionUrl}/users/get-students/${userId}`)
+                    const response = await axios.get(`${baseUrl.productionUrl}/users/get-students/${userId}`,{
+                        headers: {
+                            "ngrok-skip-browser-warning": "true"
+                        }
+                    })
                     setStudents(response.data?.students)
                 }
 
@@ -96,7 +102,7 @@ export default function SideBar(
                 <hr className="w-[80%]" />
             </div>
             {
-                students.length > 0 && (
+                students !== undefined && (
                     <div className="overflow-y-scroll">
 
                         <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
