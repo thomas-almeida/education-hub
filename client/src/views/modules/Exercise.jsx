@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import baseUrl from "../utils/baseUrl"
-import Breadcrumb from "../../components/breadcrumb"
+import Breadcrumb from "../../components/Breadcrumb"
 
 export default function Exercises({
     setActiveScreen,
