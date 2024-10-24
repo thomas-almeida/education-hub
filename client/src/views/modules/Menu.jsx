@@ -119,7 +119,7 @@ export default function Menu(
                                                 📅 Próxima Aula: {formatDate(course.nextClass)}
                                             </p>
                                             <p className="border-2 w-[200px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold">
-                                                📄 Exercícios: {course.exercises.length === 0 ? 'Nenhum' : course.exercises.length}
+                                                📄 Exercícios: 4Q
                                             </p>
                                         </div>
                                     </div>
