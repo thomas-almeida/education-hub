@@ -21,7 +21,7 @@ export default function Menu(
     function calculateFreq(userFrequency, currentClass) {
         return (userFrequency / currentClass) * 100
     }
-    
+
     function formatDate(timestamp) {
         const yy = String(timestamp).slice("", 4)
         const mm = String(timestamp).slice(5, 7)
@@ -70,7 +70,7 @@ export default function Menu(
             <div className={visible ? `flex items-center justify-center` : `hidden`}>
                 <div className="flex flex-col items-center menu-container">
                     <div className="flex justify-start w-[85%] mb-4 flex-col">
-                        <Breadcrumb 
+                        <Breadcrumb
                             activeScreen={activeScreen}
                             setActiveScreen={setActiveScreen}
                         />
@@ -119,7 +119,7 @@ export default function Menu(
                                                 📅 Próxima Aula: {formatDate(course.nextClass)}
                                             </p>
                                             <p className="border-2 w-[200px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold">
-                                                📄 Exercícios: 4Q
+                                                📄 Exercícios: {course?.exercises?.length}
                                             </p>
                                         </div>
                                     </div>
@@ -128,6 +128,19 @@ export default function Menu(
                         ))
                     }
                     <div className="flex items-center justify-start w-[85%] py-4 mt-1">
+                        <div
+                            className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
+                            onClick={() => setActiveScreen('aichat')}
+                        >
+                            <p className="text-[12pt] w-[25%] text-center rounded-full bg-blue-500 font-semibold text-white mb-2">novo</p>
+                            <h3 className="text-lg font-medium">🎓Tire Suas Dúvidas</h3>
+                            <div className="flex">
+                                <div>
+                                    <h1 className="text-3xl font-semibold text-blue-500">Fale com o Edu</h1>
+
+                                </div>
+                            </div>
+                        </div>
                         <div
                             className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
                             onClick={() => setActiveScreen('exercises')}

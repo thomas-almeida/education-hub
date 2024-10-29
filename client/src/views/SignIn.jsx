@@ -78,9 +78,9 @@ export default function SignIn() {
                                 />
 
                                 <p className="text-center mt-4">
-                                    Ainda sem login?
+                                    Esqueceu a Senha?
                                     <NavLink to={"/sign-up"}>
-                                        <b className="font-semibold text-blue-500 hover:underline"> Conheça o EduHub</b>
+                                        <b className="font-semibold text-blue-500 hover:underline"> Resetar Minha Senha</b>
                                     </NavLink>
                                 </p>
                             </form>

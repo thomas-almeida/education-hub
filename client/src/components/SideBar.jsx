@@ -34,7 +34,7 @@ export default function SideBar(
 
                 console.log(userId !== undefined)
                 if (userId !== undefined) {
-                    const response = await axios.get(`${baseUrl.productionUrl}/users/get-students/${userId}`,{
+                    const response = await axios.get(`${baseUrl.productionUrl}/users/get-students/${userId}`, {
                         headers: {
                             "ngrok-skip-browser-warning": "true"
                         }
@@ -61,7 +61,7 @@ export default function SideBar(
                         </h2>
                     </div>
                     <div className="flex items-center font-normal">
-                        <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%] text-slate-500">
+                        <b className="border-gray-500 rounded-sm font-medium text-sm italic whitespace-nowrap overflow-hidden text-ellipsis w-[80%] text-blue-400">
                             @{userEmail}
                         </b>
                     </div>
@@ -96,10 +96,17 @@ export default function SideBar(
                     >
                         <a href="#">Exercícios</a>
                     </li>
+                    <li
+                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
+                        onClick={() => setActiveScreen('aichat')}
+                    >
+                        <a href="#">Tirar Dúvidas</a>
+                        <p className="text-[10pt] text-center rounded-full ml-2 font-semibold text-blue-500">novo</p>
+                    </li>
                 </ul>
             </div>
             <div className="flex justify-center items-center">
-                <hr className="w-[80%]" />
+                <hr className="w-[80%] border-2 rounded-full" />
             </div>
             {
                 students !== undefined && (
@@ -111,7 +118,10 @@ export default function SideBar(
                             students.map((student) => (
                                 <div className="px-5 my-2">
                                     <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
-                                    <p className="px-1 italic text-[#7f7f7f]">@{student.username}</p>
+                                    <div className="flex justify-start items-center">
+                                        <p className="text-[7pt]">🟢</p>
+                                        <p className="italic text-[#7f7f7f]"> @{student.username}</p>
+                                    </div>
                                 </div>
                             ))
                         }
