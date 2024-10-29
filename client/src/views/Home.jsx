@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import SideBar from "../components/SideBar"
 import axios from 'axios'
 import Screens from "../components/screens"
@@ -8,6 +9,7 @@ import baseUrl from './utils/baseUrl.js'
 
 export default function Home() {
 
+  const redirect = useNavigate()
   const [userData, setUserData] = useState('')
   const [activeScreen, setActiveScreen] = useState('menu')
 
@@ -24,9 +26,14 @@ export default function Home() {
       setUserData(response.data?.user)
     }
 
-    getUserData()   
+    getUserData()
 
   }, [])
+
+  function logOffUser() {
+    localStorage.clear()
+    redirect('/')
+  }
 
   return (
     <>
@@ -43,7 +50,10 @@ export default function Home() {
         </div>
         <div className="w-[100%] screens">
           <div className="flex items-center px-8 py-3 justify-end">
-            <div className="hidden p-1 px-2 border-2 rounded-md mt-2 mr-6 cursor-pointer transition hover:border-[#f92f60] hover:scale-[1.02]">
+            <div
+              className="p-1 px-2 border-2 rounded-md mt-2 mr-6 cursor-pointer transition hover:border-[#f92f60] hover:scale-[1.02]"
+              onClick={() => logOffUser()}
+            >
               <p className="text-[10pt]"> <b className="text-[8pt]">❌</b> Sair do App</p>
             </div>
             <img src="/edu-hub-logo.png" className="w-[30px] mr-1 relative top-1" alt="" />

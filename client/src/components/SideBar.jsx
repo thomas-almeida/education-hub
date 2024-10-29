@@ -105,27 +105,33 @@ export default function SideBar(
                     </li>
                 </ul>
             </div>
-            <div className="flex justify-center items-center">
-                <hr className="w-[80%] border-2 rounded-full" />
-            </div>
+
             {
                 students !== undefined && (
-                    <div className="overflow-y-scroll">
 
-                        <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
+                    <div className={ userTag !== 'SPONSOR' && userTag !== 'ADMIN' ? `hidden` : ''}>
+                        <div className="flex justify-center items-center">
+                            <hr className="w-[80%] border-2 rounded-full" />
+                        </div>
+                        <div className="overflow-y-scroll">
 
-                        {
-                            students.map((student) => (
-                                <div className="px-5 my-2">
-                                    <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
-                                    <div className="flex justify-start items-center">
-                                        <p className="text-[7pt]">🟢</p>
-                                        <p className="italic text-[#7f7f7f]"> @{student.username}</p>
+                            <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
+
+                            {
+                                students.map((student) => (
+                                    <div className="px-5 my-2">
+                                        <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
+                                        <div className="flex justify-start items-center">
+                                            <p className="text-[7pt]">🟢</p>
+                                            <p className="italic text-[#7f7f7f]"> @{student.username}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))
-                        }
+                                ))
+                            }
+
+                        </div>
                     </div>
+
                 )
             }
         </div>
