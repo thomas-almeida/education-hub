@@ -43,7 +43,7 @@ export default function Home() {
         </div>
         <div className="w-[100%] screens">
           <div className="flex items-center px-8 py-3 justify-end">
-            <div className="p-1 px-2 border-2 rounded-md mt-2 mr-6 cursor-pointer transition hover:border-[#f92f60] hover:scale-[1.02]">
+            <div className="hidden p-1 px-2 border-2 rounded-md mt-2 mr-6 cursor-pointer transition hover:border-[#f92f60] hover:scale-[1.02]">
               <p className="text-[10pt]"> <b className="text-[8pt]">❌</b> Sair do App</p>
             </div>
             <img src="/edu-hub-logo.png" className="w-[30px] mr-1 relative top-1" alt="" />
