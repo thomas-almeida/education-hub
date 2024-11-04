@@ -65,11 +65,11 @@ export default function AiChat({
                                 <img src="/edu-hub-logo.png" className="w-[100px]" alt="" />
                                 <h1 className="font-semibold text-2xl py-1 text-slate-500">Edu</h1>
                                 <p className="font-semibold text-sm text-center w-[32%] text-slate-400">
-                                    {`Olá ${userData?.name} Me diga suas dúvidas sobre as aulas, vamos ajudar você!`}
+                                    {`Olá @${userData?.name}!, Me diga suas dúvidas sobre as aulas, vamos ajudar você!`}
                                 </p>
                             </div>
                             <div
-                                className="h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative"
+                                className={userData?.paymentStatus === 0 ? 'hidden' : 'h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative'}
                             >
                                 {
                                     userData?.chatHistory?.map((chatObj) => (
@@ -80,7 +80,7 @@ export default function AiChat({
                                             <div className='relative'>
                                                 <div className='flex justify-end'>
                                                     <div
-                                                        className={`shadow-md bg-blue-400 p-4 rounded-md`}
+                                                        className={`shadow-md bg-blue-500 p-4 rounded-md`}
                                                     >
                                                         <p className="text-sm font-semibold text-white">
                                                             {
@@ -108,7 +108,7 @@ export default function AiChat({
                                 }
                                 <div ref={chatEndsRef} />
                             </div>
-                            <div className="flex justify-center items-center ">
+                            <div className={`${userData?.paymentStatus !== 1 ? 'flex justify-center items-center pointer-events-none' : 'flex justify-center items-center'}`}>
                                 <div
                                     className={`flex items-center relative w-[55%] ${userData?.paymentStatus !== 1 ? 'bg-[#f4f4f4]' : 'bg-white'}  border shadow-lg rounded-lg px-4 py-4`}
                                 >
@@ -126,8 +126,8 @@ export default function AiChat({
                                     </textarea>
 
                                     <img
-                                        src="/arrow.svg"
-                                        className="w-[40px] border rounded-full p-2 shadow-md absolute right-[10px] bg-[#878787df] cursor-pointer"
+                                        src="/arrow-r.png"
+                                        className="w-[40px] border rounded-full p-[10px] shadow-md absolute right-[10px] bg-blue-500 cursor-pointer"
                                         onClick={() => askToGemini()}
                                     />
                                 </div>
