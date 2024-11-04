@@ -13,21 +13,19 @@ export default function Home() {
   const [userData, setUserData] = useState('')
   const [activeScreen, setActiveScreen] = useState('menu')
 
+  async function getUserData() {
+    let url = window.location
+    let userId = new URLSearchParams(url.search).get('id')
+    const response = await axios.get(`${baseUrl.productionUrl}/users/get-user-by-id/${userId}`, {
+      headers: {
+        "ngrok-skip-browser-warning": "true"
+      }
+    })
+    setUserData(response.data?.user)
+  }
+
   useEffect(() => {
-
-    async function getUserData() {
-      let url = window.location
-      let userId = new URLSearchParams(url.search).get('id')
-      const response = await axios.get(`${baseUrl.productionUrl}/users/get-user-by-id/${userId}`, {
-        headers: {
-          "ngrok-skip-browser-warning": "true"
-        }
-      })
-      setUserData(response.data?.user)
-    }
-
     getUserData()
-
   }, [])
 
   function logOffUser() {
@@ -64,6 +62,7 @@ export default function Home() {
               setActiveScreen={setActiveScreen}
               activeScreen={activeScreen}
               userData={userData}
+              refreshData={getUserData}
             />
           </div>
         </div>

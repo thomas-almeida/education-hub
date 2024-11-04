@@ -2,17 +2,58 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
-//import { useEffect, useState } from "react"
-//import axios from "axios"
-//import baseUrl from '../utils/baseUrl'
+import { useState, useRef, useEffect } from "react"
+import axios from "axios"
+import baseUrl from '../utils/baseUrl'
+import Markdown from 'react-markdown'
 
 export default function AiChat({
     visible,
     userData,
     setActiveScreen,
-    activeScreen
+    activeScreen,
+    refreshData
 }) {
 
+
+    const [userPrompt, setUserPrompt] = useState('')
+    const chatEndsRef = useRef(null)
+
+    const promptPayload = {
+        prompt: {
+            contents: [
+                {
+                    parts: [
+                        {
+                            text: userPrompt
+                        }
+                    ]
+                }
+            ]
+        },
+        userId: userData?.id
+    }
+
+    async function askToGemini() {
+        try {
+            const response = await axios.post(`${baseUrl.productionUrl}/chat/ask-to-edu`, promptPayload)
+            setUserPrompt('')
+            console.log(response.data)
+        } catch (error) {
+            console.error(error)
+        } finally {
+            refreshData()
+            scrollToBottom()
+        }
+    }
+
+    function scrollToBottom() {
+        chatEndsRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [userData?.chatHistory])
 
     return (
         <>
@@ -28,35 +69,44 @@ export default function AiChat({
                                 </p>
                             </div>
                             <div
-                                className="border h-[80vh] mb-2 p-4 overflow-y-auto hidden"
+                                className="h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative"
                             >
                                 {
                                     userData?.chatHistory?.map((chatObj) => (
                                         <div
                                             key={chatObj?.id}
-                                            className="relative p-4 px-8 h-[100%] border"
+                                            className="relative p-4 px-8"
                                         >
-                                            <div
-                                                className={`absolute right-0 border shadow-md bg-blue-400 p-4 rounded-md`}
-                                            >
-                                                <p className="text-sm font-semibold text-white">
-                                                    {
-                                                        chatObj?.userMessage?.contents[0]?.parts[0]?.text
-                                                    }
-                                                </p>
-                                            </div>
-                                            <div
-                                                className={`absolute left-0 border shadow-md bg-slate-600 p-4 rounded-md w-[60%]`}
-                                            >
-                                                <p className="text-sm font-semibold text-white">
-                                                    {
-                                                        chatObj?.aiResult?.response?.candidates[0]?.content?.parts[0]?.text
-                                                    }
-                                                </p>
+                                            <div className='relative'>
+                                                <div className='flex justify-end'>
+                                                    <div
+                                                        className={`shadow-md bg-blue-400 p-4 rounded-md`}
+                                                    >
+                                                        <p className="text-sm font-semibold text-white">
+                                                            {
+                                                                chatObj?.userMessage?.contents[0]?.parts[0]?.text
+                                                            }
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className='flex justify-start mt-6'>
+                                                    <div
+                                                        className={`shadow-lg bg-white p-4 rounded-md w-[75%]`}
+                                                    >
+                                                        <p className="text-sm font-semibold text-black leading-7">
+                                                            <Markdown>
+                                                                {
+                                                                    chatObj?.aiResult?.response?.candidates[0]?.content?.parts[0]?.text
+                                                                }
+                                                            </Markdown>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     ))
                                 }
+                                <div ref={chatEndsRef} />
                             </div>
                             <div className="flex justify-center items-center ">
                                 <div
@@ -70,14 +120,15 @@ export default function AiChat({
                                         className="w-[90%] text-sm outline-none"
                                         aria-multiline={true}
                                         disabled={userData?.paymentStatus !== 1}
-
+                                        onChange={(e) => setUserPrompt(e.target.value)}
+                                        value={userPrompt}
                                     >
                                     </textarea>
 
                                     <img
                                         src="/arrow.svg"
                                         className="w-[40px] border rounded-full p-2 shadow-md absolute right-[10px] bg-[#878787df] cursor-pointer"
-                                        onClick={() => alert('aa')}
+                                        onClick={() => askToGemini()}
                                     />
                                 </div>
                             </div>
