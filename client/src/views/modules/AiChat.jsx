@@ -18,6 +18,7 @@ export default function AiChat({
 
     const [userPrompt, setUserPrompt] = useState('')
     const chatEndsRef = useRef(null)
+    const chatContainer = useRef(null)
 
     const promptPayload = {
         prompt: {
@@ -70,6 +71,7 @@ export default function AiChat({
                             </div>
                             <div
                                 className="h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative"
+                                ref={chatContainer}
                             >
                                 {
                                     userData?.chatHistory?.map((chatObj) => (
@@ -80,7 +82,7 @@ export default function AiChat({
                                             <div className='relative'>
                                                 <div className='flex justify-end'>
                                                     <div
-                                                        className={`shadow-md bg-blue-400 p-4 rounded-md`}
+                                                        className={`shadow-md bg-blue-400 p-4 rounded-md max-w-[65%]`}
                                                     >
                                                         <p className="text-sm font-semibold text-white">
                                                             {
@@ -91,7 +93,7 @@ export default function AiChat({
                                                 </div>
                                                 <div className='flex justify-start mt-6'>
                                                     <div
-                                                        className={`shadow-lg bg-white p-4 rounded-md w-[75%]`}
+                                                        className={`shadow-lg bg-white p-4 rounded-md max-w-[75%]`}
                                                     >
                                                         <p className="text-sm font-semibold text-black leading-7">
                                                             <Markdown>
@@ -108,9 +110,15 @@ export default function AiChat({
                                 }
                                 <div ref={chatEndsRef} />
                             </div>
+                            <div
+                                className={`absolute bottom-[10%] right-[40%] border-2 px-4 py-2 rounded-md z-[9999] cursor-pointer shadow-md text-white bg-blue-500`}
+                                onClick={() => scrollToBottom()}
+                            >
+                                <p>{chatContainer.current?.scrollTop}</p>
+                            </div>
                             <div className="flex justify-center items-center ">
                                 <div
-                                    className={`flex items-center relative w-[55%] ${userData?.paymentStatus !== 1 ? 'bg-[#f4f4f4]' : 'bg-white'}  border shadow-lg rounded-lg px-4 py-4`}
+                                    className={`flex items-center relative w-[55%] ${userData?.paymentStatus !== 1 ? 'bg-[#f4f4f4] pointer-events-none' : 'bg-white'}  border shadow-lg rounded-lg px-4 py-4`}
                                 >
                                     <textarea
                                         style={{
@@ -127,7 +135,7 @@ export default function AiChat({
 
                                     <img
                                         src="/arrow.svg"
-                                        className="w-[40px] border rounded-full p-2 shadow-md absolute right-[10px] bg-[#878787df] cursor-pointer"
+                                        className={`w-[40px] border rounded-full p-2 shadow-md absolute right-[10px] ${userData?.paymentStatus !== 1 ? 'bg-[#878787df]' : 'bg-blue-500'} cursor-pointer`}
                                         onClick={() => askToGemini()}
                                     />
                                 </div>

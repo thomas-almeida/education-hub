@@ -91,7 +91,7 @@ export default function SideBar(
                         </a>
                     </li>
                     <li
-                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
+                        className={`p-2 cursor-pointer font-semibold text-lg hover:text-blue-500 ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('exercises')}
                     >
                         <a href="#">Exercícios</a>
@@ -113,9 +113,8 @@ export default function SideBar(
                         <div className="flex justify-center items-center">
                             <hr className="w-[80%] border-2 rounded-full" />
                         </div>
-                        <div className="overflow-y-scroll">
-
-                            <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
+                        <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
+                        <div className="overflow-y-scroll h-[340px]">
 
                             {
                                 students.map((student) => (
