@@ -92,9 +92,9 @@ export default function Menu(
                                     <div className="flex items-center py-4">
                                         <div className="relative top-1">
                                             <h3 className="text-lg font-medium leading-3">
-                                                Thomas Almeida
+                                               {course.instructor.name}
                                             </h3>
-                                            <p>{`${userData?.role === 'ADMIN' && course?.instructorId === userData?.id ? 'Voce é o Instrutor deste Curso' : 'Instrutor'}`}</p>
+                                            <p>{`${userData?.role === 'ADMIN' && course?.instructor?.id === userData?.id ? 'Voce é o Instrutor deste Curso' : 'Instrutor'}`}</p>
                                         </div>
                                     </div>
                                     <p className="py-1 w-[70%] text-slate-700 font-medium italic">{course?.description}</p>
