@@ -75,7 +75,7 @@ export default function Menu(
                             setActiveScreen={setActiveScreen}
                         />
                         <h2 className="w-auto text-left text-2xl font-semibold">Meus Cursos</h2>
-                        <p>{userData?.role === 'ADMIN' || userData?.role === 'SPONSOR' ? 'Cursos que você é Adminstrador ou Convidado' : 'Cursos que você está matriculado'}</p>
+                        <p>{userData?.role === 'ADMIN' || userData?.role === 'SPONSOR' ? 'Cursos que você é Instrutor, Aluno ou Convidado' : 'Cursos que você está matriculado'}</p>
                     </div>
                     {
                         coursesList.map(course => (
@@ -87,14 +87,18 @@ export default function Menu(
                                 <div className="p-12 h-[360px] course-banner">
                                     <div className="flex items-center relative left-[-12px]">
                                         <img src={course.icon} className="w-[60px] mr-2" alt="" />
-                                        <h1 className="text-3xl font-semibold w-[40%] leading-8">{course?.name}</h1>
+                                        <h1 className="text-3xl font-semibold w-[60%] leading-8">{course?.name}</h1>
                                     </div>
                                     <div className="flex items-center py-4">
                                         <div className="relative top-1">
                                             <h3 className="text-lg font-medium leading-3">
-                                               {course.instructor.name}
+                                                {course.instructor.name}
                                             </h3>
-                                            <p>{`${userData?.role === 'ADMIN' && course?.instructor?.id === userData?.id ? 'Voce é o Instrutor deste Curso' : 'Instrutor'}`}</p>
+                                            <p
+                                                className="border px-2 mt-2 border-2 rounded-md font-semibold"
+                                            >
+                                                {`${userData?.role === 'ADMIN' && course?.instructor?.id === userData?.id ? 'Voce é o Instrutor(a) deste Curso' : 'Instrutor'}`}
+                                            </p>
                                         </div>
                                     </div>
                                     <p className="py-1 w-[70%] text-slate-700 font-medium italic">{course?.description}</p>
