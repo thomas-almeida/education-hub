@@ -11,6 +11,7 @@ export default function Home() {
 
   const redirect = useNavigate()
   const [userData, setUserData] = useState('')
+  const [coursesList, setCoursesList] = useState([])
   const [activeScreen, setActiveScreen] = useState('menu')
 
   async function getUserData() {
@@ -28,6 +29,37 @@ export default function Home() {
     getUserData()
   }, [])
 
+  useEffect(() => {
+
+    async function getCourses() {
+
+        if (userData && userData?.id) {
+            const userId = userData?.id
+
+            if (userData.role === 'ADMIN') {
+                const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-instructor-id/${userId}`, {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                })
+                setCoursesList(response.data?.courses)
+            } else {
+                const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-student-id/${userData?.courseId}`, {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                })
+                setCoursesList(response.data?.courses)
+            }
+        }
+
+    }
+
+    getCourses()
+
+}, [userData])
+
+
   function logOffUser() {
     localStorage.clear()
     redirect('/')
@@ -44,6 +76,7 @@ export default function Home() {
             userId={userData?.id}
             activeScreen={activeScreen}
             setActiveScreen={setActiveScreen}
+            coursesList={coursesList}
           />
         </div>
         <div className="w-[100%] screens">
@@ -63,6 +96,7 @@ export default function Home() {
               activeScreen={activeScreen}
               userData={userData}
               refreshData={getUserData}
+              coursesList={coursesList}
             />
           </div>
         </div>

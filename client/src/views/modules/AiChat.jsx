@@ -70,7 +70,7 @@ export default function AiChat({
                                 </p>
                             </div>
                             <div
-                                className="h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative"
+                                className={`${userData?.chatHistory?.length > 0 ? 'h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative' : 'hidden'}`}
                                 ref={chatContainer}
                             >
                                 {

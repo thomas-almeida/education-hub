@@ -7,13 +7,13 @@ import Class from "../views/modules/Class"
 import Exercises from "../views/modules/Exercise"
 import Menu from "../views/modules/Menu"
 
-export default function Screens({ activeScreen, userData, setActiveScreen, refreshData }) {
+export default function Screens({ activeScreen, userData, setActiveScreen, refreshData, coursesList }) {
 
     return (
         <>
-            {activeScreen === 'menu' && <Menu visible={true} userData={userData} setActiveScreen={setActiveScreen} activeScreen={activeScreen} />}
-            {activeScreen === 'class' && <Class visible={true} userData={userData} setActiveScreen={setActiveScreen} activeScreen={activeScreen} />}
-            {activeScreen === 'exercises' && <Exercises visible={true} setActiveScreen={setActiveScreen} activeScreen={activeScreen} />}
+            {activeScreen === 'menu' && <Menu visible={true} userData={userData} setActiveScreen={setActiveScreen} activeScreen={activeScreen} coursesList={coursesList} />}
+            {activeScreen === 'class' && <Class visible={true} userData={userData} setActiveScreen={setActiveScreen} activeScreen={activeScreen} coursesList={coursesList} />}
+            {activeScreen === 'exercises' && <Exercises visible={true} setActiveScreen={setActiveScreen} activeScreen={activeScreen} coursesList={coursesList} />}
             {activeScreen === 'aichat' && <AiChat visible={true} setActiveScreen={setActiveScreen} activeScreen={activeScreen} userData={userData}  refreshData={refreshData} />}
         </>
     )

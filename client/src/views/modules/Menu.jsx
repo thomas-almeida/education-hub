@@ -10,13 +10,10 @@ export default function Menu(
         visible,
         setActiveScreen,
         activeScreen,
-        userData
+        userData,
+        coursesList
     }
 ) {
-
-    const totalHomeworks = 0
-
-    const [coursesList, setCoursesList] = useState([])
 
     function calculateFreq(userFrequency, currentClass) {
         return (userFrequency / currentClass) * 100
@@ -30,36 +27,6 @@ export default function Menu(
         return `${dd}/${mm}/${yy}`
     }
 
-    useEffect(() => {
-
-        async function getCourses() {
-
-            if (userData && userData?.id) {
-                const userId = userData?.id
-
-                if (userData.role === 'ADMIN') {
-                    const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-instructor-id/${userId}`, {
-                        headers: {
-                            "ngrok-skip-browser-warning": "true"
-                        }
-                    })
-                    setCoursesList(response.data?.courses)
-                } else {
-                    const response = await axios.get(`${baseUrl.productionUrl}/users/admin/courses/get-courses-by-student-id/${userData?.courseId}`, {
-                        headers: {
-                            "ngrok-skip-browser-warning": "true"
-                        }
-                    })
-                    setCoursesList(response.data?.courses)
-                }
-            }
-
-        }
-
-        getCourses()
-
-    }, [userData])
-
     function showClassesFromCourse(courseId) {
         localStorage.setItem('currentCourse', courseId)
         setActiveScreen('class')
@@ -69,7 +36,7 @@ export default function Menu(
         <>
             <div className={visible ? `flex items-center justify-center` : `hidden`}>
                 <div className="flex flex-col items-center menu-container">
-                    <div className="flex justify-start w-[85%] mb-4 flex-col">
+                    <div className="flex justify-start w-[100%] mb-4 flex-col">
                         <Breadcrumb
                             activeScreen={activeScreen}
                             setActiveScreen={setActiveScreen}
@@ -78,9 +45,9 @@ export default function Menu(
                         <p>{userData?.role === 'ADMIN' || userData?.role === 'SPONSOR' ? 'Cursos que você é Instrutor, Aluno ou Convidado' : 'Cursos que você está matriculado'}</p>
                     </div>
                     {
-                        coursesList.map(course => (
+                        coursesList?.map(course => (
                             <div
-                                className="flex items-center rounded-md border-2 shadow-sm w-[85%] my-2 bg-white cursor-pointer transition hover:scale-[1.02]"
+                                className="flex items-center rounded-md border-2 shadow-sm w-[100%] my-2 bg-white cursor-pointer transition hover:scale-[1.02]"
                                 onClick={() => showClassesFromCourse(course.id)}
                                 key={course?.id}
                             >
@@ -95,7 +62,7 @@ export default function Menu(
                                                 {course.instructor.name}
                                             </h3>
                                             <p
-                                                className="border px-2 mt-2 border-2 rounded-md font-semibold"
+                                                className="px-2 mt-2 border-2 rounded-md font-semibold"
                                             >
                                                 {`${userData?.role === 'ADMIN' && course?.instructor?.id === userData?.id ? 'Voce é o Instrutor(a) deste Curso' : 'Instrutor'}`}
                                             </p>
@@ -131,7 +98,7 @@ export default function Menu(
                             </div>
                         ))
                     }
-                    <div className="flex items-center justify-start w-[85%] py-4 mt-1">
+                    <div className="grid grid-cols-3 items-center justify-start py-4 mt-1">
                         <div
                             className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
                             onClick={() => setActiveScreen('aichat')}

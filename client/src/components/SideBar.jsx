@@ -11,7 +11,8 @@ export default function SideBar(
         userName,
         userEmail,
         userTag,
-        userId
+        userId,
+        coursesList
     }
 ) {
 
@@ -52,7 +53,7 @@ export default function SideBar(
     }, [userId])
 
     return (
-        <div className="bg-white text-black h-svh w-[220px] border sidebar">
+        <div className="bg-white text-black h-[100vh] w-[220px] border sidebar">
             <div className="flex items-center px-4 py-6">
                 <div className="">
                     <div className="flex items-center">
@@ -97,7 +98,7 @@ export default function SideBar(
                         <a href="#">Exercícios</a>
                     </li>
                     <li
-                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
+                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'aichat' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('aichat')}
                     >
                         <a href="#">Tirar Dúvidas</a>
@@ -109,25 +110,46 @@ export default function SideBar(
             {
                 students !== undefined && (
 
-                    <div className={ userTag !== 'SPONSOR' && userTag !== 'ADMIN' ? `hidden` : ''}>
+                    <div className={userTag !== 'SPONSOR' && userTag !== 'ADMIN' ? `hidden` : ''}>
                         <div className="flex justify-center items-center">
                             <hr className="w-[80%] border-2 rounded-full" />
                         </div>
                         <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
-                        <div className="overflow-y-scroll h-[340px]">
+                        <div
+                            className="py-2 flex justify-center items-center"
+                        >
+                            <button
+                                className="border-2 border-blue-400 text-blue-500 font-medium w-[80%] rounded-sm py-1 transition hover:scale-[1.02]"
+                            >
+                                Criar Acesso
+                            </button>
+                        </div>
+                        <div className="overflow-y-auto h-[450px]">
 
                             {
-                                students.map((student) => (
-                                    <div className="px-5 my-2">
-                                        <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
-                                        <div className="flex justify-start items-center">
-                                            <p className="text-[7pt]">🟢</p>
-                                            <p className="italic text-[#7f7f7f]"> @{student.username}</p>
-                                        </div>
-                                    </div>
-                                ))
+                                coursesList.map(
+                                    (course => (
+                                        course?.students?.map(
+                                            (student => (
+                                                <>
+                                                    <div className="px-5 my-2">
+                                                        <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
+                                                        <div className="flex justify-start items-center">
+                                                            <p className="text-[7pt] hidden">🟢</p>
+                                                            <p className="italic text-[#20a2ff]"> @{student.username}</p>
+                                                        </div>
+                                                        <p className="text-sm text-[#7f7f7f] text-ellipsis overflow-hidden whitespace-nowrap">🎓{course.name}</p>
+                                                    </div>
+                                                </>
+                                            ))
+                                        )
+                                    ))
+                                )
                             }
 
+                        </div>
+                        <div className="border h-[140px] p-2 bg-[#1a1a1a15] flex justify-center items-center font-semibold rounded-md shadow-md">
+                            <h2>AD</h2>
                         </div>
                     </div>
 
