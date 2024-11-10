@@ -28,7 +28,7 @@ export default function Breadcrumb({
 
   return (
     <>
-      <div className="p-1 my-4 border w-[180px] bg-white rounded-md flex justify-center items-center list-none">
+      <div className="p-1 my-4 border w-[180px] bg-white rounded-md flex justify-center items-center list-none absolute top-0 left-[18%]">
         <li 
           className="font-semibold cursor-pointer px-2 hover:text-blue-500 text-center"
           onClick={() => setActiveScreen('menu')}
