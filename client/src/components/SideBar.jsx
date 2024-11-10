@@ -33,7 +33,6 @@ export default function SideBar(
         async function getStudents() {
             try {
 
-                console.log(userId !== undefined)
                 if (userId !== undefined) {
                     const response = await axios.get(`${baseUrl.productionUrl}/users/get-students/${userId}`, {
                         headers: {
@@ -53,7 +52,7 @@ export default function SideBar(
     }, [userId])
 
     return (
-        <div className="bg-white text-black h-[100vh] w-[220px] border sidebar">
+        <div className="bg-white text-black h-[100vh] w-[220px] border overflow-y-auto sidebar">
             <div className="flex items-center px-4 py-6">
                 <div className="">
                     <div className="flex items-center">
@@ -116,7 +115,7 @@ export default function SideBar(
                         </div>
                         <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
                         <div
-                            className="py-2 flex justify-center items-center"
+                            className="py-2 flex justify-center items-center hidden"
                         >
                             <button
                                 className="border-2 border-blue-400 text-blue-500 font-medium w-[80%] rounded-sm py-1 transition hover:scale-[1.02]"
@@ -124,7 +123,7 @@ export default function SideBar(
                                 Criar Acesso
                             </button>
                         </div>
-                        <div className="overflow-y-auto h-[450px]">
+                        <div className="">
 
                             {
                                 coursesList.map(
@@ -132,10 +131,11 @@ export default function SideBar(
                                         course?.students?.map(
                                             (student => (
                                                 <>
-                                                    <div className="px-5 my-2">
+                                                    <div
+                                                        className="px-5 my-2"
+                                                    >
                                                         <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
                                                         <div className="flex justify-start items-center">
-                                                            <p className="text-[7pt] hidden">🟢</p>
                                                             <p className="italic text-[#20a2ff]"> @{student.username}</p>
                                                         </div>
                                                         <p className="text-sm text-[#7f7f7f] text-ellipsis overflow-hidden whitespace-nowrap">🎓{course.name}</p>
@@ -147,9 +147,6 @@ export default function SideBar(
                                 )
                             }
 
-                        </div>
-                        <div className="border h-[140px] p-2 bg-[#1a1a1a15] flex justify-center items-center font-semibold rounded-md shadow-md">
-                            <h2>AD</h2>
                         </div>
                     </div>
 
