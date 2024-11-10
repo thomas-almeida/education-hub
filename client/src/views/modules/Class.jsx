@@ -175,77 +175,62 @@ export default function Class({
                                 Voltar
                             </button>
 
-                            <iframe
-                                className="border-4 border-gray-400 rounded-md shadow-lg hover:border-blue-500"
-                                src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
-                                width="100%"
-                                height="500px"
-                                allow="autoplay"
-                                allowFullScreen
-                            >
-                            </iframe>
-                            <div className="flex items-center mb-4 mt-4">
-                                <img
-                                    src="/excel-2.png"
-                                    className="w-[30px] mr-1"
-                                />
-                                <h2 className="font-semibold text-2xl">
-                                    {currentClass?.name}
-                                </h2>
-                                <p className="border-2 w-[125px] text-center p-1 rounded-md ml-10">
-                                    📅 {formatDate(currentClass?.schedule)}
-                                </p>
-                            </div>
-                            <div className="flex justify-start">
-                                <p className="w-[60%] mr-2 pt-2 text-md border p-4 rounded-md bg-slate-50">
-                                    {currentClass?.description}
-                                </p>
-                                <div className="w-[40%] pt-2 py-2 mt-2 rounded-md">
-                                    <b className="font-semibold">📁 Materiais de Apoio</b>
-                                    <div className="mt-2">
-                                        {
-                                            currentClass?.attachments?.map(attachItem => (
-                                                <a
-                                                    href={`${baseUrl.productionUrl}/files/download/${attachItem?.filename}`}
-                                                    download
-                                                >
-                                                    <div
-                                                        key={attachItem.filename}
-                                                        className="flex items-center cursor-pointer border-2 w-[280px] px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
-
-                                                    >
-                                                        <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
-                                                        <h3>{attachItem.originalname}</h3>
-                                                    </div>
-                                                </a>
-                                            ))
-                                        }
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div className="p-2 ml-4 mt-20 w-[650px] class-materials overflow-y-scroll rounded-md shadow-sm">
-
-                            {
-                                classListData?.map(classItem => (
-                                    <div className="cursor-pointer border my-2 rounded-md px-2 transition hover:scale-[1.02] hover:border-blue-500 shadow-md">
+                            <div>
+                                <div className="flex justify-center">
+                                    <div className="w-[75%] mr-2">
                                         <iframe
-                                            src={`https://drive.google.com/file/d/${classItem?.videoUrl}/preview`}
-                                            className="border-2 border-slate-300 my-2 rounded-md pointer-events-none"
+                                            className="border-4 border-gray-400 rounded-md shadow-lg hover:border-blue-500"
+                                            src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
                                             width="100%"
-                                            height="160px"
+                                            height="400px"
+                                            allow="autoplay"
+                                            allowFullScreen
                                         >
                                         </iframe>
-                                        <div>
-                                            <h3 className="font-semibold text-slate-900 text-lg">{classItem?.name}</h3>
-                                            <p>{formatDate(currentClass?.schedule)}</p>
+                                        <div className="flex items-center mt-4">
+                                            <img
+                                                src="/excel-2.png"
+                                                className="w-[30px] mr-1"
+                                            />
+                                            <h2 className="font-semibold text-2xl">
+                                                {currentClass?.name}
+                                            </h2>
+                                            <p className="border-2 w-[125px] text-center p-1 rounded-md ml-10">
+                                                📅 {formatDate(currentClass?.schedule)}
+                                            </p>
                                         </div>
                                     </div>
-                                ))
-                            }
+                                    <div className="w-[25%]">
+                                        <div className="pt-2 py-2 mt-2 rounded-md">
+                                            <b className="font-semibold">📁 Materiais de Apoio</b>
+                                            <div className="mt-2">
+                                                {
+                                                    currentClass?.attachments?.map(attachItem => (
+                                                        <a
+                                                            href={`${baseUrl.productionUrl}/files/download/${attachItem?.filename}`}
+                                                            download
+                                                        >
+                                                            <div
+                                                                key={attachItem.filename}
+                                                                className="flex items-center cursor-pointer border-2 px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
 
+                                                            >
+                                                                <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
+                                                                <h3>{attachItem.originalname}</h3>
+                                                            </div>
+                                                        </a>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className="">
+                                            <p className="pt-2 text-md p-4 border-2 rounded-md bg-yellow-50">
+                                                {currentClass?.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
