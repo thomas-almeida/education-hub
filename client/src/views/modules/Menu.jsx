@@ -79,13 +79,7 @@ export default function Menu(
                                             <p className="border-2 w-[130px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
                                                 📘 {course.currentClass} de {course.totalClasses} Aulas
                                             </p>
-                                            {
-                                                userData?.role === 'STUDENT' && (
-                                                    <p className="border-2 w-[180px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
-                                                        📐 Frequência: {calculateFreq(userData?.frequency, course.currentClass).toFixed(2)}%
-                                                    </p>
-                                                )
-                                            }
+                                           
                                             <p className="border-2 w-[230px] text-center mt-2 rounded-md shadow-sm bg-gray-100 text-slate-500 font-semibold mr-2">
                                                 📅 Próxima Aula: {formatDate(course.nextClass)}
                                             </p>

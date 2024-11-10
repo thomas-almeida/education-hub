@@ -101,7 +101,7 @@ export default function SideBar(
                         onClick={() => setActiveScreen('aichat')}
                     >
                         <a href="#">Tirar Dúvidas</a>
-                        <p className="text-[10pt] text-center rounded-full ml-2 font-semibold text-blue-500">novo</p>
+                        <p className="text-[10pt] text-center rounded-md ml-2 font-semibold text-blue-500">Novo!</p>
                     </li>
                 </ul>
             </div>
@@ -115,7 +115,7 @@ export default function SideBar(
                         </div>
                         <h2 className="px-6 my-2 font-semibold text-lg">Alunos</h2>
                         <div
-                            className="py-2 flex justify-center items-center hidden"
+                            className="py-2 justify-center items-center hidden"
                         >
                             <button
                                 className="border-2 border-blue-400 text-blue-500 font-medium w-[80%] rounded-sm py-1 transition hover:scale-[1.02]"

@@ -165,7 +165,7 @@ export default function Class({
                     </div>
                 </div>
                 <div className={isModalVisible ? `flex items-center justify-center absolute top-0 left-0 h-[100vh] w-[100%] bg-white  z-50` : `hidden`}>
-                    <div className="p-16 w-[80%] h-full flex rounded-md modal-class">
+                    <div className="p-16 w-[80%] h-full flex justify-center items-center rounded-md modal-class">
                         <div className="justify-center items-center py-2">
 
                             <button
@@ -174,59 +174,61 @@ export default function Class({
                             >
                                 Voltar
                             </button>
+                            <div className="flex justify-center items-center">
 
-                            <div>
-                                <div className="flex justify-center">
-                                    <div className="w-[75%] mr-2">
-                                        <iframe
-                                            className="border-4 border-gray-400 rounded-md shadow-lg hover:border-blue-500"
-                                            src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
-                                            width="100%"
-                                            height="400px"
-                                            allow="autoplay"
-                                            allowFullScreen
-                                        >
-                                        </iframe>
-                                        <div className="flex items-center mt-4">
-                                            <img
-                                                src="/excel-2.png"
-                                                className="w-[30px] mr-1"
-                                            />
-                                            <h2 className="font-semibold text-2xl">
-                                                {currentClass?.name}
-                                            </h2>
-                                            <p className="border-2 w-[125px] text-center p-1 rounded-md ml-10">
-                                                📅 {formatDate(currentClass?.schedule)}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="w-[25%]">
-                                        <div className="pt-2 py-2 mt-2 rounded-md">
-                                            <b className="font-semibold">📁 Materiais de Apoio</b>
-                                            <div className="mt-2">
-                                                {
-                                                    currentClass?.attachments?.map(attachItem => (
-                                                        <a
-                                                            href={`${baseUrl.productionUrl}/files/download/${attachItem?.filename}`}
-                                                            download
-                                                        >
-                                                            <div
-                                                                key={attachItem.filename}
-                                                                className="flex items-center cursor-pointer border-2 px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
-
-                                                            >
-                                                                <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
-                                                                <h3>{attachItem.originalname}</h3>
-                                                            </div>
-                                                        </a>
-                                                    ))
-                                                }
+                                <div>
+                                    <div className="flex justify-center">
+                                        <div className="w-[75%] mr-2">
+                                            <iframe
+                                                className="border-4 border-gray-400 rounded-md shadow-lg hover:border-blue-500"
+                                                src={`https://drive.google.com/file/d/${currentClass?.videoUrl}/preview`}
+                                                width="100%"
+                                                height="400px"
+                                                allow="autoplay"
+                                                allowFullScreen
+                                            >
+                                            </iframe>
+                                            <div className="flex items-center mt-4">
+                                                <img
+                                                    src="/excel-2.png"
+                                                    className="w-[30px] mr-1"
+                                                />
+                                                <h2 className="font-semibold text-2xl">
+                                                    {currentClass?.name}
+                                                </h2>
+                                                <p className="border-2 w-[125px] text-center p-1 rounded-md ml-10">
+                                                    📅 {formatDate(currentClass?.schedule)}
+                                                </p>
                                             </div>
                                         </div>
-                                        <div className="">
-                                            <p className="pt-2 text-md p-4 border-2 rounded-md bg-yellow-50">
-                                                {currentClass?.description}
-                                            </p>
+                                        <div className="w-[25%]">
+                                            <div className="pt-2 py-2 mt-2 rounded-md">
+                                                <b className="font-semibold">📁 Materiais de Apoio</b>
+                                                <div className="mt-2">
+                                                    {
+                                                        currentClass?.attachments?.map(attachItem => (
+                                                            <a
+                                                                href={`${baseUrl.productionUrl}/files/download/${attachItem?.filename}`}
+                                                                download
+                                                            >
+                                                                <div
+                                                                    key={attachItem.filename}
+                                                                    className="flex items-center cursor-pointer border-2 px-4 py-1 rounded-md my-2 text-left shadow-sm hover:border-blue-400"
+
+                                                                >
+                                                                    <img src="/doc-icon.svg" className="w-[20px] mr-1" alt="" />
+                                                                    <h3>{attachItem.originalname}</h3>
+                                                                </div>
+                                                            </a>
+                                                        ))
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div className="">
+                                                <p className="pt-2 text-md p-4 border-2 rounded-md bg-yellow-50">
+                                                    {currentClass?.description}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -241,5 +243,6 @@ export default function Class({
                 currentClass={currentClass}
             />
         </>
+
     )
 }
