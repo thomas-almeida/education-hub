@@ -111,7 +111,7 @@ export default function AiChat({
                                 <div ref={chatEndsRef} />
                             </div>
                             <div
-                                className={`absolute bottom-[10%] right-[40%] border-2 px-4 py-2 rounded-md z-[9999] cursor-pointer shadow-md text-white bg-blue-500`}
+                                className={`hidden absolute bottom-[10%] right-[40%] border-2 px-4 py-2 rounded-md z-[9999] cursor-pointer shadow-md text-white bg-blue-500`}
                                 onClick={() => scrollToBottom()}
                             >
                                 <p>{chatContainer.current?.scrollTop}</p>
