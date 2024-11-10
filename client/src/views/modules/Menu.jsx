@@ -35,8 +35,8 @@ export default function Menu(
     return (
         <>
             <div className={visible ? `flex items-center justify-center` : `hidden`}>
-                <div className="flex flex-col items-center menu-container">
-                    <div className="flex justify-start w-[100%] mb-4 flex-col">
+                <div className="flex flex-col items-center h-[90vh] overflow-y-auto menu-container">
+                    <div className="flex justify-start w-[85%] mb-2 flex-col">
                         <Breadcrumb
                             activeScreen={activeScreen}
                             setActiveScreen={setActiveScreen}
@@ -47,7 +47,7 @@ export default function Menu(
                     {
                         coursesList?.map(course => (
                             <div
-                                className="flex items-center rounded-md border-2 shadow-sm w-[100%] my-2 bg-white cursor-pointer transition hover:scale-[1.02]"
+                                className="flex items-center rounded-md border-2 shadow-sm w-[85%] my-2 bg-white cursor-pointer transition hover:scale-[1.02]"
                                 onClick={() => showClassesFromCourse(course.id)}
                                 key={course?.id}
                             >
@@ -62,7 +62,7 @@ export default function Menu(
                                                 {course.instructor.name}
                                             </h3>
                                             <p
-                                                className="px-2 mt-2 border-2 rounded-md font-semibold"
+                                                className="px-2 mt-2 border-2 rounded-md font-semibold text-center"
                                             >
                                                 {`${userData?.role === 'ADMIN' && course?.instructor?.id === userData?.id ? 'Voce é o Instrutor(a) deste Curso' : 'Instrutor'}`}
                                             </p>
@@ -98,7 +98,7 @@ export default function Menu(
                             </div>
                         ))
                     }
-                    <div className="grid grid-cols-3 items-center justify-start py-4 mt-1">
+                    <div className="grid grid-cols-3 justify-start py-4 mt-1 w-[85%]">
                         <div
                             className="border-2 rounded-md p-8 w-[300px] mr-2 bg-white cursor-pointer transition hover:scale-[1.02] exercises-box"
                             onClick={() => setActiveScreen('aichat')}
