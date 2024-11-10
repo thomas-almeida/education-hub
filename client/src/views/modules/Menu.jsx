@@ -95,7 +95,7 @@ export default function Menu(
                                                 {course.instructor.name}
                                             </h3>
                                             <p
-                                                className="border px-2 mt-2 border-2 rounded-md font-semibold"
+                                                className="px-2 mt-2 border-2 rounded-md font-semibold text-center"
                                             >
                                                 {`${userData?.role === 'ADMIN' && course?.instructor?.id === userData?.id ? 'Voce é o Instrutor(a) deste Curso' : 'Instrutor'}`}
                                             </p>
