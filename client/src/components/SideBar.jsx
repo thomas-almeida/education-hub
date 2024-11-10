@@ -97,11 +97,11 @@ export default function SideBar(
                         <a href="#">Exercícios</a>
                     </li>
                     <li
-                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'exercises' ? 'text-blue-500 font-bold' : ''}`}
+                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'aichat' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('aichat')}
                     >
                         <a href="#">Tirar Dúvidas</a>
-                        <p className="text-[10pt] text-center rounded-full ml-2 font-semibold text-blue-500">novo</p>
+                        <p className="text-[10pt] text-center rounded-md px-1 ml-2 font-semibold text-blue-500 border">novo</p>
                     </li>
                 </ul>
             </div>
