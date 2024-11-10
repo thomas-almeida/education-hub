@@ -70,7 +70,7 @@ export default function AiChat({
                                 </p>
                             </div>
                             <div
-                                className="h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative"
+                                className={userData?.paymentStatus !== 1 ? 'hidden' : 'h-[80vh] mb-2 p-4 overflow-y-auto scroll-smooth relative'}
                                 ref={chatContainer}
                             >
                                 {
@@ -111,7 +111,7 @@ export default function AiChat({
                                 <div ref={chatEndsRef} />
                             </div>
                             <div
-                                className={`absolute bottom-[10%] right-[40%] border-2 px-4 py-2 rounded-md z-[9999] cursor-pointer shadow-md text-white bg-blue-500`}
+                                className={`hidden absolute bottom-[10%] right-[40%] border-2 px-4 py-2 rounded-md z-[9999] cursor-pointer shadow-md text-white bg-blue-500`}
                                 onClick={() => scrollToBottom()}
                             >
                                 <p>{chatContainer.current?.scrollTop}</p>
