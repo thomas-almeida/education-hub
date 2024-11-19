@@ -97,10 +97,17 @@ export default function SideBar(
                         <a href="#">Exercícios</a>
                     </li>
                     <li
-                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'aichat' ? 'text-blue-500 font-bold' : ''}`}
+                        className={`p-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'aichat' ? 'text-blue-500 font-bold' : ''}`}
                         onClick={() => setActiveScreen('aichat')}
                     >
                         <a href="#">Tirar Dúvidas</a>
+                        <p className="text-[10pt] text-center rounded-md ml-2 font-semibold text-blue-500">Novo!</p>
+                    </li>
+                    <li
+                        className={`p-2 mb-2 cursor-pointer font-semibold text-lg hover:text-blue-500 flex ${activeScreen === 'challenges' ? 'text-blue-500 font-bold' : ''}`}
+                        onClick={() => setActiveScreen('challenges')}
+                    >
+                        <a href="#">Desafios</a>
                         <p className="text-[10pt] text-center rounded-md ml-2 font-semibold text-blue-500">Novo!</p>
                     </li>
                 </ul>
@@ -135,9 +142,6 @@ export default function SideBar(
                                                         className="px-5 my-2"
                                                     >
                                                         <h3 className="px-1 font-medium hover:text-blue-500 cursor-pointer">{student.name}</h3>
-                                                        <div className="flex justify-start items-center">
-                                                            <p className="italic text-[#20a2ff]"> @{student.username}</p>
-                                                        </div>
                                                         <p className="text-sm text-[#7f7f7f] text-ellipsis overflow-hidden whitespace-nowrap">🎓{course.name}</p>
                                                     </div>
                                                 </>
