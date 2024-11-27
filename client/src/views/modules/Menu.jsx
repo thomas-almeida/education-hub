@@ -15,6 +15,11 @@ export default function Menu(
     }
 ) {
 
+
+
+    const [studentFullName, setStudentFullName] = useState('')
+    const [alreadySendFullName, setAlreadySendFullName] = useState(false)
+
     function calculateFreq(userFrequency, currentClass) {
         return (userFrequency / currentClass) * 100
     }
@@ -31,6 +36,42 @@ export default function Menu(
         localStorage.setItem('currentCourse', courseId)
         setActiveScreen('class')
     }
+
+    async function sendCertifateToAdmin() {
+
+        if (studentFullName.length >= 5) {
+
+            const response = await axios.post(`${baseUrl.productionUrl}/certificate-intent`, {
+                studentName: studentFullName,
+                userId: userData?.id
+            })
+
+            setAlreadySendFullName(true)
+        }
+
+        return
+    }
+
+    useEffect(() => {
+
+        function checkCertificateIntent() {
+            if (userData?.certificateData) {
+
+                const intentName = userData?.certificateData?.intentName
+                console.log(intentName)
+
+                if (intentName !== "") {
+                    setAlreadySendFullName(true)
+                }
+
+                return
+            }
+        }
+
+        checkCertificateIntent()
+
+    }, [userData])
+
 
     return (
         <>
@@ -90,25 +131,38 @@ export default function Menu(
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className={course.currentClass >= 9 ? 'border-2 border-[#5e5e5e85] bg-[#21a365] text-[#fff] font-semibold rounded-md mt-2 w-[200px] text-center' : 'hidden'}>
+                                            <div className={course.currentClass >= 10 ? 'border-2 border-[#5e5e5e85] bg-[#21a365] text-[#fff] font-semibold rounded-md mt-2 w-[200px] text-center' : 'hidden'}>
                                                 <h2>Este curso foi concluído</h2>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={course.currentClass >= 9 ? 'flex justify-center items-center p-4 w-[30%] h-[360px] bg-white rounded-md border-2 shadow-sm ' : 'hidden'}>
+                                    <div className={course.currentClass >= 10 ? 'flex justify-center items-center p-4 w-[30%] h-[360px] bg-white rounded-md border-2 shadow-sm ' : 'hidden'}>
                                         <div className="text-center">
-                                            <h2 className="font-semibold text-lg py-2">Certificado</h2>
+                                            <h2 className="font-semibold text-lg py-2"> 🎓Certificado</h2>
                                             <p className="text-sm">Para emissão de certificado deste curso, informe-nos seu nome completo no formulário abaixo</p>
                                             <div className="text-left border p-2 my-4 rounded-md shadow-sm">
-                                                <p className="font-semibold">Seu Nome Completo</p>
-                                                <input 
-                                                    type="text"
-                                                    placeholder="Amanda Silva Prestes"
-                                                    className="p-2 border rounded-md w-full px-2 mt-2 outline-slate-400"
-                                                />
-                                                <button className="p-1 border w-full mt-2 rounded-md bg-blue-500 text-white">
-                                                    Enviar para Emissão
-                                                </button>
+                                                {
+                                                    alreadySendFullName === false ? (
+                                                        <>
+                                                            <p className="font-semibold">Seu Nome Completo</p>
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Amanda Silva Prestes"
+                                                                className="p-2 border rounded-md w-full px-2 mt-2 outline-slate-400"
+                                                                value={studentFullName}
+                                                                onChange={(e) => setStudentFullName(e.target.value)}
+                                                            />
+                                                            <button
+                                                                className="p-1 border w-full mt-2 rounded-md bg-blue-500 text-white"
+                                                                onClick={() => sendCertifateToAdmin()}
+                                                            >
+                                                                Enviar para Emissão
+                                                            </button>
+                                                        </>
+                                                    ) : (
+                                                        <p className="text-center text-sm text-blue-500 font-semibold">Seu certificado já está em processo de emissão</p>
+                                                    )
+                                                }
                                             </div>
                                         </div>
                                     </div>

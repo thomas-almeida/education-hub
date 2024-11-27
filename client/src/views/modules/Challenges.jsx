@@ -49,15 +49,23 @@ export default function Challenges({
     return (
         <>
             <div className={visible ? `flex justify-center items-center w-[90%] class-container` : `hidden`}>
-                <div className="p-4 border border-slate-200">
-                    <div className="border flex justify-center flex-col text-center">
-                        <h1>Challenges</h1>
-                        <p className="border">
-                            Crie novos exercícios para treinar os conhecimentos no seu curso
-                        </p>
-                    </div>
-                    <div className="border rounded bg-slate-100 p-4 mt-2">
+                <div className="p-4 border-slate-200">
+                    <div className="flex justify-center flex-col text-center">
 
+                        <div className="text-center flex justify-center">
+                            <img src="/edu-hub-logo.png" className="w-[100px]" alt="" />
+                        </div>
+                        <h1 className="font-semibold text-2xl py-1 text-slate-500">Desafios</h1>
+                        <div className="text-center flex justify-center">
+                            <p className="font-semibold text-sm text-center w-[50%] text-slate-400">
+                                {`Olá @${userData?.name}!, Crie novos exercícios para treinar os conhecimentos no seu curso!`}
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        className={userData?.paymentStatus === 1 ? 'hidden' : 'flex justify-center items-center'}
+                    >
+                        <p className="w-[80%] text-center mt-6 text-red-400 rounded-full border font-semibold">Criação de Desafios Indisponível no seu plano atual</p>
                     </div>
                 </div>
             </div>

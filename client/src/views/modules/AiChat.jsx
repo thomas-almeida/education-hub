@@ -143,7 +143,7 @@ export default function AiChat({
                             <div
                                 className={userData?.paymentStatus === 1 ? 'hidden' : 'flex justify-center items-center'}
                             >
-                                <p className="w-[40%] text-center mt-6 text-yellow-500 rounded-full border font-semibold">Chat Indisponível no seu plano atual</p>
+                                <p className="w-[40%] text-center mt-6 text-red-400 rounded-full border font-semibold">Chat Indisponível no seu plano atual</p>
                             </div>
                         </div>
                     </div>
